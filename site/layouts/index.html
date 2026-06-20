@@ -360,6 +360,20 @@
         font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
       }
 
+      .feature-note {
+        max-width: 760px;
+        margin: 18px 0 0;
+        padding-left: 14px;
+        border-left: 2px solid rgba(34, 216, 204, 0.58);
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .feature-note code {
+        color: #eef9ff;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      }
+
       .workflow {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -674,7 +688,7 @@
         <div class="feature-grid">
           <article class="feature">
             <h3>Capture claims, not vibes</h3>
-            <p>Hit the universal quick-capture hotkey, <code>Cmd/Ctrl+Shift+C</code>, then enter assertions like <code>billing-service owns invoice-generation @alice</code>.</p>
+            <p>Turn meetings, docs, repos, and transcripts into quick structured assertions like <code>billing-service owns invoice-generation @alice</code>.</p>
           </article>
           <article class="feature">
             <h3>Give agents something better than prose</h3>
@@ -689,6 +703,7 @@
             <p>Keep provenance, local files, keyboard-first recall, and no SaaS dependency at the center of the workflow.</p>
           </article>
         </div>
+        <p class="feature-note">When the discussion moves faster than your notes, <code>Cmd/Ctrl+Shift+C</code> opens quick capture so you can keep up without breaking flow.</p>
       </section>
 
       <section class="site-shell workflow" aria-labelledby="examples-title">
