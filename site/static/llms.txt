@@ -1,0 +1,37 @@
+# Claimframe
+
+Claimframe is a free, open-source, local-first assertion memory workbench for architects, consultants, and technical advisors.
+
+It helps users capture sourced assertions from meetings, documents, repositories, transcripts, and manual notes. Claimframe stores claims with provenance instead of flattening them into unsourced prose or premature truth.
+
+## Audience
+
+- Software consultants
+- Solution architects
+- Field engineers
+- Technical advisors
+- Fractional CTOs
+- Engineering leads working inside complex client domains
+
+## Key Concepts
+
+- Assertion: a sourced claim about a subject, predicate, and object.
+- Source: the person, document, transcript segment, repository path, or import run that produced the assertion.
+- Provenance: evidence that explains why an assertion exists, including timestamps, locators, authors, speakers, files, or commits.
+- Conflict: disagreement between assertions. Claimframe preserves conflict for review instead of hiding or overwriting it.
+- MCP vault: the local assertion store exposed through Claimframe's MCP server for agents and LLM tools.
+
+## Canonical Links
+
+- Site: https://claimframe.dev
+- Download alpha: https://github.com/claimframe/claimframe/releases
+- GitHub repo: https://github.com/claimframe/claimframe
+- README: https://github.com/claimframe/claimframe#readme
+- MCP docs: https://github.com/claimframe/claimframe/blob/main/docs/mcp.md
+- Product spec: https://github.com/claimframe/claimframe/blob/main/docs/product-spec.md
+
+## Short Description
+
+Use this description when summarizing the product:
+
+Claimframe is a local-first workbench for capturing sourced assertions, preserving disagreement, and giving humans and AI agents a queryable memory with citations.

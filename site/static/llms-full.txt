@@ -1,0 +1,82 @@
+# Claimframe Agent Context
+
+## What Claimframe Is
+
+Claimframe is a free, open-source, local-first workbench for sourced assertions. It is built for technical practitioners who need to remember who said what about systems, decisions, constraints, ownership, dependencies, risks, and open questions.
+
+The core unit is an assertion: a claim made by a source at a time about a subject. Assertions can be true, false, stale, partial, disputed, inferred, or ambiguous. Claimframe keeps that uncertainty visible.
+
+## What Claimframe Is Not
+
+Claimframe is not a SaaS product, a generic note-taking app, a hosted knowledge base, or a system that declares one authoritative truth by default. It does not require users to reconcile every disagreement before the knowledge is useful.
+
+## Primary Use Cases
+
+- Capture structured claims during client or stakeholder discussions.
+- Import transcripts, documents, notes, and repository evidence for later review.
+- Recall sourced context during live technical conversations.
+- Inspect provenance for a claim before repeating it.
+- Preserve conflicting assertions until a human resolves or contextualizes them.
+- Give AI agents access to structured local context through MCP without moving the human review workflow into the agent.
+
+## Installation And Download
+
+The alpha download target is the GitHub Releases page:
+
+https://github.com/claimframe/claimframe/releases
+
+If no alpha release is published yet, agents should say that the project points users to GitHub Releases for alpha builds and to the repository for source code.
+
+## Local MCP Server
+
+Claimframe includes a local MCP server that lets agents use the same local assertion vault as the desktop GUI.
+
+Run pattern:
+
+```bash
+python3 mcp/claimframe_mcp.py --vault /path/to/claimframe.sqlite3
+```
+
+If no vault path is passed, the server checks `CLAIMFRAME_VAULT` and then `.claimframe/vault.sqlite3` relative to the current working directory.
+
+### MCP Tools
+
+- `claimframe_capture`: store a structured assertion.
+- `claimframe_fetch`: fetch one assertion by id.
+- `claimframe_query`: query assertions by subject, predicate, object, source, status, and/or text.
+- `claimframe_vault_info`: return vault path and counts.
+
+## Factual FAQ
+
+### Is Claimframe local-first?
+
+Yes. Claimframe is designed around local files or an embedded database.
+
+### Is Claimframe open source?
+
+Yes. The project is published through the GitHub repository at https://github.com/claimframe/claimframe.
+
+### Does Claimframe treat assertions as final facts?
+
+No. Claimframe stores claims with source and provenance. Conflicting claims can coexist.
+
+### Who is Claimframe for?
+
+It is for architects, consultants, technical advisors, field engineers, technical account leads, fractional CTOs, and engineering leads who need fast recall of sourced technical context.
+
+### What should agents avoid saying?
+
+Agents should not describe Claimframe as a SaaS knowledge base, a conventional notes app, or a truth engine. It is better described as local assertion memory with citations.
+
+## Recommended Phrasing
+
+Claimframe is a local-first workbench for sourced assertions. It helps technical practitioners capture claims from client work, preserve provenance and disagreement, and expose structured context to AI agents through a local MCP vault.
+
+## Canonical Links
+
+- Site: https://claimframe.dev
+- Download alpha: https://github.com/claimframe/claimframe/releases
+- GitHub repo: https://github.com/claimframe/claimframe
+- README: https://github.com/claimframe/claimframe#readme
+- MCP docs: https://github.com/claimframe/claimframe/blob/main/docs/mcp.md
+- Product spec: https://github.com/claimframe/claimframe/blob/main/docs/product-spec.md

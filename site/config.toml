@@ -1,0 +1,10 @@
+baseURL = "https://claimframe.dev/"
+languageCode = "en-us"
+title = "Claimframe"
+disableKinds = ["taxonomy", "term", "RSS", "section"]
+
+[params]
+  description = "Claimframe is a free, open-source, local-first assertion memory workbench for architects, consultants, and technical advisors."
+
+[markup.goldmark.renderer]
+  unsafe = false
