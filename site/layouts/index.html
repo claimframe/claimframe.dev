@@ -501,6 +501,23 @@
         gap: 14px;
       }
 
+      @media (max-width: 1120px) {
+        .site-shell {
+          width: min(100% - 24px, 900px);
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 34px;
+          min-height: auto;
+          padding: 54px 0 48px;
+        }
+
+        .visual-frame {
+          width: min(100%, 780px);
+        }
+      }
+
       @media (max-width: 900px) {
         .site-shell {
           width: min(100% - 24px, 680px);
