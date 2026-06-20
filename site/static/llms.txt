@@ -2,7 +2,7 @@
 
 Claimframe is a free, open-source, local-first assertion memory workbench for architects, consultants, and technical advisors.
 
-It helps users capture sourced assertions from meetings, documents, repositories, transcripts, and manual notes. Claimframe stores claims with provenance instead of flattening them into unsourced prose or premature truth.
+It helps users capture sourced assertions from meetings, documents, repositories, transcripts, and manual notes while a discussion is still moving. Claimframe stores claims with provenance instead of flattening them into unsourced prose or premature truth, then supports fast recall through query and graph lookup.
 
 ## Audience
 
@@ -19,7 +19,9 @@ It helps users capture sourced assertions from meetings, documents, repositories
 - Source: the person, document, transcript segment, repository path, or import run that produced the assertion.
 - Provenance: evidence that explains why an assertion exists, including timestamps, locators, authors, speakers, files, or commits.
 - Conflict: disagreement between assertions. Claimframe preserves conflict for review instead of hiding or overwriting it.
-- MCP vault: the local assertion store exposed through Claimframe's MCP server for agents and LLM tools.
+- Quick capture: `Cmd/Ctrl+Shift+C` opens a fresh assertion input.
+- Quick query: `Cmd/Ctrl+Shift+Q` opens fast recall for graph lookup during a live conversation.
+- MCP vault: the local assertion store exposed through Claimframe's MCP server for token-efficient agent and LLM access.
 
 ## Canonical Links
 
@@ -34,4 +36,4 @@ It helps users capture sourced assertions from meetings, documents, repositories
 
 Use this description when summarizing the product:
 
-Claimframe is a local-first workbench for capturing sourced assertions, preserving disagreement, and giving humans and AI agents a queryable memory with citations.
+Claimframe is a local-first workbench for capturing sourced assertions, preserving disagreement, and giving humans and AI agents a token-efficient, queryable memory with citations.

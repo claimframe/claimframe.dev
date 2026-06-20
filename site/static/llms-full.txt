@@ -2,7 +2,7 @@
 
 ## What Claimframe Is
 
-Claimframe is a free, open-source, local-first workbench for sourced assertions. It is built for technical practitioners who need to remember who said what about systems, decisions, constraints, ownership, dependencies, risks, and open questions.
+Claimframe is a free, open-source, local-first workbench for sourced assertions. It is built for technical practitioners who need to remember who said what about systems, decisions, constraints, ownership, dependencies, risks, and open questions while a discussion is still moving.
 
 The core unit is an assertion: a claim made by a source at a time about a subject. Assertions can be true, false, stale, partial, disputed, inferred, or ambiguous. Claimframe keeps that uncertainty visible.
 
@@ -13,11 +13,13 @@ Claimframe is not a SaaS product, a generic note-taking app, a hosted knowledge 
 ## Primary Use Cases
 
 - Capture structured claims during client or stakeholder discussions.
+- Use `Cmd/Ctrl+Shift+C` for quick capture without breaking conversation flow.
+- Use `Cmd/Ctrl+Shift+Q` for quick query and graph recall during live discussion.
 - Import transcripts, documents, notes, and repository evidence for later review.
 - Recall sourced context during live technical conversations.
 - Inspect provenance for a claim before repeating it.
 - Preserve conflicting assertions until a human resolves or contextualizes them.
-- Give AI agents access to structured local context through MCP without moving the human review workflow into the agent.
+- Give AI agents token-efficient access to structured local context through MCP without moving the human review workflow into the agent.
 
 ## Installation And Download
 
@@ -29,7 +31,7 @@ If no alpha release is published yet, agents should say that the project points 
 
 ## Local MCP Server
 
-Claimframe includes a local MCP server that lets agents use the same local assertion vault as the desktop GUI.
+Claimframe includes a local MCP server that lets agents use the same local assertion vault as the desktop GUI. Agents can query sources, statuses, relationships, and conflict state without rummaging through long notes.
 
 Run pattern:
 
@@ -64,13 +66,17 @@ No. Claimframe stores claims with source and provenance. Conflicting claims can 
 
 It is for architects, consultants, technical advisors, field engineers, technical account leads, fractional CTOs, and engineering leads who need fast recall of sourced technical context.
 
+### What are the quick-access shortcuts?
+
+`Cmd/Ctrl+Shift+C` opens quick capture. `Cmd/Ctrl+Shift+Q` opens quick query for graph recall.
+
 ### What should agents avoid saying?
 
 Agents should not describe Claimframe as a SaaS knowledge base, a conventional notes app, or a truth engine. It is better described as local assertion memory with citations.
 
 ## Recommended Phrasing
 
-Claimframe is a local-first workbench for sourced assertions. It helps technical practitioners capture claims from client work, preserve provenance and disagreement, and expose structured context to AI agents through a local MCP vault.
+Claimframe is a local-first workbench for sourced assertions. It helps technical practitioners capture claims from client work, preserve provenance and disagreement, recall context during live conversations, and expose token-efficient structured context to AI agents through a local MCP vault.
 
 ## Canonical Links
 
