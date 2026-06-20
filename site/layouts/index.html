@@ -276,30 +276,35 @@
       .proof-strip {
         border-top: 1px solid var(--line);
         border-bottom: 1px solid var(--line);
-        background: rgba(11, 20, 32, 0.72);
+        background: rgba(6, 16, 26, 0.58);
       }
 
       .proof-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 1px;
       }
 
       .proof {
-        min-height: 112px;
-        padding: 22px;
-        background: rgba(16, 25, 36, 0.72);
+        min-height: 138px;
+        margin: 0;
+        padding: 30px 34px 32px;
+        border-left: 1px solid rgba(36, 51, 72, 0.56);
+      }
+
+      .proof:first-child {
+        border-left: 0;
       }
 
       .proof strong {
         display: block;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
         color: #eef9ff;
       }
 
       .proof span {
+        display: block;
         color: var(--muted);
-        line-height: 1.55;
+        line-height: 1.6;
       }
 
       main section {
@@ -541,6 +546,17 @@
           grid-template-columns: 1fr;
         }
 
+        .proof {
+          min-height: auto;
+          padding: 24px 0;
+          border-top: 1px solid rgba(36, 51, 72, 0.56);
+          border-left: 0;
+        }
+
+        .proof:first-child {
+          border-top: 0;
+        }
+
         main section {
           padding: 58px 0;
         }
@@ -692,7 +708,7 @@
           </article>
           <article class="feature">
             <h3>Give agents something better than prose</h3>
-            <p>Expose the same local assertion vault through MCP so agents can query sources, statuses, and relationships instead of rummaging through notes.</p>
+            <p>Expose the same local assertion vault through MCP so agents get token-efficient access to sources, statuses, and relationships instead of rummaging through notes.</p>
           </article>
           <article class="feature">
             <h3>Disagreement is data</h3>
