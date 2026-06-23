@@ -32,3 +32,9 @@ The site follows the same deployment shape as `n6consulting/cms-rev-1`:
 - Product spec: <https://github.com/claimframe/claimframe/blob/main/docs/product-spec.md>
 - Agent guide: <https://claimframe.dev/llms.txt>
 - Full agent context: <https://claimframe.dev/llms-full.txt>
+
+
+## AI Disclosure
+
+This project was developed with assistance from AI tools. Human maintainers review,
+test, and accept responsibility for the code, documentation, and release decisions.
