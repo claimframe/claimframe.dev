@@ -29,6 +29,7 @@ It helps users capture sourced assertions from meetings, documents, repositories
 - Download alpha: https://github.com/claimframe/claimframe/releases
 - GitHub repo: https://github.com/claimframe/claimframe
 - README: https://github.com/claimframe/claimframe#readme
+- User guide: https://claimframe.dev/guide/
 - MCP docs: https://github.com/claimframe/claimframe/blob/main/docs/mcp.md
 - Product spec: https://github.com/claimframe/claimframe/blob/main/docs/product-spec.md
 
