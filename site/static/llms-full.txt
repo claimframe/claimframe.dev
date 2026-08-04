@@ -21,14 +21,6 @@ Claimframe is not a SaaS product, a generic note-taking app, a hosted knowledge 
 - Preserve conflicting assertions until a human resolves or contextualizes them.
 - Give AI agents token-efficient access to structured local context through MCP without moving the human review workflow into the agent.
 
-## Installation And Download
-
-The alpha download target is the GitHub Releases page:
-
-https://github.com/claimframe/claimframe/releases
-
-If no alpha release is published yet, agents should say that the project points users to GitHub Releases for alpha builds and to the repository for source code.
-
 ## Local MCP Server
 
 Claimframe includes a local MCP server that lets agents use the same local assertion vault as the desktop GUI. Agents can query sources, statuses, relationships, and conflict state without rummaging through long notes.
@@ -56,7 +48,7 @@ Yes. Claimframe is designed around local files or an embedded database.
 
 ### Is Claimframe open source?
 
-Yes. The project is published through the GitHub repository at https://github.com/claimframe/claimframe.
+Yes. Claimframe is an open-source project.
 
 ### Does Claimframe treat assertions as final facts?
 
@@ -81,9 +73,5 @@ Claimframe is a local-first workbench for sourced assertions. It helps technical
 ## Canonical Links
 
 - Site: https://claimframe.dev
-- Download alpha: https://github.com/claimframe/claimframe/releases
-- GitHub repo: https://github.com/claimframe/claimframe
-- README: https://github.com/claimframe/claimframe#readme
 - User guide: https://claimframe.dev/guide/
-- MCP docs: https://github.com/claimframe/claimframe/blob/main/docs/mcp.md
-- Product spec: https://github.com/claimframe/claimframe/blob/main/docs/product-spec.md
+- Agent context: https://claimframe.dev/llms-full.txt
