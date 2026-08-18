@@ -26,12 +26,31 @@ The site follows the same deployment shape as `n6consulting/cms-rev-1`:
 ## Important Links
 
 - Canonical site: <https://claimframe.dev>
-- Download alpha: <https://github.com/claimframe/claimframe/releases>
+- Download alpha: <https://claimframe.dev/#download>
+- Public release assets: <https://github.com/claimframe/claimframe.dev/releases>
 - GitHub repository: <https://github.com/claimframe/claimframe>
 - MCP docs: <https://github.com/claimframe/claimframe/blob/main/docs/mcp.md>
 - Product spec: <https://github.com/claimframe/claimframe/blob/main/docs/product-spec.md>
 - Agent guide: <https://claimframe.dev/llms.txt>
 - Full agent context: <https://claimframe.dev/llms-full.txt>
+
+## Public app downloads
+
+The application source repository is private, so its GitHub Releases and release
+assets require repository read access. Public installers are published as release
+assets in this repository instead. The homepage links to these stable asset names
+on the latest release:
+
+- `Claimframe-macos-arm64.dmg`
+- `Claimframe-macos-x64.dmg`
+- `Claimframe-windows-x64.msi`
+- `Claimframe-linux-x86_64.AppImage`
+
+The private application's release workflow must copy and rename each completed
+installer into a matching release in `claimframe/claimframe.dev`. Keeping these
+public names version-independent lets the website use GitHub's
+`/releases/latest/download/<asset-name>` URLs without a site update for every
+application release.
 
 
 ## AI Disclosure

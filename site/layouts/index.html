@@ -233,6 +233,13 @@
         transform: translateY(-1px);
       }
 
+      .download-note {
+        width: 100%;
+        margin: 2px 0 0;
+        color: var(--soft);
+        font-size: 0.82rem;
+      }
+
       .visual-frame {
         width: 100%;
         border: 1px solid var(--line);
@@ -439,6 +446,62 @@
           rgba(6, 16, 26, 0.78);
       }
 
+      .download-band {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background:
+          radial-gradient(circle at 80% 50%, rgba(150, 92, 255, 0.1), transparent 28rem),
+          linear-gradient(90deg, rgba(34, 216, 204, 0.08), transparent 42%),
+          rgba(6, 16, 26, 0.78);
+      }
+
+      .download-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.85fr) minmax(420px, 1.15fr);
+        gap: 42px;
+        align-items: center;
+      }
+
+      .download-options {
+        display: grid;
+        gap: 10px;
+      }
+
+      .download-option {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 16px;
+        align-items: center;
+        min-height: 78px;
+        padding: 15px 17px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(11, 20, 32, 0.8);
+        text-decoration: none;
+      }
+
+      .download-option:hover,
+      .download-option.recommended {
+        border-color: rgba(34, 216, 204, 0.56);
+        background: rgba(34, 216, 204, 0.08);
+      }
+
+      .download-option strong,
+      .download-option span {
+        display: block;
+      }
+
+      .download-option span {
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      .download-arrow {
+        color: var(--teal);
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      }
+
       .agent-grid {
         display: grid;
         grid-template-columns: minmax(0, 0.9fr) minmax(340px, 1.1fr);
@@ -536,7 +599,8 @@
 
         .hero,
         .workflow,
-        .agent-grid {
+        .agent-grid,
+        .download-grid {
           grid-template-columns: 1fr;
         }
 
@@ -674,6 +738,7 @@
         <div class="nav-links">
           <a href="#workflows">Workflows</a>
           <a href="#agents">Agents</a>
+          <a href="#download">Download</a>
           <a href="/guide/">Guide</a>
           <a href="/llms.txt">llms.txt</a>
         </div>
@@ -688,8 +753,9 @@
           <p class="subhead">Local-first assertion memory for architects and consultants.</p>
           <p class="support">Capture what people, documents, repos, and transcripts assert. Keep provenance attached. Let disagreement stay visible. Give AI agents structured context they can query without turning your client memory into a SaaS dependency.</p>
           <div class="cta-row" aria-label="Primary calls to action">
-            <a class="button primary" href="/guide/">Read the user guide</a>
-            <a class="button secondary" href="/llms-full.txt">Agent context</a>
+            <a class="button primary" href="#download">Get started</a>
+            <a class="button secondary" href="/guide/">Read the user guide</a>
+            <p class="download-note">Free alpha for macOS, Windows, and Linux.</p>
           </div>
         </div>
         <figure class="visual-frame">
@@ -708,6 +774,30 @@
           <p class="proof"><strong>Agent-readable</strong><span>The local MCP server lets agents capture, fetch, and query the same vault.</span></p>
         </div>
       </aside>
+
+      <section id="download" class="download-band" aria-labelledby="download-title">
+        <div class="site-shell download-grid">
+          <div>
+            <p class="section-kicker">Download the alpha</p>
+            <h2 id="download-title">Your vault stays on your machine.</h2>
+            <p class="section-intro">Choose an installer for your platform. Claimframe is currently unsigned alpha software, so your operating system may ask you to confirm before opening it.</p>
+          </div>
+          <div class="download-options" aria-label="Claimframe downloads">
+            <a class="download-option" data-platform="mac" href="https://github.com/claimframe/claimframe.dev/releases/latest/download/Claimframe-macos-arm64.dmg">
+              <span><strong>macOS — Apple silicon</strong><span>For M1 and newer Macs · DMG</span></span><span class="download-arrow" aria-hidden="true">↓</span>
+            </a>
+            <a class="download-option" data-platform="mac" href="https://github.com/claimframe/claimframe.dev/releases/latest/download/Claimframe-macos-x64.dmg">
+              <span><strong>macOS — Intel</strong><span>For Intel-based Macs · DMG</span></span><span class="download-arrow" aria-hidden="true">↓</span>
+            </a>
+            <a class="download-option" data-platform="windows" href="https://github.com/claimframe/claimframe.dev/releases/latest/download/Claimframe-windows-x64.msi">
+              <span><strong>Windows</strong><span>For 64-bit Windows · MSI</span></span><span class="download-arrow" aria-hidden="true">↓</span>
+            </a>
+            <a class="download-option" data-platform="linux" href="https://github.com/claimframe/claimframe.dev/releases/latest/download/Claimframe-linux-x86_64.AppImage">
+              <span><strong>Linux</strong><span>Portable x86-64 build · AppImage</span></span><span class="download-arrow" aria-hidden="true">↓</span>
+            </a>
+          </div>
+        </div>
+      </section>
 
       <section id="workflows" class="site-shell" aria-labelledby="workflows-title">
         <p class="section-kicker">What it is for</p>
@@ -790,6 +880,14 @@ tools:
         <p class="wink">For when you need a machine that believes things, but with citations.</p>
       </section>
     </main>
+    <script>
+      (() => {
+        const platform = navigator.userAgentData?.platform || navigator.platform || "";
+        const family = /mac/i.test(platform) ? "mac" : /win/i.test(platform) ? "windows" : /linux/i.test(platform) ? "linux" : "";
+        if (!family) return;
+        document.querySelectorAll(`[data-platform="${family}"]`).forEach((link) => link.classList.add("recommended"));
+      })();
+    </script>
 
     <footer class="footer">
       <div class="site-shell">
