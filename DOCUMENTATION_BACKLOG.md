@@ -37,7 +37,7 @@ walkthrough.
 ├── how-to/
 │   ├── manage-vault
 │   ├── capture-claim
-│   ├── capture-from-source
+│   ├── capture-from-transcript
 │   ├── query-and-save
 │   ├── inspect-provenance
 │   ├── explore-graph
@@ -214,7 +214,7 @@ and no more than three related links.
 - [x] Correct a transcription mistake.
 - [x] Link to capture syntax, assertion fields, and modeling good claims.
 
-### Capture claims from a source
+### Capture claims from a transcript
 
 - [x] Import transcript text or a file.
 - [x] Preview speaker segments.
