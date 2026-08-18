@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ .Title }} | Claimframe User Guide</title>
+    <meta name="description" content="{{ .Params.description }}">
+    <link rel="canonical" href="{{ .Permalink }}">
+    <link rel="stylesheet" href="/docs.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <nav class="site-shell nav" aria-label="Primary">
+        <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span>Claimframe</span></a>
+        <div class="nav-links">
+          <a href="/">Overview</a>
+          <a href="/guide/" aria-current="page">Guide</a>
+          <a href="/llms.txt">llms.txt</a>
+        </div>
+      </nav>
+    </header>
+    <main class="site-shell docs-layout">
+      <aside class="docs-sidebar" aria-label="Documentation">
+        <div class="docs-group">
+          <strong>Get started</strong>
+          <a href="/guide/">Guide home</a>
+          <a href="/guide/start/first-claim/"{{ if eq $.RelPermalink "/guide/start/first-claim/" }} aria-current="page"{{ end }}>Your first sourced claim</a>
+        </div>
+        <div class="docs-group">
+          <strong>How-to guides</strong>
+          {{ range slice
+            (dict "url" "/guide/how-to/manage-vault/" "label" "Manage a vault")
+            (dict "url" "/guide/how-to/capture-claim/" "label" "Capture a claim")
+            (dict "url" "/guide/how-to/capture-from-source/" "label" "Capture from a source")
+            (dict "url" "/guide/how-to/query-and-save/" "label" "Query and save")
+            (dict "url" "/guide/how-to/inspect-provenance/" "label" "Inspect provenance")
+            (dict "url" "/guide/how-to/resolve-disagreement/" "label" "Resolve disagreement")
+          }}<a href="{{ .url }}"{{ if eq $.RelPermalink .url }} aria-current="page"{{ end }}>{{ .label }}</a>{{ end }}
+          <details class="sidebar-more"{{ if in (slice "/guide/how-to/explore-graph/" "/guide/how-to/manage-vocabulary/") $.RelPermalink }} open{{ end }}><summary>More how-to guides</summary>
+            <a href="/guide/how-to/explore-graph/"{{ if eq $.RelPermalink "/guide/how-to/explore-graph/" }} aria-current="page"{{ end }}>Explore the graph</a>
+            <a href="/guide/how-to/manage-vocabulary/"{{ if eq $.RelPermalink "/guide/how-to/manage-vocabulary/" }} aria-current="page"{{ end }}>Manage a vocabulary</a>
+          </details>
+        </div>
+        <div class="docs-group">
+          <strong>Reference</strong>
+          {{ range slice
+            (dict "url" "/guide/reference/capture-syntax/" "label" "Capture syntax")
+            (dict "url" "/guide/reference/query-syntax/" "label" "Query syntax")
+            (dict "url" "/guide/reference/assertion-fields/" "label" "Assertion fields")
+            (dict "url" "/guide/reference/statuses/" "label" "Assertion statuses")
+          }}<a href="{{ .url }}"{{ if eq $.RelPermalink .url }} aria-current="page"{{ end }}>{{ .label }}</a>{{ end }}
+          <details class="sidebar-more"{{ if in (slice "/guide/reference/predicate-settings/" "/guide/reference/vaults/" "/guide/reference/keyboard-shortcuts/") $.RelPermalink }} open{{ end }}><summary>More reference</summary>
+            <a href="/guide/reference/predicate-settings/"{{ if eq $.RelPermalink "/guide/reference/predicate-settings/" }} aria-current="page"{{ end }}>Predicate settings</a>
+            <a href="/guide/reference/vaults/"{{ if eq $.RelPermalink "/guide/reference/vaults/" }} aria-current="page"{{ end }}>Vaults</a>
+            <a href="/guide/reference/keyboard-shortcuts/"{{ if eq $.RelPermalink "/guide/reference/keyboard-shortcuts/" }} aria-current="page"{{ end }}>Keyboard shortcuts</a>
+          </details>
+        </div>
+        <div class="docs-group">
+          <strong>Concepts</strong>
+          {{ range slice
+            (dict "url" "/guide/concepts/assertions-not-facts/" "label" "Assertions, not facts")
+            (dict "url" "/guide/concepts/modeling-good-claims/" "label" "Modeling good claims")
+            (dict "url" "/guide/concepts/provenance-and-confidence/" "label" "Provenance and confidence")
+            (dict "url" "/guide/concepts/disagreement-and-conflicts/" "label" "Disagreement and conflicts")
+            (dict "url" "/guide/concepts/vault-and-vocabulary-boundaries/" "label" "Vault and vocabulary boundaries")
+          }}<a href="{{ .url }}"{{ if eq $.RelPermalink .url }} aria-current="page"{{ end }}>{{ .label }}</a>{{ end }}
+        </div>
+      </aside>
+      <article class="docs-content">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/guide/">Guide</a><span>/</span>{{ with .Params.doc_section }}{{ . }}<span>/</span>{{ end }}{{ .Title }}</nav>
+        <header class="docs-header">
+          <p class="docs-kind">{{ default "Reference" .Params.doc_type }}</p>
+          <h1>{{ .Title }}</h1>
+          <p class="docs-summary">{{ .Params.description }}</p>
+        </header>
+        <div class="docs-body">{{ .Content }}</div>
+        {{ if or .Params.related .Params.next }}
+        <nav class="page-links" aria-label="Related documentation">
+          {{ with .Params.next }}<a class="page-link" href="{{ .url }}"><span>Next</span><strong>{{ .label }} →</strong></a>{{ end }}
+          {{ range .Params.related }}<a class="page-link" href="{{ .url }}"><span>Related</span><strong>{{ .label }}</strong></a>{{ end }}
+        </nav>
+        {{ end }}
+      </article>
+    </main>
+    <footer class="footer"><div class="site-shell">Claimframe is free, open source, and local-first.</div></footer>
+  </body>
+</html>
