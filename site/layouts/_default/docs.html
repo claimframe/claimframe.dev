@@ -30,16 +30,14 @@
           <strong>How-to guides</strong>
           {{ range slice
             (dict "url" "/guide/how-to/manage-vault/" "label" "Manage a vault")
-            (dict "url" "/guide/how-to/capture-claim/" "label" "Capture a claim")
+            (dict "url" "/guide/how-to/capture-claim/" "label" "Record facts by hand")
             (dict "url" "/guide/how-to/capture-from-source/" "label" "Capture from a source")
-            (dict "url" "/guide/how-to/query-and-save/" "label" "Query and save")
+            (dict "url" "/guide/how-to/query-and-save/" "label" "Find facts and save a query")
             (dict "url" "/guide/how-to/inspect-provenance/" "label" "Inspect provenance")
+            (dict "url" "/guide/how-to/explore-graph/" "label" "Explore the graph")
             (dict "url" "/guide/how-to/resolve-disagreement/" "label" "Resolve disagreement")
+            (dict "url" "/guide/how-to/manage-vocabulary/" "label" "Manage a vocabulary")
           }}<a href="{{ .url }}"{{ if eq $.RelPermalink .url }} aria-current="page"{{ end }}>{{ .label }}</a>{{ end }}
-          <details class="sidebar-more"{{ if in (slice "/guide/how-to/explore-graph/" "/guide/how-to/manage-vocabulary/") $.RelPermalink }} open{{ end }}><summary>More how-to guides</summary>
-            <a href="/guide/how-to/explore-graph/"{{ if eq $.RelPermalink "/guide/how-to/explore-graph/" }} aria-current="page"{{ end }}>Explore the graph</a>
-            <a href="/guide/how-to/manage-vocabulary/"{{ if eq $.RelPermalink "/guide/how-to/manage-vocabulary/" }} aria-current="page"{{ end }}>Manage a vocabulary</a>
-          </details>
         </div>
         <div class="docs-group">
           <strong>Reference</strong>
@@ -48,12 +46,10 @@
             (dict "url" "/guide/reference/query-syntax/" "label" "Query syntax")
             (dict "url" "/guide/reference/assertion-fields/" "label" "Assertion fields")
             (dict "url" "/guide/reference/statuses/" "label" "Assertion statuses")
+            (dict "url" "/guide/reference/predicate-settings/" "label" "Predicate settings")
+            (dict "url" "/guide/reference/vaults/" "label" "Vaults")
+            (dict "url" "/guide/reference/keyboard-shortcuts/" "label" "Keyboard shortcuts")
           }}<a href="{{ .url }}"{{ if eq $.RelPermalink .url }} aria-current="page"{{ end }}>{{ .label }}</a>{{ end }}
-          <details class="sidebar-more"{{ if in (slice "/guide/reference/predicate-settings/" "/guide/reference/vaults/" "/guide/reference/keyboard-shortcuts/") $.RelPermalink }} open{{ end }}><summary>More reference</summary>
-            <a href="/guide/reference/predicate-settings/"{{ if eq $.RelPermalink "/guide/reference/predicate-settings/" }} aria-current="page"{{ end }}>Predicate settings</a>
-            <a href="/guide/reference/vaults/"{{ if eq $.RelPermalink "/guide/reference/vaults/" }} aria-current="page"{{ end }}>Vaults</a>
-            <a href="/guide/reference/keyboard-shortcuts/"{{ if eq $.RelPermalink "/guide/reference/keyboard-shortcuts/" }} aria-current="page"{{ end }}>Keyboard shortcuts</a>
-          </details>
         </div>
         <div class="docs-group">
           <strong>Concepts</strong>

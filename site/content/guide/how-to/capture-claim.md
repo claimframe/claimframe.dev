@@ -1,6 +1,6 @@
 +++
-title = "Capture a sourced claim"
-description = "Record one focused subject–predicate–object assertion and attach enough provenance to inspect it later."
+title = "Record facts by hand"
+description = "Add a fact while you work and record where it came from so you can inspect it later."
 layout = "docs"
 doc_type = "How-to guide"
 doc_section = "How-to guides"
@@ -11,7 +11,7 @@ url = "/guide/reference/capture-syntax/"
 label = "Modeling good claims"
 url = "/guide/concepts/modeling-good-claims/"
 [next]
-label = "Query and save claims"
+label = "Find facts and save a query"
 url = "/guide/how-to/query-and-save/"
 +++
 
@@ -21,6 +21,8 @@ url = "/guide/how-to/query-and-save/"
 4. Add status, confidence, or tags only when they contribute useful review or retrieval information.
 5. Review the syntax preview and commit the assertion.
 6. Confirm the new assertion appears with the intended source and object.
+
+{{< guide-shot src="/assets/guide/manual-capture.png" alt="Claimframe Capture workspace with the manual capture field highlighted" x="20%" y="18%" width="56%" height="9%" caption="Enter the complete fact and its source in the highlighted capture field, then commit it." >}}
 
 For example:
 

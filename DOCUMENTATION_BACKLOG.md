@@ -11,9 +11,12 @@ than duplicating it.
 Completed on 2026-08-17. The product-specific content was checked against the
 local `claimframe-app` source and product documentation. Hugo builds 24 pages,
 and every internal `/guide/` link resolves to generated output. Export remains a
-section of `Query and save claims`; the current export workflow is not complex
+section of `Find facts and save a query`; the current export workflow is not complex
 enough to warrant a separate page. The former monolithic guide layout was
-removed after its content was migrated.
+removed after its content was migrated. Three current-UI screenshots from a
+disposable synthetic demo vault orient readers to manual capture, query saving,
+and the provenance inspector without turning every procedure into a screenshot
+walkthrough.
 
 ## Target quality
 
@@ -202,7 +205,7 @@ and no more than three related links.
 - [x] Confirm which vault is active.
 - [x] Link to the vault reference.
 
-### Capture a sourced claim
+### Record facts by hand
 
 - [x] Enter a subject-predicate-object claim.
 - [x] Attach source and evidence.
@@ -220,7 +223,7 @@ and no more than three related links.
 - [x] Accept, defer, or reject candidates.
 - [x] Link to assertion fields and the provenance concept.
 
-### Query and save claims
+### Find facts and save a query
 
 - [x] Run a query.
 - [x] Narrow results with filters.
@@ -252,7 +255,7 @@ and no more than three related links.
 
 - [x] Decide whether export has enough choices, behavior, or caveats for a
       separate page.
-- [x] Cover export briefly in `Query and save claims`; it does not warrant a
+- [x] Cover export briefly in `Find facts and save a query`; it does not warrant a
       separate page in the current product.
 
 ### Resolve disagreement
@@ -296,7 +299,7 @@ Implement `/guide/` after its destination pages exist. It is a routing page, not
 a comprehensive guide.
 
 - [x] Add a `Get started` entry linking to the tutorial.
-- [x] Show no more than six common tasks: manage a vault, capture a claim,
+- [x] Show no more than six common tasks: manage a vault, record facts by hand,
       capture from a source, query and save, inspect provenance, and resolve
       disagreement.
 - [x] Add a secondary `View all how-to guides` link.
@@ -318,9 +321,9 @@ a comprehensive guide.
 - [x] Move vault procedures to `Manage a vault`.
 - [x] Move vocabulary procedures to `Manage a vocabulary`.
 - [x] Move capture grammar to `Capture syntax`.
-- [x] Move direct capture procedure to `Capture a sourced claim`.
+- [x] Move direct capture procedure to `Record facts by hand`.
 - [x] Move query grammar to `Query syntax`.
-- [x] Move query procedure to `Query and save claims`.
+- [x] Move query procedure to `Find facts and save a query`.
 - [x] Move recall material to provenance and graph how-to guides.
 - [x] Move reconciliation procedure to `Resolve disagreement`.
 - [x] Move the status list to `Assertion statuses`.

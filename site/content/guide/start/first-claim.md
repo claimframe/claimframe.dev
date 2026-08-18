@@ -68,7 +68,7 @@ With Alice's assertion selected, change its status to `needs_review`.
 
 ## 7. Save the query
 
-Return to the query field and choose its save control. Name the query `Invoice ownership` and save it.
+Return to the query field and choose **Save current query**. Enter `Invoice ownership` in the **Query name** field, then choose **Save query**.
 
 Open the app menu, choose **Manage queries**, and run `Invoice ownership`.
 

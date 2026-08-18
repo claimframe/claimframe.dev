@@ -8,7 +8,7 @@ doc_section = "How-to guides"
 label = "Vaults reference"
 url = "/guide/reference/vaults/"
 [next]
-label = "Capture a sourced claim"
+label = "Record facts by hand"
 url = "/guide/how-to/capture-claim/"
 +++
 

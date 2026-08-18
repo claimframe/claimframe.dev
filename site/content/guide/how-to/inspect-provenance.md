@@ -22,6 +22,8 @@ url = "/guide/how-to/explore-graph/"
 5. Review related events to see edits, status changes, or later judgments.
 6. If the assertion is suitable to carry forward, choose **Copy Citation**.
 
+{{< guide-shot src="/assets/guide/inspect-provenance.png" alt="Claimframe workspace with the provenance inspector highlighted on the right" x="79%" y="7%" width="20%" height="91%" caption="Selecting an assertion opens its provenance inspector in the right-hand column." >}}
+
 The copied citation contains the assertion, source, and evidence locator when one is available. It is a convenient handoff, not a substitute for checking the underlying source when the decision is consequential.
 
 If provenance is missing or ambiguous, mark the assertion `needs_review` and capture a better-sourced replacement or supporting claim rather than inventing a locator.
