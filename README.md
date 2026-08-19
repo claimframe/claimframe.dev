@@ -14,20 +14,17 @@ The build writes the static site to `site/public`.
 
 ## Deployment
 
-The site follows the same deployment shape as `n6consulting/cms-rev-1`:
+Netlify deploys the site from this private repository:
 
 - Netlify runs `npm run build`.
 - Hugo builds into `site/public`.
-- Netlify publishes the built output to GitHub Pages through the `gh-pages` branch.
-- DNSimple points `claimframe.dev` at GitHub Pages.
-
-`site/static/CNAME` contains the canonical custom domain for GitHub Pages.
+- Netlify publishes `site/public` at `claimframe.dev`.
 
 ## Important Links
 
 - Canonical site: <https://claimframe.dev>
 - Download alpha: <https://claimframe.dev/#download>
-- Public release assets: <https://github.com/claimframe/claimframe.dev/releases>
+- Public release assets: <https://github.com/claimframe/claimframe-downloads/releases>
 - GitHub repository: <https://github.com/claimframe/claimframe>
 - MCP docs: <https://github.com/claimframe/claimframe/blob/main/docs/mcp.md>
 - Product spec: <https://github.com/claimframe/claimframe/blob/main/docs/product-spec.md>
@@ -38,8 +35,10 @@ The site follows the same deployment shape as `n6consulting/cms-rev-1`:
 
 The application source repository is private, so its GitHub Releases and release
 assets require repository read access. Public installers are published as release
-assets in this repository instead. The homepage links to these stable asset names
-on the latest release:
+assets in the dedicated public
+[`claimframe/claimframe-downloads`](https://github.com/claimframe/claimframe-downloads)
+repository instead. The homepage links to these stable asset names on its latest
+release:
 
 - `Claimframe-macos-arm64.dmg`
 - `Claimframe-macos-x64.dmg`
@@ -47,7 +46,7 @@ on the latest release:
 - `Claimframe-linux-x86_64.AppImage`
 
 The private application's release workflow must copy and rename each completed
-installer into a matching release in `claimframe/claimframe.dev`. Keeping these
+installer into a matching release in `claimframe/claimframe-downloads`. Keeping these
 public names version-independent lets the website use GitHub's
 `/releases/latest/download/<asset-name>` URLs without a site update for every
 application release.
