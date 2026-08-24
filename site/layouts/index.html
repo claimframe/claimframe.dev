@@ -776,25 +776,28 @@
       </aside>
 
       <section id="download" class="download-band" aria-labelledby="download-title">
+        {{- $releaseVersion := site.Params.releaseVersion -}}
+        {{- $releaseDownloadBase := "https://github.com/claimframe/claimframe-downloads/releases/latest/download" -}}
         <div class="site-shell download-grid">
           <div>
             <p class="section-kicker">Download the alpha</p>
             <h2 id="download-title">Your vault stays on your machine.</h2>
-            <p class="section-intro">Choose an installer for your platform. Claimframe is currently unsigned alpha software, so your operating system may ask you to confirm before opening it.</p>
+            <p class="section-intro">Choose a Claimframe v{{ $releaseVersion }} installer for your platform. Claimframe is currently unsigned alpha software, so your operating system may ask you to confirm before opening it.</p>
           </div>
-          <div class="download-options" aria-label="Claimframe downloads">
-            <a class="download-option" data-platform="mac" href="https://github.com/claimframe/claimframe-downloads/releases/latest/download/Claimframe-macos-arm64.dmg">
-              <span><strong>macOS — Apple silicon</strong><span>For M1 and newer Macs · DMG</span></span><span class="download-arrow" aria-hidden="true">↓</span>
+          <div class="download-options" aria-label="Claimframe v{{ $releaseVersion }} downloads" data-release-version="{{ $releaseVersion }}">
+            <a class="download-option" data-platform="mac" href="{{ $releaseDownloadBase }}/Claimframe-{{ $releaseVersion }}-macos-arm64.dmg">
+              <span><strong>macOS — Apple silicon</strong><span>v{{ $releaseVersion }} · For M1 and newer Macs · DMG</span></span><span class="download-arrow" aria-hidden="true">↓</span>
             </a>
-            <a class="download-option" data-platform="mac" href="https://github.com/claimframe/claimframe-downloads/releases/latest/download/Claimframe-macos-x64.dmg">
-              <span><strong>macOS — Intel</strong><span>For Intel-based Macs · DMG</span></span><span class="download-arrow" aria-hidden="true">↓</span>
+            <a class="download-option" data-platform="mac" href="{{ $releaseDownloadBase }}/Claimframe-{{ $releaseVersion }}-macos-x64.dmg">
+              <span><strong>macOS — Intel</strong><span>v{{ $releaseVersion }} · For Intel-based Macs · DMG</span></span><span class="download-arrow" aria-hidden="true">↓</span>
             </a>
-            <a class="download-option" data-platform="windows" href="https://github.com/claimframe/claimframe-downloads/releases/latest/download/Claimframe-windows-x64.msi">
-              <span><strong>Windows</strong><span>For 64-bit Windows · MSI</span></span><span class="download-arrow" aria-hidden="true">↓</span>
+            <a class="download-option" data-platform="windows" href="{{ $releaseDownloadBase }}/Claimframe-{{ $releaseVersion }}-windows-x64.msi">
+              <span><strong>Windows</strong><span>v{{ $releaseVersion }} · For 64-bit Windows · MSI</span></span><span class="download-arrow" aria-hidden="true">↓</span>
             </a>
-            <a class="download-option" data-platform="linux" href="https://github.com/claimframe/claimframe-downloads/releases/latest/download/Claimframe-linux-x86_64.AppImage">
-              <span><strong>Linux</strong><span>Portable x86-64 build · AppImage</span></span><span class="download-arrow" aria-hidden="true">↓</span>
+            <a class="download-option" data-platform="linux" href="{{ $releaseDownloadBase }}/Claimframe-{{ $releaseVersion }}-linux-x86_64.AppImage">
+              <span><strong>Linux</strong><span>v{{ $releaseVersion }} · Portable x86-64 build · AppImage</span></span><span class="download-arrow" aria-hidden="true">↓</span>
             </a>
+            <p>If a download is temporarily unavailable, <a href="https://github.com/claimframe/claimframe-downloads/releases">view all public releases</a>.</p>
           </div>
         </div>
       </section>

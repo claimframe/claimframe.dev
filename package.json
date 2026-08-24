@@ -5,7 +5,8 @@
   "scripts": {
     "build": "hugo --source site --destination public",
     "clean": "rm -rf site/public site/.hugo_build.lock",
-    "dev": "hugo server --source site --buildDrafts --buildFuture --disableFastRender"
+    "dev": "hugo server --source site --buildDrafts --buildFuture --disableFastRender",
+    "test": "npm run build && node --test test/*.test.js"
   },
   "devDependencies": {}
 }

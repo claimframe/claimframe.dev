@@ -37,19 +37,19 @@ The application source repository is private, so its GitHub Releases and release
 assets require repository read access. Public installers are published as release
 assets in the dedicated public
 [`claimframe/claimframe-downloads`](https://github.com/claimframe/claimframe-downloads)
-repository instead. The homepage links to these stable asset names on its latest
-release:
+repository instead. For the current release version configured in
+`site/config.toml`, the homepage derives links to these assets on the latest release:
 
-- `Claimframe-macos-arm64.dmg`
-- `Claimframe-macos-x64.dmg`
-- `Claimframe-windows-x64.msi`
-- `Claimframe-linux-x86_64.AppImage`
+- `Claimframe-<version>-macos-arm64.dmg`
+- `Claimframe-<version>-macos-x64.dmg`
+- `Claimframe-<version>-windows-x64.msi`
+- `Claimframe-<version>-linux-x86_64.AppImage`
 
 The private application's release workflow must copy and rename each completed
-installer into a matching release in `claimframe/claimframe-downloads`. Keeping these
-public names version-independent lets the website use GitHub's
-`/releases/latest/download/<asset-name>` URLs without a site update for every
-application release.
+installer into a matching release in `claimframe/claimframe-downloads`. When the
+application is released, update `params.releaseVersion` once in `site/config.toml`;
+the homepage uses that value for its displayed version and all four
+`/releases/latest/download/<asset-name>` URLs.
 
 
 ## AI Disclosure
