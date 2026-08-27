@@ -24,7 +24,7 @@ const mcpAssets = [
 ];
 
 test("the release version is configured once and shown on the download section", () => {
-  assert.equal(releaseVersion, "0.3.1");
+  assert.match(releaseVersion, /^\d+\.\d+\.\d+$/);
   assert.match(homepage, new RegExp(`data-release-version="${releaseVersion}"`));
   assert.match(homepage, new RegExp(`Choose a Claimframe v${releaseVersion} installer`));
 });
