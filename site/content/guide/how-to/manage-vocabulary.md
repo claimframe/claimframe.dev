@@ -14,6 +14,17 @@ url = "/guide/reference/predicate-settings/"
 
 Use a vocabulary when you want the current vault to share established names, predicate shapes, or general domain knowledge. Adoption imports an immutable release into one vault; it does not change any other vault.
 
+## Bundled vocabularies
+
+Claimframe includes four releases. Review the vocabulary guide before adopting one so its formal meaning and intended use fit the vault:
+
+- [RDF/RDFS 1.1](/guide/vocabularies/rdf-rdfs/) provides foundational terms for types, classes, properties, labels, domains, ranges, and schema hierarchies.
+- [OWL 2 Core](/guide/vocabularies/owl-2-core/) provides formal ontology terms for equivalence, disjointness, restrictions, keys, and property behavior.
+- [Dublin Core Metadata Terms](/guide/vocabularies/dublin-core/) describes documents, datasets, software, standards, services, and other resources.
+- [FOAF 0.99](/guide/vocabularies/foaf/) describes people, organizations, groups, projects, documents, accounts, and their relationships.
+
+You can use a vault without adopting any vocabulary. Adopt one when stable identifiers, interoperability, or a shared domain language justify the added schema.
+
 ## Preview a release
 
 1. Open the app menu and choose **Manage vocabularies**.

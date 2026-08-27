@@ -61,6 +61,15 @@
             (dict "url" "/guide/concepts/vault-and-vocabulary-boundaries/" "label" "Vault and vocabulary boundaries")
           }}<a href="{{ .url }}"{{ if eq $.RelPermalink .url }} aria-current="page"{{ end }}>{{ .label }}</a>{{ end }}
         </div>
+        <div class="docs-group">
+          <strong>Bundled vocabularies</strong>
+          {{ range slice
+            (dict "url" "/guide/vocabularies/rdf-rdfs/" "label" "RDF/RDFS 1.1")
+            (dict "url" "/guide/vocabularies/owl-2-core/" "label" "OWL 2 Core")
+            (dict "url" "/guide/vocabularies/dublin-core/" "label" "Dublin Core")
+            (dict "url" "/guide/vocabularies/foaf/" "label" "FOAF 0.99")
+          }}<a href="{{ .url }}"{{ if eq $.RelPermalink .url }} aria-current="page"{{ end }}>{{ .label }}</a>{{ end }}
+        </div>
       </aside>
       <article class="docs-content">
         <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/guide/">Guide</a><span>/</span>{{ with .Params.doc_section }}{{ . }}<span>/</span>{{ end }}{{ .Title }}</nav>

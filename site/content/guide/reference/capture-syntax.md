@@ -42,13 +42,28 @@ Only the first source, evidence, status, and confidence token is used. More than
 billing-service owns invoice-generation @alice ^00:32:18 !needs_review %0.8 #ownership #billing
 ```
 
+These examples combine elements in different ways:
+
+```text
+customer-portal
+billing-service owns invoice-generation
+billing-service owns invoice-generation @alice #ownership
+billing-service owns invoice-generation @alice ^00:32:18 !confirmed %0.84 #ownership #billing
+billing-service owned-by ? @client-call #missing-owner
+billing-service deployed-to us-east-1, us-west-2 @platform-team #deployment
+```
+
 ## Quoting
 
 Double quotes keep whitespace inside a single token. The quote characters are not stored as part of the value.
 
 ```text
 billing-service named "Billing Service" @"Architecture review"
+"Order Management Service" depends-on postgres @architecture-team
+customer-portal calls "Identity API" @repo:customer-portal ^commit:9f32c1
 ```
+
+A quoted subject or object is one entity name. Autocomplete adds quotes when a known entity name contains spaces.
 
 Inside a quoted token, use `\"` for a literal double quote.
 
@@ -68,7 +83,10 @@ An object beginning with `claim:` targets an existing assertion. Claimframe uses
 
 ```text
 bob disputes claim:ASSERTION_ID @client-call #dispute
+architect supports claim:ASSERTION_ID @review-notes ^decision-7 #judgment
 ```
+
+The new assertion gets its own source and evidence. The target assertion remains intact, so support, dispute, and contradiction can be reviewed as sourced claims in their own right.
 
 ## Validation
 
