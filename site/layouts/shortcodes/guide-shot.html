@@ -1,0 +1,7 @@
+<figure class="guide-shot">
+  <div class="guide-shot-frame">
+    <img src="{{ .Get "src" }}" alt="{{ .Get "alt" }}" loading="lazy">
+    <span class="guide-shot-highlight" style="--shot-x: {{ .Get "x" }}; --shot-y: {{ .Get "y" }}; --shot-width: {{ .Get "width" }}; --shot-height: {{ .Get "height" }};" aria-hidden="true"></span>
+  </div>
+  {{ with .Get "caption" }}<figcaption>{{ . }}</figcaption>{{ end }}
+</figure>

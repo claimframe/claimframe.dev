@@ -1,11 +1,16 @@
 +++
 title = "FOAF 0.99"
 description = "A vocabulary for describing people, organizations, groups, projects, documents, online accounts, and the relationships among them."
-layout = "vocabulary"
+layout = "docs"
+doc_type = "Vocabulary reference"
+doc_section = "Bundled vocabularies"
 url = "/guide/vocabularies/foaf/"
 prefix = "foaf:"
 version = "0.99"
 publisher = "Dan Brickley and Libby Miller"
+[[related]]
+label = "Manage a vocabulary"
+url = "/guide/how-to/manage-vocabulary/"
 +++
 
 ## What FOAF is
@@ -39,4 +44,3 @@ alice foaf:made architecture-decision-17 @project-wiki
 ## Defining authority
 
 The vocabulary is defined by Dan Brickley and Libby Miller in the [FOAF Vocabulary Specification](https://xmlns.com/foaf/spec/). Claimframe bundles release 0.99 and preserves the vocabulary’s stable term identifiers and attribution.
-

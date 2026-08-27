@@ -1,5 +1,5 @@
 +++
 title = "User Guide"
-description = "Learn how to manage Claimframe vaults and vocabularies, capture and review sourced assertions, use keyboard accelerators, query and recall context, and record analyst judgments."
-layout = "guide"
+description = "Learn Claimframe, complete a focused task, look up exact behavior, or understand the model behind sourced assertions."
+layout = "guide-home"
 +++

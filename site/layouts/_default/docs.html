@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ .Title }} | Claimframe User Guide</title>
+    <meta name="description" content="{{ .Params.description }}">
+    <link rel="canonical" href="{{ .Permalink }}">
+    <link rel="stylesheet" href="/docs.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <nav class="site-shell nav" aria-label="Primary">
+        <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span>Claimframe</span></a>
+        <div class="nav-links">
+          <a href="/">Overview</a>
+          <a href="/guide/" aria-current="page">Guide</a>
+          <a href="/llms.txt">llms.txt</a>
+        </div>
+      </nav>
+    </header>
+    <main class="site-shell docs-layout">
+      <aside class="docs-sidebar" aria-label="Documentation">
+        <div class="docs-group">
+          <strong>Get started</strong>
+          <a href="/guide/">Guide home</a>
+          <a href="/guide/start/first-claim/"{{ if eq $.RelPermalink "/guide/start/first-claim/" }} aria-current="page"{{ end }}>Your first sourced claim</a>
+        </div>
+        <div class="docs-group">
+          <strong>How-to guides</strong>
+          {{ range slice
+            (dict "url" "/guide/how-to/manage-vault/" "label" "Manage a vault")
+            (dict "url" "/guide/how-to/capture-claim/" "label" "Record facts by hand")
+            (dict "url" "/guide/how-to/capture-from-transcript/" "label" "Capture claims from a transcript")
+            (dict "url" "/guide/how-to/query-and-save/" "label" "Find facts and save a query")
+            (dict "url" "/guide/how-to/inspect-provenance/" "label" "Inspect provenance")
+            (dict "url" "/guide/how-to/explore-graph/" "label" "Explore the graph")
+            (dict "url" "/guide/how-to/resolve-disagreement/" "label" "Resolve disagreement")
+            (dict "url" "/guide/how-to/manage-vocabulary/" "label" "Manage a vocabulary")
+          }}<a href="{{ .url }}"{{ if eq $.RelPermalink .url }} aria-current="page"{{ end }}>{{ .label }}</a>{{ end }}
+        </div>
+        <div class="docs-group">
+          <strong>Reference</strong>
+          {{ range slice
+            (dict "url" "/guide/reference/capture-syntax/" "label" "Capture syntax")
+            (dict "url" "/guide/reference/query-syntax/" "label" "Query syntax")
+            (dict "url" "/guide/reference/assertion-fields/" "label" "Assertion fields")
+            (dict "url" "/guide/reference/statuses/" "label" "Assertion statuses")
+            (dict "url" "/guide/reference/predicate-settings/" "label" "Predicate settings")
+            (dict "url" "/guide/reference/vaults/" "label" "Vaults")
+            (dict "url" "/guide/reference/keyboard-shortcuts/" "label" "Keyboard shortcuts")
+          }}<a href="{{ .url }}"{{ if eq $.RelPermalink .url }} aria-current="page"{{ end }}>{{ .label }}</a>{{ end }}
+        </div>
+        <div class="docs-group">
+          <strong>Concepts</strong>
+          {{ range slice
+            (dict "url" "/guide/concepts/assertions-not-facts/" "label" "Assertions, not facts")
+            (dict "url" "/guide/concepts/modeling-good-claims/" "label" "Modeling good claims")
+            (dict "url" "/guide/concepts/provenance-and-confidence/" "label" "Provenance and confidence")
+            (dict "url" "/guide/concepts/disagreement-and-conflicts/" "label" "Disagreement and conflicts")
+            (dict "url" "/guide/concepts/vault-and-vocabulary-boundaries/" "label" "Vault and vocabulary boundaries")
+          }}<a href="{{ .url }}"{{ if eq $.RelPermalink .url }} aria-current="page"{{ end }}>{{ .label }}</a>{{ end }}
+        </div>
+        <div class="docs-group">
+          <strong>Bundled vocabularies</strong>
+          {{ range slice
+            (dict "url" "/guide/vocabularies/rdf-rdfs/" "label" "RDF/RDFS 1.1")
+            (dict "url" "/guide/vocabularies/owl-2-core/" "label" "OWL 2 Core")
+            (dict "url" "/guide/vocabularies/dublin-core/" "label" "Dublin Core")
+            (dict "url" "/guide/vocabularies/foaf/" "label" "FOAF 0.99")
+          }}<a href="{{ .url }}"{{ if eq $.RelPermalink .url }} aria-current="page"{{ end }}>{{ .label }}</a>{{ end }}
+        </div>
+      </aside>
+      <article class="docs-content">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/guide/">Guide</a><span>/</span>{{ with .Params.doc_section }}{{ . }}<span>/</span>{{ end }}{{ .Title }}</nav>
+        <header class="docs-header">
+          <p class="docs-kind">{{ default "Reference" .Params.doc_type }}</p>
+          <h1>{{ .Title }}</h1>
+          <p class="docs-summary">{{ .Params.description }}</p>
+        </header>
+        <div class="docs-body">{{ .Content }}</div>
+        {{ if or .Params.related .Params.next }}
+        <nav class="page-links" aria-label="Related documentation">
+          {{ with .Params.next }}<a class="page-link" href="{{ .url }}"><span>Next</span><strong>{{ .label }} →</strong></a>{{ end }}
+          {{ range .Params.related }}<a class="page-link" href="{{ .url }}"><span>Related</span><strong>{{ .label }}</strong></a>{{ end }}
+        </nav>
+        {{ end }}
+      </article>
+    </main>
+    <footer class="footer"><div class="site-shell">Claimframe is free, open source, and local-first.</div></footer>
+  </body>
+</html>

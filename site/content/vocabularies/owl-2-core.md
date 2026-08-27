@@ -1,11 +1,16 @@
 +++
 title = "OWL 2 Core"
 description = "Claimframe’s bundle of OWL 2 vocabulary terms for formal ontology constructs, packaged with the RDF, RDFS, and XML Schema dependencies needed to state them explicitly."
-layout = "vocabulary"
+layout = "docs"
+doc_type = "Vocabulary reference"
+doc_section = "Bundled vocabularies"
 url = "/guide/vocabularies/owl-2-core/"
 prefix = "owl:"
 version = "2012-12-11"
 publisher = "World Wide Web Consortium (W3C)"
+[[related]]
+label = "Manage a vocabulary"
+url = "/guide/how-to/manage-vocabulary/"
 +++
 
 ## What OWL 2 Core is
@@ -34,9 +39,8 @@ customer-record owl:sameAs crm:customer-4821 @identity-review
 architecture:legacyService owl:deprecated true @ontology-review
 ```
 
-> Claimframe does not perform OWL reasoning, entailment, validation, or ontology imports. It stores the adopted terms and explicit assertions; it does not calculate everything an OWL reasoner could infer.
+> Claimframe applies only the supported rules in an active vocabulary profile. It is not a complete OWL reasoner, does not validate arbitrary OWL ontologies, and does not execute ontology imports.
 
 ## Defining authority
 
 The World Wide Web Consortium defines these terms in [OWL 2 Web Ontology Language: RDF-Based Semantics](https://www.w3.org/TR/owl2-rdf-based-semantics/). For a more approachable introduction, see the [OWL 2 Primer](https://www.w3.org/TR/owl2-primer/).
-

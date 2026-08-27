@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Claimframe User Guide</title>
+    <meta name="description" content="{{ .Params.description }}">
+    <link rel="canonical" href="{{ .Permalink }}">
+    <link rel="stylesheet" href="/docs.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <nav class="site-shell nav" aria-label="Primary">
+        <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span>Claimframe</span></a>
+        <div class="nav-links"><a href="/">Overview</a><a href="/guide/" aria-current="page">Guide</a><a href="/llms.txt">llms.txt</a></div>
+      </nav>
+    </header>
+    <main>
+      <header class="docs-home-hero site-shell">
+        <p class="docs-kind">User guide</p>
+        <h1>What do you need?</h1>
+        <p class="docs-summary">Start with a guided first experience, complete one focused task, look up exact behavior, or understand why Claimframe works this way.</p>
+      </header>
+      <div class="site-shell docs-home">
+        <section class="docs-home-feature" aria-labelledby="get-started-title">
+          <div><p class="docs-kind">New to Claimframe?</p><h2 id="get-started-title">Create your first sourced claim</h2><p>Build a disposable vault, capture two accounts, retrieve them, inspect provenance, and save the query in about ten minutes.</p></div>
+          <a class="docs-home-action" href="/guide/start/first-claim/">Start the tutorial →</a>
+        </section>
+
+        <section class="docs-home-section" aria-labelledby="tasks-title">
+          <p class="docs-kind">Complete a task</p><h2 id="tasks-title">Common how-to guides</h2>
+          <div class="docs-card-grid">
+            <a class="docs-card" href="/guide/how-to/manage-vault/"><strong>Manage a vault</strong><span>Create, switch, rename, and back up a vault.</span></a>
+            <a class="docs-card" href="/guide/how-to/capture-claim/"><strong>Record facts by hand</strong><span>Add a fact and record where it came from.</span></a>
+            <a class="docs-card" href="/guide/how-to/capture-from-transcript/"><strong>Capture claims from a transcript</strong><span>Import a transcript and review its candidate claims.</span></a>
+            <a class="docs-card" href="/guide/how-to/query-and-save/"><strong>Find facts and save a query</strong><span>Find facts now and preserve the query for later.</span></a>
+            <a class="docs-card" href="/guide/how-to/inspect-provenance/"><strong>Inspect provenance</strong><span>Check source, evidence, confidence, and history.</span></a>
+            <a class="docs-card" href="/guide/how-to/resolve-disagreement/"><strong>Resolve disagreement</strong><span>Review conflict without rewriting history.</span></a>
+          </div>
+          <details class="docs-index"><summary>View all how-to guides</summary><div class="docs-index-links"><a href="/guide/how-to/explore-graph/">Explore related claims in the graph</a><a href="/guide/how-to/manage-vocabulary/">Manage a vocabulary</a></div></details>
+        </section>
+
+        <section class="docs-home-split">
+          <div class="docs-home-section" aria-labelledby="reference-title">
+            <p class="docs-kind">Look something up</p><h2 id="reference-title">Reference</h2>
+            <div class="docs-link-list"><a href="/guide/reference/capture-syntax/">Capture syntax</a><a href="/guide/reference/query-syntax/">Query syntax</a><a href="/guide/reference/statuses/">Assertion statuses</a><a href="/guide/reference/keyboard-shortcuts/">Keyboard shortcuts</a></div>
+            <details class="docs-index"><summary>All reference pages</summary><div class="docs-index-links"><a href="/guide/reference/assertion-fields/">Assertion fields</a><a href="/guide/reference/predicate-settings/">Predicate settings</a><a href="/guide/reference/vaults/">Vaults</a></div></details>
+          </div>
+          <div class="docs-home-section" aria-labelledby="concepts-title">
+            <p class="docs-kind">Understand the model</p><h2 id="concepts-title">Concepts</h2>
+            <div class="docs-link-list"><a href="/guide/concepts/assertions-not-facts/">Assertions, not facts</a><a href="/guide/concepts/modeling-good-claims/">Modeling good claims</a><a href="/guide/concepts/disagreement-and-conflicts/">Disagreement and conflicts</a></div>
+            <details class="docs-index"><summary>All concept guides</summary><div class="docs-index-links"><a href="/guide/concepts/provenance-and-confidence/">Provenance, evidence, confidence, and status</a><a href="/guide/concepts/vault-and-vocabulary-boundaries/">Vault and vocabulary boundaries</a></div></details>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer class="footer"><div class="site-shell">Claimframe is free, open source, and local-first.</div></footer>
+  </body>
+</html>

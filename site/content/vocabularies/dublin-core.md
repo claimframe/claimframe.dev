@@ -1,11 +1,16 @@
 +++
 title = "Dublin Core Metadata Terms"
 description = "A maintained vocabulary for describing documents, datasets, software, standards, services, and other resources."
-layout = "vocabulary"
+layout = "docs"
+doc_type = "Vocabulary reference"
+doc_section = "Bundled vocabularies"
 url = "/guide/vocabularies/dublin-core/"
 prefix = "dcterms:"
 version = "2020-01-20"
 publisher = "Dublin Core Metadata Initiative"
+[[related]]
+label = "Manage a vocabulary"
+url = "/guide/how-to/manage-vocabulary/"
 +++
 
 ## What Dublin Core is
@@ -37,4 +42,3 @@ architecture-doc dcterms:conformsTo security-standard @governance-review
 ## Defining authority
 
 The Dublin Core Metadata Initiative maintains the [DCMI Metadata Terms specification](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/). Claimframe bundles the issued 2020-01-20 release under the package’s stated CC BY 4.0 terms.
-

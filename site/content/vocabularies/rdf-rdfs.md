@@ -1,11 +1,16 @@
 +++
 title = "RDF/RDFS 1.1"
 description = "The foundational RDF and RDF Schema vocabulary for classes, properties, labels, domains, ranges, containers, lists, and basic schema relationships."
-layout = "vocabulary"
+layout = "docs"
+doc_type = "Vocabulary reference"
+doc_section = "Bundled vocabularies"
 url = "/guide/vocabularies/rdf-rdfs/"
 prefix = "rdf: · rdfs:"
 version = "2014-02-25"
 publisher = "World Wide Web Consortium (W3C)"
+[[related]]
+label = "Manage a vocabulary"
+url = "/guide/how-to/manage-vocabulary/"
 +++
 
 ## What RDF and RDFS are
@@ -34,9 +39,8 @@ architecture:owns rdfs:domain architecture:Team @model-definition
 architecture:owns rdfs:range architecture:Service @model-definition
 ```
 
-> Claimframe stores the imported schema assertions, but adopting RDF/RDFS does not turn on automatic RDFS entailment. Only assertions actually present in the vault are available as claims.
+> Claimframe applies only the supported rules in an active vocabulary profile. Stored assertions remain distinguishable from inferred query results; adopting the terms is not a promise of complete RDFS entailment.
 
 ## Defining authority
 
 The World Wide Web Consortium defines the vocabulary in the [RDF Schema 1.1 Recommendation](https://www.w3.org/TR/rdf11-schema/). The broader data model is specified in [RDF 1.1 Concepts and Abstract Syntax](https://www.w3.org/TR/rdf11-concepts/).
-
