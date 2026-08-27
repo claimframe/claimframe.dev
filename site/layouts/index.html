@@ -464,7 +464,33 @@
 
       .download-options {
         display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .download-platform-box {
+        display: grid;
         gap: 10px;
+        align-content: start;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(11, 20, 32, 0.8);
+      }
+
+      .download-platform-box.recommended {
+        border-color: rgba(34, 216, 204, 0.56);
+        background: rgba(34, 216, 204, 0.08);
+      }
+
+      .download-platform-box h3 {
+        margin: 0 0 2px;
+        font-size: 1rem;
+      }
+
+      .download-platform-links {
+        display: grid;
+        gap: 8px;
       }
 
       .download-option {
@@ -472,16 +498,16 @@
         grid-template-columns: 1fr auto;
         gap: 16px;
         align-items: center;
-        min-height: 78px;
-        padding: 15px 17px;
+        min-height: 72px;
+        padding: 13px 14px;
         border: 1px solid var(--line);
-        border-radius: 8px;
-        background: rgba(11, 20, 32, 0.8);
+        border-radius: 7px;
+        background: var(--panel-2);
         text-decoration: none;
       }
 
       .download-option:hover,
-      .download-option.recommended {
+      .download-option:focus-visible {
         border-color: rgba(34, 216, 204, 0.56);
         background: rgba(34, 216, 204, 0.08);
       }
@@ -500,6 +526,11 @@
       .download-arrow {
         color: var(--teal);
         font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      }
+
+      .download-fallback {
+        grid-column: 1 / -1;
+        margin: 2px 0 0;
       }
 
       .agent-grid {
@@ -678,6 +709,10 @@
           width: 100%;
         }
 
+        .download-options {
+          grid-template-columns: 1fr;
+        }
+
         .visual-bar {
           font-size: 0.7rem;
         }
@@ -782,35 +817,54 @@
           <div>
             <p class="section-kicker">Download the alpha</p>
             <h2 id="download-title">Your vault stays on your machine.</h2>
-            <p class="section-intro">Choose a Claimframe v{{ $releaseVersion }} installer for your platform. Claimframe is currently unsigned alpha software, so your operating system may ask you to confirm before opening it.</p>
+            <p class="section-intro">Choose your platform to download the Claimframe v{{ $releaseVersion }} desktop app and standalone MCP server. The MCP executable uses the same local vault without requiring Python or a running desktop app. Claimframe is currently unsigned alpha software, so your operating system may ask you to confirm before opening it.</p>
           </div>
           <div class="download-options" aria-label="Claimframe v{{ $releaseVersion }} downloads" data-release-version="{{ $releaseVersion }}">
-            <a class="download-option" data-platform="mac" href="{{ $releaseDownloadBase }}/Claimframe-{{ $releaseVersion }}-macos-arm64.dmg">
-              <span><strong>macOS — Apple silicon</strong><span>v{{ $releaseVersion }} · For M1 and newer Macs · DMG</span></span><span class="download-arrow" aria-hidden="true">↓</span>
-            </a>
-            <a class="download-option" data-platform="mac" href="{{ $releaseDownloadBase }}/Claimframe-{{ $releaseVersion }}-macos-x64.dmg">
-              <span><strong>macOS — Intel</strong><span>v{{ $releaseVersion }} · For Intel-based Macs · DMG</span></span><span class="download-arrow" aria-hidden="true">↓</span>
-            </a>
-            <a class="download-option" data-platform="windows" href="{{ $releaseDownloadBase }}/Claimframe-{{ $releaseVersion }}-windows-x64.msi">
-              <span><strong>Windows</strong><span>v{{ $releaseVersion }} · For 64-bit Windows · MSI</span></span><span class="download-arrow" aria-hidden="true">↓</span>
-            </a>
-            <a class="download-option" data-platform="linux" href="{{ $releaseDownloadBase }}/Claimframe-{{ $releaseVersion }}-linux-x86_64.AppImage">
-              <span><strong>Linux</strong><span>v{{ $releaseVersion }} · Portable x86-64 build · AppImage</span></span><span class="download-arrow" aria-hidden="true">↓</span>
-            </a>
-            <p><strong>Standalone MCP server</strong><br>Use the same local vault from an MCP client. No Python runtime or running desktop app is required.</p>
-            <a class="download-option mcp-download" data-platform="mac" href="{{ $releaseDownloadBase }}/claimframe-mcp-{{ $releaseVersion }}-macos-aarch64">
-              <span><strong>MCP — macOS Apple silicon</strong><span>v{{ $releaseVersion }} · Standalone executable</span></span><span class="download-arrow" aria-hidden="true">↓</span>
-            </a>
-            <a class="download-option mcp-download" data-platform="mac" href="{{ $releaseDownloadBase }}/claimframe-mcp-{{ $releaseVersion }}-macos-x86_64">
-              <span><strong>MCP — macOS Intel</strong><span>v{{ $releaseVersion }} · Standalone executable</span></span><span class="download-arrow" aria-hidden="true">↓</span>
-            </a>
-            <a class="download-option mcp-download" data-platform="windows" href="{{ $releaseDownloadBase }}/claimframe-mcp-{{ $releaseVersion }}-windows-x86_64.exe">
-              <span><strong>MCP — Windows</strong><span>v{{ $releaseVersion }} · x86-64 executable</span></span><span class="download-arrow" aria-hidden="true">↓</span>
-            </a>
-            <a class="download-option mcp-download" data-platform="linux" href="{{ $releaseDownloadBase }}/claimframe-mcp-{{ $releaseVersion }}-linux-x86_64">
-              <span><strong>MCP — Linux</strong><span>v{{ $releaseVersion }} · x86-64 executable</span></span><span class="download-arrow" aria-hidden="true">↓</span>
-            </a>
-            <p>If a download is temporarily unavailable, <a href="https://github.com/claimframe/claimframe-downloads/releases">view all public releases</a>.</p>
+            <article class="download-platform-box" data-platform="mac" data-download-target="macos-arm64" aria-labelledby="download-macos-arm64">
+              <h3 id="download-macos-arm64">macOS — Apple silicon</h3>
+              <div class="download-platform-links">
+                <a class="download-option desktop-download" href="{{ $releaseDownloadBase }}/Claimframe-{{ $releaseVersion }}-macos-arm64.dmg">
+                  <span><strong>Desktop app</strong><span>v{{ $releaseVersion }} · DMG installer for M1 and newer Macs</span></span><span class="download-arrow" aria-hidden="true">↓</span>
+                </a>
+                <a class="download-option mcp-download" href="{{ $releaseDownloadBase }}/claimframe-mcp-{{ $releaseVersion }}-macos-aarch64">
+                  <span><strong>Standalone MCP server</strong><span>v{{ $releaseVersion }} · Apple silicon executable</span></span><span class="download-arrow" aria-hidden="true">↓</span>
+                </a>
+              </div>
+            </article>
+            <article class="download-platform-box" data-platform="mac" data-download-target="macos-x64" aria-labelledby="download-macos-x64">
+              <h3 id="download-macos-x64">macOS — Intel</h3>
+              <div class="download-platform-links">
+                <a class="download-option desktop-download" href="{{ $releaseDownloadBase }}/Claimframe-{{ $releaseVersion }}-macos-x64.dmg">
+                  <span><strong>Desktop app</strong><span>v{{ $releaseVersion }} · DMG installer for Intel-based Macs</span></span><span class="download-arrow" aria-hidden="true">↓</span>
+                </a>
+                <a class="download-option mcp-download" href="{{ $releaseDownloadBase }}/claimframe-mcp-{{ $releaseVersion }}-macos-x86_64">
+                  <span><strong>Standalone MCP server</strong><span>v{{ $releaseVersion }} · Intel executable</span></span><span class="download-arrow" aria-hidden="true">↓</span>
+                </a>
+              </div>
+            </article>
+            <article class="download-platform-box" data-platform="windows" data-download-target="windows-x64" aria-labelledby="download-windows-x64">
+              <h3 id="download-windows-x64">Windows — x86-64</h3>
+              <div class="download-platform-links">
+                <a class="download-option desktop-download" href="{{ $releaseDownloadBase }}/Claimframe-{{ $releaseVersion }}-windows-x64.msi">
+                  <span><strong>Desktop app</strong><span>v{{ $releaseVersion }} · MSI installer</span></span><span class="download-arrow" aria-hidden="true">↓</span>
+                </a>
+                <a class="download-option mcp-download" href="{{ $releaseDownloadBase }}/claimframe-mcp-{{ $releaseVersion }}-windows-x86_64.exe">
+                  <span><strong>Standalone MCP server</strong><span>v{{ $releaseVersion }} · Windows executable</span></span><span class="download-arrow" aria-hidden="true">↓</span>
+                </a>
+              </div>
+            </article>
+            <article class="download-platform-box" data-platform="linux" data-download-target="linux-x86_64" aria-labelledby="download-linux-x86-64">
+              <h3 id="download-linux-x86-64">Linux — x86-64</h3>
+              <div class="download-platform-links">
+                <a class="download-option desktop-download" href="{{ $releaseDownloadBase }}/Claimframe-{{ $releaseVersion }}-linux-x86_64.AppImage">
+                  <span><strong>Desktop app</strong><span>v{{ $releaseVersion }} · Portable AppImage</span></span><span class="download-arrow" aria-hidden="true">↓</span>
+                </a>
+                <a class="download-option mcp-download" href="{{ $releaseDownloadBase }}/claimframe-mcp-{{ $releaseVersion }}-linux-x86_64">
+                  <span><strong>Standalone MCP server</strong><span>v{{ $releaseVersion }} · Linux executable</span></span><span class="download-arrow" aria-hidden="true">↓</span>
+                </a>
+              </div>
+            </article>
+            <p class="download-fallback">If a download is temporarily unavailable, <a href="https://github.com/claimframe/claimframe-downloads/releases">view all public releases</a>.</p>
           </div>
         </div>
       </section>
@@ -902,7 +956,7 @@ tools:
         const platform = navigator.userAgentData?.platform || navigator.platform || "";
         const family = /mac/i.test(platform) ? "mac" : /win/i.test(platform) ? "windows" : /linux/i.test(platform) ? "linux" : "";
         if (!family) return;
-        document.querySelectorAll(`[data-platform="${family}"]`).forEach((link) => link.classList.add("recommended"));
+        document.querySelectorAll(`.download-platform-box[data-platform="${family}"]`).forEach((box) => box.classList.add("recommended"));
       })();
     </script>
 
