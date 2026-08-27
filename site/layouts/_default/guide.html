@@ -370,6 +370,11 @@
         color: #eef9ff;
       }
 
+      .query-card code {
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
       .token-card span,
       .query-card span {
         color: var(--muted);
@@ -395,24 +400,113 @@
         margin-bottom: 0;
       }
 
-      .status-list {
+      .vocabulary-grid,
+      .workflow-grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 9px;
-        margin: 22px 0 0;
-        padding: 0;
-        list-style: none;
+        gap: 12px;
+        margin-top: 24px;
       }
 
-      .status-list li {
-        padding: 12px 14px;
-        border-left: 2px solid var(--line-strong);
-        background: rgba(11, 20, 32, 0.54);
+      .vocabulary-link,
+      .workflow-card {
+        display: flex;
+        min-height: 174px;
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(11, 20, 32, 0.7);
+        text-decoration: none;
+      }
+
+      .vocabulary-link {
+        flex-direction: column;
+      }
+
+      .vocabulary-link:hover,
+      .vocabulary-link:focus-visible {
+        border-color: var(--line-strong);
+        background: var(--teal-dim);
+      }
+
+      .vocabulary-link code {
+        margin-bottom: 11px;
+        color: var(--teal);
+        font-size: 0.78rem;
+      }
+
+      .vocabulary-link strong,
+      .workflow-card strong {
+        display: block;
+        margin-bottom: 9px;
+        color: #eef9ff;
+      }
+
+      .vocabulary-link span,
+      .workflow-card span {
         color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.55;
+      }
+
+      .vocabulary-link em {
+        margin-top: auto;
+        padding-top: 16px;
+        color: var(--teal);
+        font-size: 0.84rem;
+        font-style: normal;
+      }
+
+      .workflow-card {
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .workflow-card a {
+        margin-top: 18px;
+        color: var(--teal);
+        font-size: 0.9rem;
+        text-decoration: none;
+      }
+
+      .shortcut-list {
+        display: grid;
+        gap: 1px;
+        margin-top: 24px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--line);
+        overflow: hidden;
+      }
+
+      .shortcut-row {
+        display: grid;
+        grid-template-columns: minmax(180px, 0.7fr) minmax(0, 1.3fr);
+        gap: 18px;
+        align-items: center;
+        padding: 16px 18px;
+        background: rgba(11, 20, 32, 0.96);
+      }
+
+      .shortcut-row div:first-child {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+
+      .shortcut-row strong {
+        display: block;
+        margin-bottom: 4px;
+        color: #eef9ff;
+      }
+
+      .shortcut-row span {
+        color: var(--muted);
+        font-size: 0.92rem;
         line-height: 1.5;
       }
 
-      .status-list code {
+      .guide-content a:not(.vocabulary-link) {
         color: var(--teal);
       }
 
@@ -501,8 +595,14 @@
 
         .token-grid,
         .query-grid,
-        .status-list {
+        .vocabulary-grid,
+        .workflow-grid {
           grid-template-columns: 1fr;
+        }
+
+        .shortcut-row {
+          grid-template-columns: 1fr;
+          gap: 9px;
         }
 
         .step {
@@ -595,10 +695,12 @@
         <nav class="toc" aria-label="On this page">
           <span class="toc-label">On this page</span>
           <a href="#vaults">Vaults</a>
+          <a href="#accelerators">Accelerators</a>
           <a href="#vocabularies">Vocabularies</a>
           <a href="#capture">Capture</a>
           <a href="#queries">Queries</a>
           <a href="#recall">Recall</a>
+          <a href="#workflows">Common workflows</a>
           <a href="#reconciliation">Reconciliation</a>
           <a href="#models">Making good models</a>
         </nav>
@@ -620,7 +722,7 @@
               </div>
               <div class="step">
                 <strong>Rename the display name</strong>
-                <p>In <b>Manage vaults</b>, choose <b>Rename</b>. Renaming keeps recent-vault tracking and does not break the path used by the local MCP integration.</p>
+                <p>In <b>Manage vaults</b>, choose <b>Rename</b>. This changes the name shown by Claimframe; it does not move or rename the SQLite file.</p>
               </div>
             </div>
 
@@ -630,19 +732,42 @@
             </div>
           </section>
 
+          <section id="accelerators" class="guide-section" aria-labelledby="accelerators-title">
+            <span class="section-label">02 · Accelerators</span>
+            <h2 id="accelerators-title">Move at conversation speed.</h2>
+            <p>These shortcuts work across the app or inside the focused capture, query, and graph controls.</p>
+
+            <div class="shortcut-list" aria-label="Claimframe keyboard shortcuts">
+              <div class="shortcut-row"><div><kbd>Cmd/Ctrl</kbd><kbd>Shift</kbd><kbd>C</kbd></div><div><strong>Fresh capture</strong><span>Open Capture, clear the composer, and put the cursor in it.</span></div></div>
+              <div class="shortcut-row"><div><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>Q</kbd></div><div><strong>Quick query</strong><span>Open Assertions, focus the query, and select the current text.</span></div></div>
+              <div class="shortcut-row"><div><kbd>Cmd/Ctrl</kbd><kbd>K</kbd></div><div><strong>Command palette</strong><span>Find a source, entity, or assertion; focus capture; or run a query.</span></div></div>
+              <div class="shortcut-row"><div><kbd>Cmd/Ctrl</kbd><kbd>Space</kbd></div><div><strong>Show completions</strong><span>Open available suggestions in a focused capture or query field.</span></div></div>
+              <div class="shortcut-row"><div><kbd>↑</kbd><kbd>↓</kbd><kbd>Tab</kbd></div><div><strong>Use a completion</strong><span>Move through suggestions and insert the selected canonical term. <kbd>Esc</kbd> closes the list.</span></div></div>
+              <div class="shortcut-row"><div><kbd>Enter</kbd></div><div><strong>Commit or run</strong><span>Commit a valid capture or run the current query. If a completion is selected, Enter inserts it first.</span></div></div>
+              <div class="shortcut-row"><div><kbd>N</kbd></div><div><strong>Add graph neighbors</strong><span>With a relationship graph focused and a node selected, add its nearby context.</span></div></div>
+            </div>
+          </section>
+
           <section id="vocabularies" class="guide-section" aria-labelledby="vocabularies-title">
-            <span class="section-label">02 · Vocabularies</span>
+            <span class="section-label">03 · Vocabularies</span>
             <h2 id="vocabularies-title">Adopt shared terms without flattening local knowledge.</h2>
-            <p>A vocabulary is an immutable release of reusable terms, predicates, and optional general knowledge. A vault works without one; adopt a vocabulary when stable identifiers or a shared domain language will improve capture and recall.</p>
+            <p>A vocabulary is an immutable release of reusable terms, predicates, and optional schema or general knowledge. A vault works without one; adopt a vocabulary when stable identifiers or a shared domain language will improve capture and recall.</p>
+
+            <div class="vocabulary-grid" aria-label="Bundled vocabulary guides">
+              <a class="vocabulary-link" href="/guide/vocabularies/foaf/"><code>foaf:</code><strong>FOAF 0.99</strong><span>People, organizations, groups, projects, documents, accounts, and relationships.</span><em>Read the vocabulary guide →</em></a>
+              <a class="vocabulary-link" href="/guide/vocabularies/dublin-core/"><code>dcterms:</code><strong>Dublin Core Metadata Terms</strong><span>Descriptive metadata for documents, datasets, software, standards, and other resources.</span><em>Read the vocabulary guide →</em></a>
+              <a class="vocabulary-link" href="/guide/vocabularies/rdf-rdfs/"><code>rdf: · rdfs:</code><strong>RDF/RDFS 1.1</strong><span>Classes, properties, labels, domains, ranges, and basic schema relationships.</span><em>Read the vocabulary guide →</em></a>
+              <a class="vocabulary-link" href="/guide/vocabularies/owl-2-core/"><code>owl:</code><strong>OWL 2 Core</strong><span>Formal ontology terms for equivalence, disjointness, restrictions, keys, and property behavior.</span><em>Read the vocabulary guide →</em></a>
+            </div>
 
             <div class="steps">
               <div class="step">
                 <strong>Open the library</strong>
-                <p>Open the app menu and choose <b>Manage vocabularies</b>. Select a supplied release, or use <b>Import file</b> to preview a local <code>.cfvocab</code> package.</p>
+                <p>Open the app menu and choose <b>Manage vocabularies</b>. Select a bundled release, or use <b>Import file</b> to preview a local <code>.cfvocab</code> package.</p>
               </div>
               <div class="step">
                 <strong>Review before adopting</strong>
-                <p>Check the namespace, publisher, license, release, attribution, included terms, predicates, statements, and any local name collisions. Collisions do not overwrite local names; Claimframe shows the namespaced vault token it will use.</p>
+                <p>Check the namespace, publisher, license, release, attribution, included terms, predicates, statements, and local name collisions. Collisions do not overwrite local names; Claimframe shows the alternate vault token it will use.</p>
               </div>
               <div class="step">
                 <strong>Choose what enters the vault</strong>
@@ -650,7 +775,7 @@
               </div>
               <div class="step">
                 <strong>Undo only while unused</strong>
-                <p>An imported release can be undone until vault data depends on it. Once an assertion, saved query, or another imported vocabulary uses its terms, Claimframe keeps the release in place and explains the dependency.</p>
+                <p>An imported release can be undone until vault data depends on it. Once an assertion, saved query, or another vocabulary uses its terms, Claimframe keeps the release in place and explains the dependency.</p>
               </div>
             </div>
 
@@ -661,169 +786,144 @@
           </section>
 
           <section id="capture" class="guide-section" aria-labelledby="capture-title">
-            <span class="section-label">03 · Capture</span>
+            <span class="section-label">04 · Capture</span>
             <h2 id="capture-title">Write the claim first; attach its context as you go.</h2>
-            <p>Capture accepts a compact subject–predicate–object statement. Autocomplete suggests existing entities, predicates, sources, and vocabulary terms, helping the vault reuse canonical names instead of creating near-duplicates.</p>
+            <p>Capture accepts a compact subject–predicate–object statement. Autocomplete suggests existing entities, predicates, sources, tags, and vocabulary terms, helping the vault reuse canonical names instead of creating near-duplicates.</p>
 
-            <div class="syntax-block" aria-label="Capture syntax">
-              <code>subject predicate object @source ^evidence !status %confidence #tag</code>
-            </div>
+            <div class="syntax-block" aria-label="Capture syntax"><code>subject predicate object @source ^evidence !status %confidence #tag</code></div>
 
             <div class="token-grid">
-              <div class="token-card">
-                <strong><code>@source</code></strong>
-                <span>Who or what made the claim: a person, call, document, or repository.</span>
-              </div>
-              <div class="token-card">
-                <strong><code>^evidence</code></strong>
-                <span>A locator such as a timestamp, section, URL fragment, or commit ID.</span>
-              </div>
-              <div class="token-card">
-                <strong><code>!status</code></strong>
-                <span>The review state. Defaults to <code>active</code>.</span>
-              </div>
-              <div class="token-card">
-                <strong><code>%confidence</code></strong>
-                <span>A decimal from <code>0</code> to <code>1</code>. Defaults to <code>1.0</code>.</span>
-              </div>
-              <div class="token-card">
-                <strong><code>#tag</code></strong>
-                <span>A retrieval aid. Add more than one tag when useful.</span>
-              </div>
-              <div class="token-card">
-                <strong><code>?</code></strong>
-                <span>An object that is known to exist but whose value is not yet known.</span>
-              </div>
+              <div class="token-card"><strong><code>@source</code></strong><span>Who or what made the claim: a person, call, document, or repository.</span></div>
+              <div class="token-card"><strong><code>^evidence</code></strong><span>A locator such as a timestamp, section, URL fragment, or commit ID.</span></div>
+              <div class="token-card"><strong><code>!status</code></strong><span>The assertion state. Defaults to <code>active</code>.</span></div>
+              <div class="token-card"><strong><code>%confidence</code></strong><span>A decimal from <code>0</code> to <code>1</code>. Defaults to <code>1.0</code>.</span></div>
+              <div class="token-card"><strong><code>#tag</code></strong><span>A retrieval aid. Add more than one tag when useful.</span></div>
+              <div class="token-card"><strong><code>?</code></strong><span>An object known to exist whose value is not yet known. Claimframe marks it for review.</span></div>
             </div>
 
-            <h3>Common capture forms</h3>
+            <h3>Examples with progressively richer context</h3>
             <div class="query-grid">
-              <div class="query-card">
-                <code>customer-portal</code>
-                <span>Create or reuse an entity without making a claim.</span>
-              </div>
-              <div class="query-card">
-                <code>billing-service owns invoice-generation @alice</code>
-                <span>Capture a sourced relationship.</span>
-              </div>
-              <div class="query-card">
-                <code>billing-service named "Billing Service" @alice</code>
-                <span>Use quotes for a multi-word term.</span>
-              </div>
-              <div class="query-card">
-                <code>bob disputes claim:ASSERTION_ID @client-call</code>
-                <span>Make a sourced claim about an existing assertion.</span>
-              </div>
+              <div class="query-card"><code>customer-portal</code><span>Create or reuse one entity without making a claim.</span></div>
+              <div class="query-card"><code>billing-service owns invoice-generation</code><span>A minimal assertion. Source and other metadata remain optional.</span></div>
+              <div class="query-card"><code>billing-service owns invoice-generation @alice #ownership</code><span>Add the source and a retrieval tag.</span></div>
+              <div class="query-card"><code>billing-service owns invoice-generation @alice ^00:32:18 !confirmed %0.84 #ownership #billing</code><span>Combine evidence, status, confidence, and multiple tags.</span></div>
+              <div class="query-card"><code>billing-service owns ? @client-call #missing-owner</code><span>Record that a value exists but is not yet known.</span></div>
+              <div class="query-card"><code>billing-service deployed-to us-east-1, us-west-2 @platform-team #deployment</code><span>Use commas for multiple object values when the predicate permits them.</span></div>
             </div>
 
-            <p>Press <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> to jump to a fresh capture from anywhere in the app. The capture dock also remains available below most workspaces.</p>
+            <h3>Quoted entity names</h3>
+            <p>Double quotes make a multi-word subject or object one term. Autocomplete adds quotes automatically when a known entity name contains spaces.</p>
+            <div class="query-grid">
+              <div class="query-card"><code>"Order Management Service" depends-on postgres @architecture-team</code><span>The quoted subject is one entity.</span></div>
+              <div class="query-card"><code>customer-portal calls "Identity API" @repo:customer-portal ^commit:9f32c1</code><span>The quoted object is one entity.</span></div>
+              <div class="query-card"><code>billing-service named "Billing Service" @architecture-doc #naming</code><span>Give an entity a human-readable name.</span></div>
+              <div class="query-card"><code>billing-service aka "Billing App" @alice #nickname</code><span>Add a non-canonical name that can resolve back to the entity.</span></div>
+            </div>
 
-            <h3>Capture from a source</h3>
-            <p>Use <b>Source Intake</b> to import transcript text or a file and to preview timestamped speaker segments. You can also import prepared document assertions with a source title. Extracted candidates move to <b>Claim Review</b>, where you may edit the subject, predicate, or object, then accept, defer, or reject each candidate.</p>
+            <h3>Claims about claims</h3>
+            <p>Use <code>claim:ASSERTION_ID</code> as the object when the new assertion evaluates an existing claim transaction rather than a domain entity. Keep the new source and rationale evidence attached; the original claim remains intact.</p>
+            <div class="query-grid">
+              <div class="query-card"><code>bob disputes claim:ASSERTION_ID @client-call ^00:48:51 #dispute</code><span>Record an explicit, sourced disagreement.</span></div>
+              <div class="query-card"><code>architect supports claim:ASSERTION_ID @review-notes ^decision-7 #judgment</code><span>Record sourced support for an existing claim.</span></div>
+            </div>
+
+            <p>The live parsing reflection shows how Claimframe has interpreted each field before you commit. If you selected a source in the sidebar and omit <code>@source</code>, Claimframe adds that source to the capture.</p>
           </section>
 
           <section id="queries" class="guide-section" aria-labelledby="queries-title">
-            <span class="section-label">04 · Queries</span>
+            <span class="section-label">05 · Queries</span>
             <h2 id="queries-title">Use the same three-part shape to ask the vault.</h2>
             <p>A query is a subject–predicate–object pattern. Put <code>?</code> in any position you want Claimframe to match. Exact terms narrow the result; <code>? ? ?</code> returns all assertions.</p>
 
             <div class="query-grid">
-              <div class="query-card">
-                <code>? owns invoice-generation</code>
-                <span>Who or what owns invoice generation?</span>
-              </div>
-              <div class="query-card">
-                <code>billing-service ? ?</code>
-                <span>What does the vault say about the billing service?</span>
-              </div>
-              <div class="query-card">
-                <code>? depends-on postgres</code>
-                <span>What depends on Postgres?</span>
-              </div>
-              <div class="query-card">
-                <code>? ? ?</code>
-                <span>Show every assertion in the current vault.</span>
-              </div>
+              <div class="query-card"><code>? owns invoice-generation</code><span>Who or what owns invoice generation?</span></div>
+              <div class="query-card"><code>billing-service ? ?</code><span>What does the vault say about the billing service?</span></div>
+              <div class="query-card"><code>? depends-on postgres</code><span>What depends on Postgres?</span></div>
+              <div class="query-card"><code>? ? ?</code><span>Show every assertion in the current vault.</span></div>
             </div>
 
-            <p>Run queries from <b>Graph Recall</b> or <b>Assertions</b>. Autocomplete reuses the vault’s canonical tokens. In assertion lists, select the subject, predicate, object, source, status, or tag on a row to pivot directly into a related filtered view.</p>
+            <h3>Query multi-word entity names</h3>
+            <p>Use the same double-quote rule as capture. A quoted name occupies one query position and can resolve through the entity’s canonical name or aliases.</p>
+            <div class="query-grid">
+              <div class="query-card"><code>"Order Management Service" ? ?</code><span>Everything asserted about the named service.</span></div>
+              <div class="query-card"><code>? calls "Identity API"</code><span>Every subject that calls the named API.</span></div>
+              <div class="query-card"><code>"Order Management Service" depends-on postgres</code><span>A fully specified assertion pattern with a quoted subject.</span></div>
+              <div class="query-card"><code>? named "Billing Service"</code><span>Find the entity with that human-readable name.</span></div>
+            </div>
+
+            <p>Run queries from <b>Graph Recall</b> or <b>Assertions</b>. Autocomplete reuses canonical vault tokens. In assertion lists, select the subject, predicate, object, source, status, or tag on a row to pivot directly into a related filtered view.</p>
 
             <h3>Save useful queries</h3>
             <p>After entering a query, choose the save control, give it a clear name, and save it. Saved queries live inside the current vault. Open the app menu and choose <b>Manage queries</b> to run, rename, or delete them.</p>
           </section>
 
           <section id="recall" class="guide-section" aria-labelledby="recall-title">
-            <span class="section-label">05 · Recall</span>
+            <span class="section-label">06 · Recall</span>
             <h2 id="recall-title">Choose list recall for precision and graph recall for context.</h2>
             <p><b>Assertions</b> is the direct route to a filtered, scannable result set. <b>Graph Recall</b> turns the same query results into entities and relationships, with the matching sourced assertions kept alongside the graph.</p>
 
             <div class="steps">
-              <div class="step">
-                <strong>Start with a focused query</strong>
-                <p>Enter the smallest subject–predicate–object pattern that describes what you need. Use the source, predicate, object, status, and conflicts-only filters to reduce a busy graph.</p>
-              </div>
-              <div class="step">
-                <strong>Inspect the evidence</strong>
-                <p>Select an assertion row or graph edge to open its provenance. Review source, evidence locator, capture method, confidence, status, tags, and related events before repeating the claim.</p>
-              </div>
-              <div class="step">
-                <strong>Explore the neighborhood</strong>
-                <p>On the graph, select a node and add inbound or outbound relationships. Drag nodes to keep the working subgraph readable; the app remembers their positions.</p>
-              </div>
-              <div class="step">
-                <strong>Carry the result forward</strong>
-                <p>Use <b>Copy Citation</b> for one sourced assertion, or use <b>Export</b> to copy the current vault assertions as Markdown for notes, documentation, or handoff.</p>
-              </div>
+              <div class="step"><strong>Start with a focused query</strong><p>Enter the smallest subject–predicate–object pattern that describes what you need. Use source, predicate, object, status, and conflicts-only filters to reduce a busy result.</p></div>
+              <div class="step"><strong>Inspect the evidence</strong><p>Select an assertion row or graph edge to open its provenance. Review source, evidence locator, capture method, confidence, status, tags, and related events before repeating the claim.</p></div>
+              <div class="step"><strong>Explore the neighborhood</strong><p>On the graph, select a node and add inbound or outbound relationships. Drag nodes to keep the working subgraph readable; Claimframe remembers their positions.</p></div>
+              <div class="step"><strong>Carry the result forward</strong><p>Use <b>Copy Citation</b> for one sourced assertion, or use <b>Export</b> to copy the vault assertions as Markdown for notes, documentation, or handoff.</p></div>
+            </div>
+          </section>
+
+          <section id="workflows" class="guide-section" aria-labelledby="workflows-title">
+            <span class="section-label">07 · Common workflows</span>
+            <h2 id="workflows-title">Two reliable paths from evidence to recall.</h2>
+
+            <h3 id="manual-capture-workflow">Manual capture during a conversation</h3>
+            <div class="steps">
+              <div class="step"><strong>Open a fresh composer</strong><p>Press <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>, or open <b>Capture</b>. The shortcut clears the existing draft and focuses the composer.</p></div>
+              <div class="step"><strong>Write the smallest useful assertion</strong><p>Start with subject, predicate, and object. Add <code>@source</code> immediately when attribution matters, then attach an evidence locator, confidence, status, or tags as available.</p></div>
+              <div class="step"><strong>Reuse vault terms</strong><p>Choose autocomplete suggestions for existing entities, aliases, predicates, sources, and vocabulary terms. Use <kbd>Cmd/Ctrl</kbd> + <kbd>Space</kbd> to reopen suggestions, arrows to move, and <kbd>Tab</kbd> to insert.</p></div>
+              <div class="step"><strong>Check the parse</strong><p>Read the live subject, predicate, object, and metadata reflection below the composer. Correct any unexpected split or missing quote before committing.</p></div>
+              <div class="step"><strong>Commit and verify</strong><p>Press <kbd>Enter</kbd> or choose <b>Commit</b>. Select the new item in Recent Assertions and inspect its provenance when the claim will drive a decision or handoff.</p></div>
             </div>
 
-            <p>Press <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Q</kbd> for quick query. The command palette can also find sources, entities, and assertions or start a query from the typed term.</p>
+            <h3 id="transcript-workflow">Transcript capture and review</h3>
+            <div class="steps">
+              <div class="step"><strong>Import the source</strong><p>Open <b>Source Intake</b>. Paste timestamped transcript text or choose <b>Load Transcript File</b>, then choose <b>Import Transcript</b>. Claimframe creates an isolated review run and ordered source segments.</p></div>
+              <div class="step"><strong>Inspect the timeline</strong><p>Confirm speaker names, timestamps or sequence numbers, and segment text in Transcript Timeline. This imported text is the evidence candidates will point back to.</p></div>
+              <div class="step"><strong>Extract candidates</strong><p>Select a configured AI model and choose <b>Extract claims</b>. Configure a provider in <b>Application settings</b> if necessary. Extraction creates review candidates—not assertions—and automatically opens <b>Transcript Claims</b> when ready.</p></div>
+              <div class="step"><strong>Choose the review run</strong><p>In <b>Transcript Claims</b>, select the transcript/review run. Use the Remaining, Accepted, Deferred, and Rejected tabs and the progress summary to control the queue.</p></div>
+              <div class="step"><strong>Compare proposal to evidence</strong><p>Select a candidate. Read the exact source words and the Source, Speaker, Timestamp, Sequence, extraction, and provider details in Transcript Evidence. Use <b>Open in Source Intake</b> when you need the surrounding timeline.</p></div>
+              <div class="step"><strong>Edit and validate</strong><p>Correct the proposed subject, predicate, or object. Claimframe resolves each field against the same entities, aliases, predicate schema, and claim-reference rules as manual capture. Errors block acceptance; warnings require deliberate confirmation.</p></div>
+              <div class="step"><strong>Decide each candidate</strong><p><b>Save edits</b> keeps an unfinished proposal. <b>Accept</b> creates the sourced assertion. <b>Defer</b> keeps it unfinished for later. <b>Reject</b> records the review decision without creating an assertion. Accepted and rejected candidates become immutable.</p></div>
+              <div class="step"><strong>Finish the run</strong><p>A review is complete when every candidate is accepted or rejected. Extraction issues remain visible separately; inspect any quarantined malformed proposal rather than treating it as evidence.</p></div>
+            </div>
+
+            <div class="callout">
+              <strong>Already structured transcript lines?</strong>
+              <p>When segments already contain Claimframe capture syntax, <b>Prepare structured claims</b> can parse deterministic candidates without asking a model to interpret natural language.</p>
+            </div>
           </section>
 
           <section id="reconciliation" class="guide-section" aria-labelledby="reconciliation-title">
-            <span class="section-label">06 · Reconciliation</span>
-            <h2 id="reconciliation-title">Resolve the work without rewriting history.</h2>
-            <p>Claimframe treats disagreement as data. Structural conflicts, explicit dispute or contradiction claims, and disputed statuses can coexist until you have enough evidence to interpret them.</p>
+            <span class="section-label">08 · Reconciliation</span>
+            <h2 id="reconciliation-title">Record judgment without declaring the disagreement gone.</h2>
+            <p>The <b>Conflicts</b> workspace separates four things: original source assertions, explicit disagreement claims, the currently derived conflict condition, and the analyst’s persisted judgment. A judgment adds interpretation and provenance; it does not close, retract, overwrite, or hide the conflict.</p>
 
             <div class="steps">
-              <div class="step">
-                <strong>Review the conflict group</strong>
-                <p>Open <b>Conflicts</b>, or use the conflict review area in <b>Claim Review</b>. Select each assertion and compare its source, evidence, timestamp, confidence, and exact wording in the provenance inspector.</p>
-              </div>
-              <div class="step">
-                <strong>Fix transcription, not history</strong>
-                <p>Use <b>Edit</b> for a typo or malformed capture. If a source’s claim was recorded correctly but is wrong, leave it intact and record the disagreement as another sourced claim.</p>
-              </div>
-              <div class="step">
-                <strong>Record the relationship</strong>
-                <p>Use <b>Dispute</b> or <b>Contradict</b> to draft a claim that targets the selected assertion with <code>claim:ASSERTION_ID</code>. Capture who is making the new claim and where its evidence can be found.</p>
-              </div>
-              <div class="step">
-                <strong>Set each claim’s state</strong>
-                <p>Update the status in the provenance inspector. Use the state that describes the individual assertion; do not delete a losing claim merely to make the conflict indicator disappear.</p>
-              </div>
+              <div class="step"><strong>Choose a dossier</strong><p>Open <b>Conflicts</b>. Search the conflict queue or filter it by <b>Needs judgment</b>, <b>Judgment recorded</b>, or <b>Needs re-review</b>. Selecting a group opens its dossier with the detection basis, stable signature, and explicit <b>Conflict active</b> condition.</p></div>
+              <div class="step"><strong>Review equal-weight evidence</strong><p>In <b>Evidence</b> mode, compare every participating assertion, source, evidence locator, and capture time. Selecting a row synchronizes the provenance inspector and preselects that claim transaction as a possible judgment target.</p></div>
+              <div class="step"><strong>Explore surrounding relationships</strong><p>Switch to <b>Explore relationships</b> when local context will help. Select claim transactions—not ordinary entity nodes—as judgment targets. Use the visible Add neighbors action or <kbd>N</kbd> to add context; neighboring claims do not become conflict members merely because they are shown.</p></div>
+              <div class="step"><strong>Set analyst attribution</strong><p>The judgment composer uses the analyst identity from <b>Application settings</b>. Claimframe resolves that label to an entity in the current vault. This is attribution convenience, not authenticated identity.</p></div>
+              <div class="step"><strong>Add the judgment assertion</strong><p>Choose a claim-reference relationship such as <code>supports</code>, <code>disputes</code>, or <code>contradicts</code>; choose the target assertion and source; then write the required rationale. <b>Add judgment assertion</b> appends a new sourced claim and immutable review metadata at the current vault transaction.</p></div>
+              <div class="step"><strong>Read the result correctly</strong><p>Original assertions remain under Original assertions. The new claim appears separately under Analyst judgments. The condition still reads <b>Conflict active</b>, while the workflow state becomes <b>Judgment recorded</b>.</p></div>
+              <div class="step"><strong>Report or revisit</strong><p>Open <b>View report</b> to copy or export Markdown containing the current derivation, source assertions, judgment, rationale, review basis, and changes since review. New participating evidence or schema changes move the case to <b>Needs re-review</b>.</p></div>
             </div>
 
-            <ul class="status-list" aria-label="Assertion statuses">
-              <li><code>active</code> — usable, not specially reviewed</li>
-              <li><code>needs_review</code> — requires human attention</li>
-              <li><code>confirmed</code> — checked against sufficient evidence</li>
-              <li><code>disputed</code> — actively challenged</li>
-              <li><code>stale</code> — once useful, possibly out of date</li>
-              <li><code>superseded</code> — replaced by a newer claim</li>
-              <li><code>rejected</code> — reviewed and not accepted</li>
-              <li><code>inferred</code> — derived rather than directly asserted</li>
-            </ul>
-
             <div class="callout">
-              <strong>Conflict detection follows predicate semantics.</strong>
-              <p>In <b>Manage predicates</b>, value cardinality, uniqueness, and conflict-predicate settings determine which structural disagreements Claimframe surfaces. Change these rules deliberately: they affect how the whole vault interprets relationships.</p>
+              <strong>Conflict state and review state are independent.</strong>
+              <p>A conflict may remain active after a well-supported judgment. Reconciliation in Claimframe means preserving the evidence and recording accountable interpretation—not manufacturing a single timeless truth.</p>
             </div>
           </section>
 
           <section id="models" class="guide-section" aria-labelledby="models-title">
-            <div class="placeholder">
-              <h2 id="models-title">Making good models</h2>
-            </div>
+            <div class="placeholder"><h2 id="models-title">Making good models</h2></div>
           </section>
         </article>
       </div>
