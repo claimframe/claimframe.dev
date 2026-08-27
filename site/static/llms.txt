@@ -27,6 +27,7 @@ It helps users capture sourced assertions from meetings, documents, repositories
 
 - Site: https://claimframe.dev
 - User guide: https://claimframe.dev/guide/
+- Modeling guide: https://claimframe.dev/guide/concepts/modeling-good-claims/
 - Agent context: https://claimframe.dev/llms-full.txt
 
 ## Short Description

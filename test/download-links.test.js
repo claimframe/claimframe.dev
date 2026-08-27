@@ -16,6 +16,13 @@ const assets = [
   ["linux", `Claimframe-${releaseVersion}-linux-x86_64.AppImage`],
 ];
 
+const mcpAssets = [
+  ["mac", `claimframe-mcp-${releaseVersion}-macos-aarch64`],
+  ["mac", `claimframe-mcp-${releaseVersion}-macos-x86_64`],
+  ["windows", `claimframe-mcp-${releaseVersion}-windows-x86_64.exe`],
+  ["linux", `claimframe-mcp-${releaseVersion}-linux-x86_64`],
+];
+
 test("the release version is configured once and shown on the download section", () => {
   assert.equal(releaseVersion, "0.3.1");
   assert.match(homepage, new RegExp(`data-release-version="${releaseVersion}"`));
@@ -29,7 +36,17 @@ test("each platform and architecture maps to its versioned release asset", () =>
       new RegExp(`data-platform="${platform}" href="${downloadBase}/${asset.replace(".", "\\.")}"`),
     );
   }
-  assert.equal((homepage.match(new RegExp(`v${releaseVersion} ·`, "g")) || []).length, 4);
+  assert.equal((homepage.match(new RegExp(`v${releaseVersion} ·`, "g")) || []).length, 8);
+});
+
+test("each platform and architecture offers the standalone MCP executable", () => {
+  for (const [platform, asset] of mcpAssets) {
+    assert.match(
+      homepage,
+      new RegExp(`class="download-option mcp-download" data-platform="${platform}" href="${downloadBase}/${asset.replace(".", "\\.")}"`),
+    );
+  }
+  assert.match(homepage, /No Python runtime or running desktop app is required/);
 });
 
 test("the download section offers a fallback to the public releases page", () => {

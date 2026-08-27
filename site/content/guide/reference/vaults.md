@@ -40,7 +40,7 @@ The database uses SQLite write-ahead logging when accessed by Claimframe integra
 
 ## Local MCP server
 
-The MCP server uses the same normalized SQLite schema and can share a vault with the desktop application. Select the vault path in this order:
+The standalone Rust MCP server uses the same vault core and normalized SQLite schema as the desktop application. It does not require Python or a running desktop app, and it can share a vault with the desktop application. Select the vault path in this order:
 
 1. Pass `--vault /path/to/vault.sqlite3`.
 2. If omitted, set `CLAIMFRAME_VAULT`.

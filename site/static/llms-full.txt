@@ -23,22 +23,67 @@ Claimframe is not a SaaS product, a generic note-taking app, a hosted knowledge 
 
 ## Local MCP Server
 
-Claimframe includes a local MCP server that lets agents use the same local assertion vault as the desktop GUI. Agents can query sources, statuses, relationships, and conflict state without rummaging through long notes.
+Claimframe includes a standalone Rust MCP server that lets agents use the same local assertion vault as the desktop GUI. It uses the same Rust vault core, normalized SQLite schema, migrations, capture logic, queries, and rendering as the desktop app. The GUI does not need to be running. Both processes can safely share a vault through SQLite WAL mode and a busy timeout.
 
 Run pattern:
 
 ```bash
-python3 mcp/claimframe_mcp.py --vault /path/to/claimframe.sqlite3
+claimframe-mcp --vault /path/to/claimframe.sqlite3
 ```
 
-If no vault path is passed, the server checks `CLAIMFRAME_VAULT` and then `.claimframe/vault.sqlite3` relative to the current working directory.
+Download the `claimframe-mcp` executable for macOS (Apple silicon or Intel), Windows x86-64, or Linux x86-64 from https://claimframe.dev/#download. The downloaded file includes its version and platform in the filename; it may be renamed to `claimframe-mcp` (`claimframe-mcp.exe` on Windows) after it is placed on the executable path.
+
+If `--vault` is omitted, the server checks `CLAIMFRAME_VAULT` and then uses `.claimframe/vault.sqlite3` relative to the current working directory. The active desktop vault path is shown in Claimframe's Settings panel.
+
+An MCP client launches the executable over stdio. Example configuration:
+
+```json
+{
+  "mcpServers": {
+    "claimframe": {
+      "command": "/absolute/path/to/claimframe-mcp",
+      "args": ["--vault", "/absolute/path/to/claimframe.sqlite3"]
+    }
+  }
+}
+```
 
 ### MCP Tools
 
 - `claimframe_capture`: store a structured assertion.
 - `claimframe_fetch`: fetch one assertion by id.
 - `claimframe_query`: query assertions by subject, predicate, object, source, status, and/or text.
+- `claimframe_rule_profiles`: list adopted inference profiles, hashes, versions, and active state.
 - `claimframe_vault_info`: return vault path and counts.
+
+`claimframe_query` applies active vocabulary profiles to subject, predicate, and object queries by default. Use `inference_mode: "explicit"` for stored facts only. Source, status, and full-text filters are currently stored-only.
+
+## Modeling Guidance for Agents
+
+Before capturing claims, query the vault to reuse established entities and predicates. Model a linked, sourced graph rather than a collection of isolated labels.
+
+- Store one independently reviewable subject-predicate-object relationship per assertion.
+- Split compound objects when their members can vary independently; preserve phrases that name one established concept.
+- Connect new entities through evidence-supported relationships. Flag unavoidable isolated entities instead of inventing links.
+- Use intermediate abstractions instead of attaching every detail directly to a top-level actor.
+- Reuse predicates and normalize wording variants; create a predicate only for a meaningful semantic distinction.
+- Configure value type, cardinality, uniqueness, collection semantics, and conflict behavior before repeated domain use.
+- Keep relationship direction consistent and do not conflate composition with classification.
+- Preserve the source's strength of language, a reproducible evidence locator, and a distinct source for modelling decisions.
+- Apply RDFS and OWL semantics only when their inferred consequences are intended.
+
+Predicate settings are ordinary sourced claims and may precede first domain use. For example:
+
+```text
+depends-on :db:doc "Identifies a dependency of the subject" @modeling-policy
+depends-on :db:valueType :db.type:ref @modeling-policy
+depends-on :db:cardinality :db.cardinality:many @modeling-policy
+depends-on :db:unique :db.unique:none @modeling-policy
+depends-on :cf:valueSemantics :cf.semantic:set @modeling-policy
+depends-on :cf:conflictPredicate false @modeling-policy
+```
+
+See https://claimframe.dev/guide/concepts/modeling-good-claims/ for examples and the complete review checklist.
 
 ## Factual FAQ
 
@@ -74,4 +119,6 @@ Claimframe is a local-first workbench for sourced assertions. It helps technical
 
 - Site: https://claimframe.dev
 - User guide: https://claimframe.dev/guide/
+- MCP guide: https://github.com/claimframe/claimframe/blob/main/docs/mcp.md
+- Downloads: https://claimframe.dev/#download
 - Agent context: https://claimframe.dev/llms-full.txt

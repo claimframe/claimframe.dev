@@ -797,6 +797,19 @@
             <a class="download-option" data-platform="linux" href="{{ $releaseDownloadBase }}/Claimframe-{{ $releaseVersion }}-linux-x86_64.AppImage">
               <span><strong>Linux</strong><span>v{{ $releaseVersion }} · Portable x86-64 build · AppImage</span></span><span class="download-arrow" aria-hidden="true">↓</span>
             </a>
+            <p><strong>Standalone MCP server</strong><br>Use the same local vault from an MCP client. No Python runtime or running desktop app is required.</p>
+            <a class="download-option mcp-download" data-platform="mac" href="{{ $releaseDownloadBase }}/claimframe-mcp-{{ $releaseVersion }}-macos-aarch64">
+              <span><strong>MCP — macOS Apple silicon</strong><span>v{{ $releaseVersion }} · Standalone executable</span></span><span class="download-arrow" aria-hidden="true">↓</span>
+            </a>
+            <a class="download-option mcp-download" data-platform="mac" href="{{ $releaseDownloadBase }}/claimframe-mcp-{{ $releaseVersion }}-macos-x86_64">
+              <span><strong>MCP — macOS Intel</strong><span>v{{ $releaseVersion }} · Standalone executable</span></span><span class="download-arrow" aria-hidden="true">↓</span>
+            </a>
+            <a class="download-option mcp-download" data-platform="windows" href="{{ $releaseDownloadBase }}/claimframe-mcp-{{ $releaseVersion }}-windows-x86_64.exe">
+              <span><strong>MCP — Windows</strong><span>v{{ $releaseVersion }} · x86-64 executable</span></span><span class="download-arrow" aria-hidden="true">↓</span>
+            </a>
+            <a class="download-option mcp-download" data-platform="linux" href="{{ $releaseDownloadBase }}/claimframe-mcp-{{ $releaseVersion }}-linux-x86_64">
+              <span><strong>MCP — Linux</strong><span>v{{ $releaseVersion }} · x86-64 executable</span></span><span class="download-arrow" aria-hidden="true">↓</span>
+            </a>
             <p>If a download is temporarily unavailable, <a href="https://github.com/claimframe/claimframe-downloads/releases">view all public releases</a>.</p>
           </div>
         </div>
@@ -868,13 +881,14 @@
               <a class="button secondary" href="/llms-full.txt">Agent context</a>
             </div>
           </div>
-          <pre class="mono-card" aria-label="MCP server example"><code><b>$</b> python3 mcp/claimframe_mcp.py \
+          <pre class="mono-card" aria-label="MCP server example"><code><b>$</b> claimframe-mcp \
   --vault /path/to/claimframe.sqlite3
 
 tools:
   claimframe_capture
   claimframe_fetch
   claimframe_query
+  claimframe_rule_profiles
   claimframe_vault_info</code></pre>
         </div>
       </section>
