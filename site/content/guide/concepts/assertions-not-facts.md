@@ -1,6 +1,6 @@
 +++
 title = "Assertions, not facts"
-description = "Why Claimframe records what a source claimed instead of silently turning every statement into authoritative truth."
+description = "Why Claimframe records assertions without silently turning every statement into authoritative truth."
 layout = "docs"
 doc_type = "Concept"
 doc_section = "Concepts"
@@ -12,15 +12,15 @@ label = "Modeling good claims"
 url = "/guide/concepts/modeling-good-claims/"
 +++
 
-Claimframe's basic unit is a sourced assertion: a claim made by a source, at a time, about a subject. The assertion records what entered the working model. It does not certify that the claim is universally true.
+Claimframe's basic unit is an assertion: a claim entered at a particular time about a subject. It may be attributed to a person, document, repository, or other source, or it may be captured directly by an analyst while the work is unfolding. In either case, recording the assertion does not certify that it is universally true.
 
-That distinction matters because technical work begins with incomplete and conflicting accounts. A service owner, repository, architecture diagram, and incident timeline can each describe the same system differently. Flattening those accounts into one fact too early destroys useful information: who believed it, when it was recorded, and what evidence supported it.
+That distinction matters because technical work begins with incomplete knowledge and conflicting accounts. A service owner, repository, architecture diagram, incident timeline, and analyst's current understanding may each describe the same system differently. Treating any one of them as settled fact too early hides uncertainty and disagreement.
 
 ## Useful claims can be wrong
 
-A false or outdated assertion can still explain a decision, reveal an assumption, or show when understanding changed. Claimframe therefore permits claims to be active, stale, disputed, superseded, rejected, inferred, or awaiting review while retaining their provenance.
+A false or outdated assertion can still explain a decision, reveal an assumption, or show when understanding changed. Claimframe therefore permits claims to be active, stale, disputed, superseded, rejected, inferred, or awaiting review. When provenance was recorded, it remains attached as the claim moves through those states.
 
-The question stored with a claim is not only “Is this true?” It is also:
+Depending on the work, useful questions about a claim include:
 
 - Who or what asserted it?
 - Where can the evidence be inspected?
@@ -30,9 +30,9 @@ The question stored with a claim is not only “Is this true?” It is also:
 
 ## Correction is different from disagreement
 
-Edit a claim when Claimframe contains a transcription or capture error—when the stored wording fails to represent the source.
+Edit a claim when Claimframe contains a transcription or capture error—for example, when the stored wording fails to represent its source or the analyst entered the wrong entity.
 
-Do not edit a correctly recorded claim merely because the source was mistaken. Record the correction, dispute, contradiction, or replacement as another sourced assertion. Then update review states as appropriate. This preserves both the historical account and the current judgment.
+Do not edit a correctly recorded claim merely because its source or author was mistaken. Record the correction, dispute, contradiction, or replacement as another assertion. Then update review states as appropriate. This preserves both the historical account and the current judgment.
 
 ## Current state without erased history
 

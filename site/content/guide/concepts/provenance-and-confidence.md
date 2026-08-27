@@ -12,7 +12,7 @@ label = "Disagreement and conflicts"
 url = "/guide/concepts/disagreement-and-conflicts/"
 +++
 
-Provenance is more than a citation string. Claimframe keeps several dimensions separate so a reviewer can distinguish origin, inspectability, extraction certainty, and human judgment.
+Provenance is optional context, not a requirement for entering a claim. When that context matters, Claimframe keeps several dimensions separate so a reviewer can distinguish origin, inspectability, extraction certainty, and human judgment.
 
 | Dimension | Question it answers |
 | --- | --- |
