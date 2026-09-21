@@ -28,19 +28,19 @@ if (process.env.GITHUB_TOKEN) {
 }
 
 const response = await fetch(
-  "https://api.github.com/repos/claimframe/claimframe-downloads/releases/latest",
+  `https://api.github.com/repos/claimframe/claimframe-downloads/releases/tags/v${version}`,
   { headers },
 );
 
 if (!response.ok) {
-  throw new Error(`Could not read the latest public Claimframe release: HTTP ${response.status}`);
+  throw new Error(`Could not read the configured public Claimframe release: HTTP ${response.status}`);
 }
 
 const release = await response.json();
 const expectedTag = `v${version}`;
 if (release.tag_name !== expectedTag || release.draft || release.prerelease) {
   throw new Error(
-    `Expected latest public release ${expectedTag}; received ${release.tag_name ?? "no tag"}`,
+    `Expected public release ${expectedTag}; received ${release.tag_name ?? "no tag"}`,
   );
 }
 

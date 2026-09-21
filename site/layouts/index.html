@@ -812,7 +812,7 @@
 
       <section id="download" class="download-band" aria-labelledby="download-title">
         {{- $releaseVersion := site.Params.releaseVersion -}}
-        {{- $releaseDownloadBase := "https://github.com/claimframe/claimframe-downloads/releases/latest/download" -}}
+        {{- $releaseDownloadBase := printf "https://github.com/claimframe/claimframe-downloads/releases/download/v%s" $releaseVersion -}}
         <div class="site-shell download-grid">
           <div>
             <p class="section-kicker">Download the alpha</p>

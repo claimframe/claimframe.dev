@@ -38,7 +38,7 @@ assets require repository read access. Public installers are published as releas
 assets in the dedicated public
 [`claimframe/claimframe-downloads`](https://github.com/claimframe/claimframe-downloads)
 repository instead. For the current release version configured in
-`site/config.toml`, the homepage derives links to these assets on the latest release:
+`site/config.toml`, the homepage derives links to these assets on its matching release tag:
 
 - `Claimframe-<version>-macos-arm64.dmg`
 - `Claimframe-<version>-macos-x64.dmg`
@@ -53,7 +53,7 @@ The private application's release workflow must copy and rename each completed
 installer and MCP executable into a matching release in
 `claimframe/claimframe-downloads`. When the application is released, update
 `params.releaseVersion` once in `site/config.toml`; the homepage uses that value for
-its displayed version and all eight `/releases/latest/download/<asset-name>` URLs.
+its displayed version and all eight `/releases/download/v<version>/<asset-name>` URLs.
 Netlify verifies that the matching public release exists and contains exactly those
 eight assets before deploying the site.
 
