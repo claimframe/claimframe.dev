@@ -948,10 +948,19 @@ tools:
       </section>
 
       <section class="site-shell" aria-label="Product wink">
-        <p class="wink">For when you need a machine that believes things, but with citations.</p>
+        <p class="wink">Hold up to sixteen entirely different and contradictory ideas in memory simultaneously.</p>
       </section>
     </main>
     <script>
+      (() => {
+        const taglines = [
+          "Hold up to sixteen entirely different and contradictory ideas in memory simultaneously.",
+          "Contradiction is information.",
+          "Knowledge arrives in bursts and clumps. Capture it without breaking flow.",
+        ];
+        document.querySelector(".wink").textContent = taglines[Math.floor(Math.random() * taglines.length)];
+      })();
+
       (() => {
         const platform = navigator.userAgentData?.platform || navigator.platform || "";
         const family = /mac/i.test(platform) ? "mac" : /win/i.test(platform) ? "windows" : /linux/i.test(platform) ? "linux" : "";
