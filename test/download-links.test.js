@@ -10,7 +10,7 @@ const { test, after, before } = require("node:test");
 const root = path.resolve(__dirname, "..");
 const config = fs.readFileSync(path.join(root, "site/config.toml"), "utf8");
 const releaseVersion = config.match(/^\s*releaseVersion\s*=\s*"([^"]+)"/m)?.[1];
-const downloadBase = "https://github.com/claimframe/claimframe-downloads/releases/latest/download";
+const downloadBase = `https://github.com/claimframe/claimframe-downloads/releases/download/v${releaseVersion}`;
 const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "claimframe-site-"));
 after(() => fs.rmSync(temporary, { recursive: true, force: true }));
 
@@ -33,7 +33,7 @@ const targets = [
 ];
 
 function links(html) {
-  return [...html.matchAll(/href="([^"]*\/releases\/latest\/download\/[^" ]+)"/g)].map((match) => match[1]).sort();
+  return [...html.matchAll(/href="([^"]*\/releases\/download\/v[^/]+\/[^" ]+)"/g)].map((match) => match[1]).sort();
 }
 
 test("release-ready downloads contain the exact nine versioned assets in four platform boxes", () => {
@@ -82,6 +82,7 @@ test("downloads retain installation guidance and the public releases fallback", 
     assert.ok(html.includes('href="/guide/how-to/install-linux/"'));
     assert.ok(html.includes('href="https://github.com/claimframe/claimframe-downloads/releases">view all public releases</a>'));
     assert.ok(!/Claimframe-(?:macos|windows|linux)-/.test(html));
+    assert.ok(!html.includes("/releases/latest/download/"));
   }
 });
 

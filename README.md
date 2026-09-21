@@ -55,7 +55,7 @@ The private application's release workflow must copy and rename each completed
 installer and MCP executable into a matching release in
 `claimframe/claimframe-downloads`. When the application is released, update
 `params.releaseVersion` once in `site/config.toml`; the homepage uses that value for
-its displayed version and all nine `/releases/latest/download/<asset-name>` URLs.
+its displayed version and all nine `/releases/download/v<version>/<asset-name>` URLs.
 Netlify verifies that the matching public release exists and contains exactly those
 nine assets before deploying the site.
 
@@ -76,8 +76,9 @@ Keep the notes aligned with the app changelog.
 After the app release containing native packages and schema 17 is approved and all
 nine public assets exist, confirm `releaseVersion` and set `releasePending = false`.
 Run `npm test` and `npm run verify:release` before the separately authorized site
-publication. The verifier requires the configured version to be the latest stable
-public release and checks its exact nine-asset set. AppImage is not an optional
+publication. Before the 0.4.0 rollout, independently confirm it is the latest stable public
+release. The verifier checks the configured release tag and its exact nine-asset
+set; download links remain pinned to that tag when a later version is published. AppImage is not an optional
 asset in the new contract. Historical releases remain available on GitHub.
 
 Linux format labels identify package families, not a tested distribution matrix.

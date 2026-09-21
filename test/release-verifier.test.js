@@ -22,7 +22,7 @@ test("release verifier accepts the native contract and rejects incomplete or sta
   }
   assert.throws(() => validateRelease({ ...release, assets: [...release.assets, { name: "Claimframe-1.2.3-linux-x86_64.AppImage" }] }, "1.2.3"), /Unexpected:.*AppImage/);
   for (const change of [{ tag_name: "v1.2.2" }, { draft: true }, { prerelease: true }]) {
-    assert.throws(() => validateRelease({ ...release, ...change }, "1.2.3"), /Expected latest public release/);
+    assert.throws(() => validateRelease({ ...release, ...change }, "1.2.3"), /Expected public release/);
   }
 });
 
