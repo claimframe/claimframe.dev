@@ -41,4 +41,4 @@ Saved query text stays unchanged through entity renames and vault upgrades. If `
 
 Open **Export** to copy the current vault assertions as Markdown for notes, documentation, or handoff. Check the preview or copied output before using it: export carries the selected assertion material forward but does not replace the original vault or its interactive provenance views.
 
-To share current vault content with another person, use the new [CFText export/import workflow](/guide/reference/cftext/#share-vault-content-with-another-person). Export one snapshot and send it through your chosen channel; the recipient imports it into a fresh, independent vault. This transfers current logical content and supported provenance, not a synchronized vault or its full history, saved queries, and settings.
+To share current vault content with another person, use the new [Share a vault guide](/guide/how-to/share-vault/). Export one snapshot and send it through your chosen channel; the recipient imports it into a fresh, independent vault. This transfers current logical content and supported provenance, not a synchronized vault or its full history, saved queries, and settings.

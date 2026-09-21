@@ -14,6 +14,8 @@ New in 0.4.0, CFText is an editable UTF-8 snapshot of a vault's current logical 
 
 CFText is the recommended way to share vault content with another person instead of passing SQLite database files around. The sender exports one `.cftext` snapshot and sends it through their chosen channel. The recipient imports that file into a fresh vault and reviews the result.
 
+Follow [Share a vault](/guide/how-to/share-vault/) for the sender and recipient steps.
+
 The recipient gets an independent copy of current logical content with new IDs. Source and evidence metadata carried by the snapshot remain available, but full transaction/review history, saved queries, settings, and other excluded data do not transfer. This is a one-time handoff, not synchronization or a shared live vault; later edits in either vault do not update the other.
 
 ## What carries over

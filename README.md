@@ -100,6 +100,10 @@ current-name text with no ID binding. Graph nodes use stored IDs. Sourced domain
 `aka`/naming facts and original evidence remain independent of lookup rules. Stable
 vocabulary identifiers remain authoritative.
 
+The [Share a vault guide](site/content/guide/how-to/share-vault.md) follows the UI
+labels in `VaultsPanel.tsx`, `StartupVault.tsx`, `useImportExport.ts`, and
+`CfTextImportDialog.tsx` in the app source.
+
 The Capture and Query references, modeling/query/graph/vocabulary guides, vault
 upgrade guidance, CFText reference, and agent context follow app ADR-0008 and the
 product-spec, data-model, and CFText contracts. CFText is new in 0.4.0: export current state, edit externally, and import into a fresh
