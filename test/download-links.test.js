@@ -1,57 +1,102 @@
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
+const os = require("node:os");
 const path = require("node:path");
-const test = require("node:test");
+const vm = require("node:vm");
+const { execFile } = require("node:child_process");
+const run = require("node:util").promisify(execFile);
+const { test, after, before } = require("node:test");
 
 const root = path.resolve(__dirname, "..");
 const config = fs.readFileSync(path.join(root, "site/config.toml"), "utf8");
-const homepage = fs.readFileSync(path.join(root, "site/public/index.html"), "utf8");
 const releaseVersion = config.match(/^\s*releaseVersion\s*=\s*"([^"]+)"/m)?.[1];
 const downloadBase = "https://github.com/claimframe/claimframe-downloads/releases/latest/download";
+const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "claimframe-site-"));
+after(() => fs.rmSync(temporary, { recursive: true, force: true }));
+
+async function buildMode(pending) {
+  const mode = pending ? "pending" : "ready";
+  const override = path.join(temporary, `${mode}.toml`);
+  const destination = path.join(temporary, mode);
+  fs.writeFileSync(override, `[params]\nreleasePending = ${pending}\n`);
+  await run("hugo", ["--source", "site", "--config", `${path.join(root, "site/config.toml")},${override}`, "--destination", destination], { cwd: root });
+  return fs.readFileSync(path.join(destination, "index.html"), "utf8");
+}
+let ready, pending;
+before(async () => { ready = await buildMode(false); pending = await buildMode(true); });
 
 const targets = [
-  ["macos-arm64", "mac", `Claimframe-${releaseVersion}-macos-arm64.dmg`, `claimframe-mcp-${releaseVersion}-macos-aarch64`],
-  ["macos-x64", "mac", `Claimframe-${releaseVersion}-macos-x64.dmg`, `claimframe-mcp-${releaseVersion}-macos-x86_64`],
-  ["windows-x64", "windows", `Claimframe-${releaseVersion}-windows-x64.msi`, `claimframe-mcp-${releaseVersion}-windows-x86_64.exe`],
-  ["linux-x86_64", "linux", `Claimframe-${releaseVersion}-linux-x86_64.AppImage`, `claimframe-mcp-${releaseVersion}-linux-x86_64`],
+  ["macos-arm64", "mac", [`Claimframe-${releaseVersion}-macos-arm64.dmg`], `claimframe-mcp-${releaseVersion}-macos-aarch64`],
+  ["macos-x64", "mac", [`Claimframe-${releaseVersion}-macos-x64.dmg`], `claimframe-mcp-${releaseVersion}-macos-x86_64`],
+  ["windows-x64", "windows", [`Claimframe-${releaseVersion}-windows-x64.msi`], `claimframe-mcp-${releaseVersion}-windows-x86_64.exe`],
+  ["linux-x86_64", "linux", [`Claimframe-${releaseVersion}-linux-amd64.deb`, `Claimframe-${releaseVersion}-linux-x86_64.rpm`], `claimframe-mcp-${releaseVersion}-linux-x86_64`],
 ];
 
-test("the release version is configured once and shown on the download section", () => {
+function links(html) {
+  return [...html.matchAll(/href="([^"]*\/releases\/latest\/download\/[^" ]+)"/g)].map((match) => match[1]).sort();
+}
+
+test("release-ready downloads contain the exact nine versioned assets in four platform boxes", () => {
   assert.match(releaseVersion, /^\d+\.\d+\.\d+$/);
-  assert.match(homepage, new RegExp(`data-release-version="${releaseVersion}"`));
-  assert.match(homepage, new RegExp(`Claimframe v${releaseVersion} desktop app and standalone MCP server`));
-});
-
-test("the download section has four platform boxes with two paired links each", () => {
-  assert.equal((homepage.match(/class="download-platform-box"/g) || []).length, 4);
-
-  for (const [target, platform, desktopAsset, mcpAsset] of targets) {
-    const box = homepage.match(
-      new RegExp(`<article class="download-platform-box" data-platform="${platform}" data-download-target="${target}"[\\s\\S]*?<\\/article>`),
-    )?.[0];
-
-    assert.ok(box, `missing download box for ${target}`);
-    assert.match(box, new RegExp(`class="download-option desktop-download" href="${downloadBase}/${desktopAsset.replace(".", "\\.")}"`));
-    assert.match(box, new RegExp(`class="download-option mcp-download" href="${downloadBase}/${mcpAsset.replace(".", "\\.")}"`));
-    assert.match(box, /<strong>Desktop app<\/strong>/);
-    assert.match(box, /<strong>Standalone MCP server<\/strong>/);
-    assert.equal((box.match(/class="download-option /g) || []).length, 2);
+  assert.ok(ready.includes(`data-release-version="${releaseVersion}"`));
+  assert.equal((ready.match(/class="download-platform-box"/g) || []).length, 4);
+  assert.deepEqual(links(ready), targets.flatMap(([, , desktop, mcp]) => [...desktop, mcp].map((asset) => `${downloadBase}/${asset}`)).sort());
+  for (const [target, platform, desktop, mcp] of targets) {
+    const box = ready.match(new RegExp(`<article class="download-platform-box" data-platform="${platform}" data-download-target="${target}"[\\s\\S]*?<\\/article>`))?.[0];
+    assert.ok(box, `missing box for ${target}`);
+    for (const asset of [...desktop, mcp]) assert.ok(box.includes(`href="${downloadBase}/${asset}"`), asset);
+    assert.equal((box.match(/class="download-option desktop-download"/g) || []).length, desktop.length);
+    assert.equal((box.match(/class="download-option mcp-download"/g) || []).length, 1);
   }
-
-  assert.equal((homepage.match(new RegExp(`v${releaseVersion} ·`, "g")) || []).length, 8);
+  assert.ok(ready.includes("Debian / Ubuntu"));
+  assert.ok(ready.includes("Fedora / RHEL family"));
+  assert.ok(!ready.includes("AppImage"));
+  assert.ok(!ready.includes("Pending release"));
 });
 
-test("platform recommendation styling applies to boxes", () => {
-  assert.match(homepage, /\.download-platform-box\[data-platform="\$\{family\}"\]/);
+test("pending preview withholds every unpublished 0.4.0 artifact", () => {
+  assert.deepEqual(links(pending), []);
+  assert.equal((pending.match(/Pending release/g) || []).length, 9);
+  assert.ok(!pending.includes("AppImage"));
+  const pendingGuide = fs.readFileSync(path.join(temporary, "pending/guide/how-to/install-linux/index.html"), "utf8");
+  const readyGuide = fs.readFileSync(path.join(temporary, "ready/guide/how-to/install-linux/index.html"), "utf8");
+  assert.ok(pendingGuide.includes("not yet public downloads"));
+  assert.ok(!readyGuide.includes("not yet public downloads"));
 });
 
-test("the download section offers a fallback to the public releases page", () => {
-  assert.match(
-    homepage,
-    /If a download is temporarily unavailable, <a href="https:\/\/github\.com\/claimframe\/claimframe-downloads\/releases">view all public releases<\/a>/,
-  );
+test("platform detection recommends a family without selecting a Linux package format", () => {
+  const script = ready.match(/<script>\s*\(\(\) => \{[\s\S]*?<\/script>/)?.[0].replace(/<\/?script>/g, "");
+  assert.ok(script);
+  for (const [platform, family] of [["Linux x86_64", "linux"], ["MacIntel", "mac"], ["Win32", "windows"], ["unknown", ""]]) {
+    const recommended = [];
+    vm.runInNewContext(script, {
+      navigator: { platform },
+      document: { querySelectorAll: (selector) => {
+        assert.equal(selector, `.download-platform-box[data-platform="${family}"]`);
+        return [{ classList: { add: (name) => recommended.push(name) } }];
+      } },
+    });
+    assert.deepEqual(recommended, family ? ["recommended"] : []);
+  }
 });
 
-test("generated output contains no old unversioned asset links", () => {
-  assert.doesNotMatch(homepage, /Claimframe-(?:macos|windows|linux)-/);
+test("downloads retain installation guidance and the public releases fallback", () => {
+  for (const html of [pending, ready]) {
+    assert.ok(html.includes('href="/guide/how-to/install-linux/"'));
+    assert.ok(html.includes('href="https://github.com/claimframe/claimframe-downloads/releases">view all public releases</a>'));
+    assert.ok(!/Claimframe-(?:macos|windows|linux)-/.test(html));
+  }
+});
+
+test("release notes are discoverable from downloads and installation, with status matching the build", () => {
+  for (const [mode, html] of [["pending", pending], ["ready", ready]]) {
+    const notesPath = "/releases/0.4.0/";
+    assert.ok(html.includes(`href="${notesPath}"`));
+    const install = fs.readFileSync(path.join(temporary, mode, "guide/how-to/install-linux/index.html"), "utf8");
+    assert.ok(install.includes(`href="${notesPath}"`));
+    const notes = fs.readFileSync(path.join(temporary, mode, "releases/0.4.0/index.html"), "utf8");
+    assert.equal(notes.includes("0.4.0 has not been published"), mode === "pending");
+    const capture = fs.readFileSync(path.join(temporary, mode, "guide/reference/capture-syntax/index.html"), "utf8");
+    assert.equal(capture.includes("not yet part of the published download"), mode === "pending");
+  }
 });

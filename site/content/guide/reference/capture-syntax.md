@@ -2,6 +2,7 @@
 title = "Capture syntax"
 description = "The grammar, metadata tokens, defaults, quoting rules, and validation behavior for direct capture."
 layout = "docs"
+pendingRelease = true
 [[related]]
 label = "Assertion fields"
 url = "/guide/reference/assertion-fields/"
@@ -15,6 +16,16 @@ Direct capture accepts either an entity name or a subject–predicate–object a
 ```text
 subject predicate object @source ^evidence !status %confidence #tag
 ```
+
+## Current entity names
+
+Each entity has one stable ID and one current name, unique within its vault. Names compare case-insensitively: capturing `Billing` after `billing` reuses the same entity and keeps its original display spelling. Only an explicit rename changes that spelling; a case-only rename is allowed.
+
+Surrounding Unicode whitespace is trimmed. Interior spaces, punctuation, and Unicode composition are preserved: `billing-service`, `billing_service`, and `"billing service"` are distinct names, as are names with one versus two interior spaces. Comparison uses Unicode 17.0 simple case folding without multi-character expansions: `Équipe` and `équipe` match, but `ß` and `ss` do not. Composed and decomposed accents remain distinct.
+
+Rename preserves the entity ID and stored relationships, rejects a name owned by another entity, and releases the old name for reuse. Old names no longer resolve to the renamed entity. Distinct people or systems with the same human name need different current names. These rules also apply to source names; quote a source containing spaces, such as `@"Design review"`.
+
+Sourced naming facts such as `aka` remain ordinary claims; they do not create lookup aliases. Original capture text and evidence keep their historical wording.
 
 ## Body forms
 
@@ -134,4 +145,4 @@ The new assertion gets its own source and evidence. The target assertion remains
 
 While editing, Capture distinguishes empty, incomplete, complete, and invalid drafts. Commit is enabled only for a complete draft. Incomplete input such as two body tokens, an open quote, an empty metadata prefix, or a trailing comma keeps safe preview data without showing a notification; invalid input shows one localized explanation. The Rust parser validates the complete input again before any mutation.
 
-Capture autocomplete suggests existing entities, predicates, sources, tags, and adopted vocabulary terms. `Ctrl/Cmd` + `Space` explicitly opens suggestions at the cursor.
+Capture autocomplete searches current names and suggests existing entities, predicates, sources, tags, and adopted vocabulary terms. Selecting a suggestion inserts the current name with syntax-safe quoting and escaping as plain text. It does not bind an entity ID; submission resolves that text against the current names at that moment. `Ctrl/Cmd` + `Space` explicitly opens suggestions at the cursor.

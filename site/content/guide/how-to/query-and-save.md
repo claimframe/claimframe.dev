@@ -2,6 +2,7 @@
 title = "Find facts and save a query"
 description = "Find the facts you need, narrow the results, and save the query pattern so you can run it again."
 layout = "docs"
+pendingRelease = true
 doc_type = "How-to guide"
 doc_section = "How-to guides"
 [[related]]
@@ -32,6 +33,12 @@ If a structured query returns nothing, remove one exact value or replace it with
 
 Saving a query does not copy or freeze its current results. Running it later evaluates the saved pattern against the vault's then-current facts.
 
+## After an entity rename
+
+Saved query text stays unchanged through entity renames and vault upgrades. If `billing` is renamed to `billing-service`, the saved pattern `billing ? ?` stops selecting that entity. If a new entity later uses `billing`, the unchanged pattern may select the new entity instead. Update or recreate the query with the current name when you want to keep asking about the original entity. Stored assertions still refer to the same stable entity ID.
+
 ## Export the result
 
 Open **Export** to copy the current vault assertions as Markdown for notes, documentation, or handoff. Check the preview or copied output before using it: export carries the selected assertion material forward but does not replace the original vault or its interactive provenance views.
+
+To share current vault content with another person, use the new [CFText export/import workflow](/guide/reference/cftext/#share-vault-content-with-another-person). Export one snapshot and send it through your chosen channel; the recipient imports it into a fresh, independent vault. This transfers current logical content and supported provenance, not a synchronized vault or its full history, saved queries, and settings.

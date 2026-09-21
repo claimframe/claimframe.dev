@@ -15,6 +15,7 @@
         <div class="nav-links">
           <a href="/">Overview</a>
           <a href="/guide/" aria-current="page">Guide</a>
+          <a href="/releases/0.4.0/">Release notes</a>
           <a href="/llms.txt">llms.txt</a>
         </div>
       </nav>
@@ -29,6 +30,7 @@
         <div class="docs-group">
           <strong>How-to guides</strong>
           {{ range slice
+            (dict "url" "/guide/how-to/install-linux/" "label" "Install on Linux")
             (dict "url" "/guide/how-to/manage-vault/" "label" "Manage a vault")
             (dict "url" "/guide/how-to/capture-claim/" "label" "Record facts by hand")
             (dict "url" "/guide/how-to/capture-from-transcript/" "label" "Capture claims from a transcript")
@@ -47,6 +49,7 @@
             (dict "url" "/guide/reference/assertion-fields/" "label" "Assertion fields")
             (dict "url" "/guide/reference/statuses/" "label" "Assertion statuses")
             (dict "url" "/guide/reference/predicate-settings/" "label" "Predicate settings")
+            (dict "url" "/guide/reference/cftext/" "label" "CFText snapshots")
             (dict "url" "/guide/reference/vaults/" "label" "Vaults")
             (dict "url" "/guide/reference/keyboard-shortcuts/" "label" "Keyboard shortcuts")
           }}<a href="{{ .url }}"{{ if eq $.RelPermalink .url }} aria-current="page"{{ end }}>{{ .label }}</a>{{ end }}
@@ -78,7 +81,12 @@
           <h1>{{ .Title }}</h1>
           <p class="docs-summary">{{ .Params.description }}</p>
         </header>
-        <div class="docs-body">{{ .Content }}</div>
+        <div class="docs-body">
+          {{ if and site.Params.releasePending .Params.pendingRelease }}
+          <p><strong>Upcoming release:</strong> {{ default "The current-name and schema 17 guidance on this page describes the next app release. It is not yet part of the published download." .Params.pendingNotice }}</p>
+          {{ end }}
+          {{ .Content }}
+        </div>
         {{ if or .Params.related .Params.next }}
         <nav class="page-links" aria-label="Related documentation">
           {{ with .Params.next }}<a class="page-link" href="{{ .url }}"><span>Next</span><strong>{{ .label }} →</strong></a>{{ end }}

@@ -2,6 +2,7 @@
 title = "Vaults"
 description = "Local storage, active-vault behavior, recent-vault metadata, backup requirements, and MCP path selection."
 layout = "docs"
+pendingRelease = true
 [[related]]
 label = "Assertion fields"
 url = "/guide/reference/assertion-fields/"
@@ -37,6 +38,12 @@ Recent-vault tracking and display names are stored in application settings outsi
 The vault file is the authoritative local store. Include it in the project's encrypted backup process. Close Claimframe and pause other writers before taking a simple manual file copy so the copy represents a consistent point in time.
 
 The database uses SQLite write-ahead logging when accessed by Claimframe integrations. Copying only the main database while a writer is active can omit recent changes still represented by SQLite sidecar files.
+
+## Naming upgrades and snapshots
+
+Schema 17 uses current names only. Upgrading an older supported vault requires explicit desktop confirmation and a recoverable SQLite backup. See [upgrade and recovery steps](/guide/how-to/manage-vault/#upgrade-an-older-vault-to-current-name-naming).
+
+[CFText export/import](/guide/reference/cftext/) transfers current logical content into a fresh vault with new IDs. It omits saved queries and historical workflow data, so use a SQLite backup when you need full history and identity.
 
 ## Local MCP server
 

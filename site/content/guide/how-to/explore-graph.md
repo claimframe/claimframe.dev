@@ -2,6 +2,7 @@
 title = "Explore related claims in the graph"
 description = "Begin with a focused result, expand its neighborhood, and keep the working graph readable."
 layout = "docs"
+pendingRelease = true
 doc_type = "How-to guide"
 doc_section = "How-to guides"
 [[related]]
@@ -34,6 +35,10 @@ Use Graph Recall when you want to understand how a small set of facts connects. 
 Select an edge or a connected node to select the sourced assertion behind that relationship. The selection summary appears below the graph, and the provenance inspector opens at the right when assertion evidence is available.
 
 Drag nodes when two relationships overlap or when a different arrangement makes the result easier to explain. Claimframe preserves node positions for later use.
+
+## Entity names and identity
+
+Entity nodes use stored IDs for identity and current names for labels. Renaming an entity preserves its graph identity and connections. Literal values and claim-reference nodes remain distinct even when their text matches an entity name. Query text is separate: [update a saved query after a rename](/guide/how-to/query-and-save/#after-an-entity-rename) when it still uses the old name.
 
 ## Reset the working view
 

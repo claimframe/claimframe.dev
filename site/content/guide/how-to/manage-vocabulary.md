@@ -2,6 +2,7 @@
 title = "Manage a vocabulary"
 description = "Preview, adopt, verify, and—while still unused—remove a vocabulary release from the current vault."
 layout = "docs"
+pendingRelease = true
 doc_type = "How-to guide"
 doc_section = "How-to guides"
 [[related]]
@@ -30,9 +31,9 @@ You can use a vault without adopting any vocabulary. Adopt one when stable ident
 1. Open the app menu and choose **Manage vocabularies**.
 2. Select a supplied release from **Library**, or choose **Import file** to preview a local `.cfvocab` package.
 3. Review the publisher, namespace, license, release number, attribution, and content counts.
-4. Scan **Contents** for the terms and predicates you expect. If the preview reports local name collisions, review the replacement tokens before continuing.
+4. Scan **Contents** for the terms and predicates you expect. If the preview reports local name collisions, review the proposed current names before continuing.
 
-Claimframe does not overwrite a colliding local name. It preserves the vocabulary's stable identifier and shows the vault token it will use instead.
+Claimframe does not overwrite a colliding local name. It preserves the vocabulary's stable identifier and previews a deterministic available name with a collision suffix. Matching labels do not merge distinct vocabulary terms; stable identifiers determine vocabulary identity.
 
 ## Choose what to adopt
 
@@ -57,6 +58,6 @@ Claimframe blocks another release with the same vocabulary ID rather than treati
 2. Find the release under **Adopted by this vault**.
 3. Choose **Undo unused import**, then confirm with **Remove**.
 
-Undo succeeds only while no assertion, saved query, or other adopted vocabulary depends on the imported content. When the button is disabled, its explanation identifies why the release cannot be removed.
+Undo succeeds only while no assertion, saved query, or other adopted vocabulary depends on the imported content. Explicitly renaming an imported term also protects it from Undo. When the button is disabled, its explanation identifies why the release cannot be removed.
 
 If Claimframe reports dependencies, leave the release installed. Removing or rewriting dependent domain data solely to force an undo can damage the vault's historical model.

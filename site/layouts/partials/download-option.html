@@ -1,0 +1,8 @@
+{{ if site.Params.releasePending }}
+<div class="download-option {{ .kind }}-download">
+{{ else }}
+<a class="download-option {{ .kind }}-download" href="https://github.com/claimframe/claimframe-downloads/releases/latest/download/{{ .asset }}">
+{{ end }}
+  <span><strong>{{ .label }}</strong><span>v{{ site.Params.releaseVersion }} · {{ .detail }}</span>{{ if site.Params.releasePending }}<span>Pending release</span>{{ end }}</span>
+  {{ if not site.Params.releasePending }}<span class="download-arrow" aria-hidden="true">↓</span>{{ end }}
+{{ if site.Params.releasePending }}</div>{{ else }}</a>{{ end }}
