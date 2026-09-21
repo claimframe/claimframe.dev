@@ -37,13 +37,15 @@ The application source repository is private, so its GitHub Releases and release
 assets require repository read access. Public installers are published as release
 assets in the dedicated public
 [`claimframe/claimframe-downloads`](https://github.com/claimframe/claimframe-downloads)
-repository instead. For the current release version configured in
-`site/config.toml`, the homepage derives links to these assets on its matching release tag:
+repository instead. The coordinated next release replaces the Linux AppImage with native DEB and RPM
+packages. The homepage derives these nine asset names from `params.releaseVersion`
+in `site/config.toml` once `params.releasePending` is cleared:
 
 - `Claimframe-<version>-macos-arm64.dmg`
 - `Claimframe-<version>-macos-x64.dmg`
 - `Claimframe-<version>-windows-x64.msi`
-- `Claimframe-<version>-linux-x86_64.AppImage`
+- `Claimframe-<version>-linux-amd64.deb`
+- `Claimframe-<version>-linux-x86_64.rpm`
 - `claimframe-mcp-<version>-macos-aarch64`
 - `claimframe-mcp-<version>-macos-x86_64`
 - `claimframe-mcp-<version>-windows-x86_64.exe`
@@ -53,10 +55,64 @@ The private application's release workflow must copy and rename each completed
 installer and MCP executable into a matching release in
 `claimframe/claimframe-downloads`. When the application is released, update
 `params.releaseVersion` once in `site/config.toml`; the homepage uses that value for
-its displayed version and all eight `/releases/download/v<version>/<asset-name>` URLs.
+its displayed version and all nine `/releases/download/v<version>/<asset-name>` URLs.
 Netlify verifies that the matching public release exists and contains exactly those
-eight assets before deploying the site.
+nine assets before deploying the site.
 
+
+### Coordinated rollout (pending)
+
+No package release is claimed by this change. `releaseVersion` targets `0.4.0` and
+`releasePending = true` withholds all unpublished 0.4.0 artifact links and makes `npm run verify:release` fail before attempting network access.
+macOS, Windows, and MCP asset naming conventions remain unchanged. The public
+releases fallback remains available for existing downloads. Local builds and
+tests can run while the release is pending; the Netlify build cannot deploy it.
+
+The [0.4.0 release notes](site/content/releases/0.4.0.md) are linked from the homepage
+and guide. Public documentation is written for release day because it publishes
+with the app release; pending status is an internal publication/download gate.
+Keep the notes aligned with the app changelog.
+
+After the app release containing native packages and schema 17 is approved and all
+nine public assets exist, confirm `releaseVersion` and set `releasePending = false`.
+Run `npm test` and `npm run verify:release` before the separately authorized site
+publication. Before the 0.4.0 rollout, independently confirm it is the latest stable public
+release. The verifier checks the configured release tag and its exact nine-asset
+set; download links remain pinned to that tag when a later version is published. AppImage is not an optional
+asset in the new contract. Historical releases remain available on GitHub.
+
+Linux format labels identify package families, not a tested distribution matrix.
+See the [Linux guide](site/content/guide/how-to/install-linux.md) for local package
+manager installation, updates, and removal. No APT/YUM repository or automatic
+updater is configured.
+
+## Entity naming documentation
+
+The upcoming schema 17 contract is one stable ID and one current name per entity.
+Names are unique within a vault using Unicode 17.0 simple case folding, with outer
+whitespace trimmed and interior spaces, punctuation, composition, and display case
+preserved. Case-variant capture reuses the current owner without changing display
+spelling. Explicit rename, including case-only rename, keeps the ID, rejects another
+owner's name, and releases the old name. There are no retained lookup aliases.
+
+Saved query text stays unchanged through rename and migration; an old name may stop
+matching or later select a different entity. Autocomplete inserts quoted/escaped
+current-name text with no ID binding. Graph nodes use stored IDs. Sourced domain
+`aka`/naming facts and original evidence remain independent of lookup rules. Stable
+vocabulary identifiers remain authoritative.
+
+The [Share a vault guide](site/content/guide/how-to/share-vault.md) follows the UI
+labels in `VaultsPanel.tsx`, `StartupVault.tsx`, `useImportExport.ts`, and
+`CfTextImportDialog.tsx` in the app source.
+
+The Capture and Query references, modeling/query/graph/vocabulary guides, vault
+upgrade guidance, CFText reference, and agent context follow app ADR-0008 and the
+product-spec, data-model, and CFText contracts. CFText is new in 0.4.0: export current state, edit externally, and import into a fresh
+vault with new IDs. It is the recommended person-to-person handoff: export a snapshot,
+share through a chosen channel, and import an independent copy, without synchronization
+or full history, saved queries, or settings. It omits lookup aliases; only development/pre-release files may
+need alias-directive cleanup. It is not a history-preserving SQLite backup. The 100,000-claim reference
+budgets are three seconds for export and 3.5 seconds for parse plus import.
 
 ## AI Disclosure
 

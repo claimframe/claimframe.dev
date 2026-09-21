@@ -42,3 +42,13 @@ In **Manage vaults**, choose **Rename**, enter the new display name, and save it
 4. Confirm the copied file exists and has a plausible modification time and size.
 
 Do not rely on a manual copy taken while writers are active. SQLite may have recent changes in write-ahead-log sidecar files.
+
+## Upgrade an older vault to current-name naming
+
+Schema 17 introduces [one current name per entity](/guide/reference/capture-syntax/#current-entity-names). Open an older supported vault through the desktop picker, close other GUI and MCP sessions using it, and review the confirmation before upgrading. The app creates a recoverable SQLite backup beside the vault named `<vault>.before-v17-<uuid>.sqlite`, including committed write-ahead-log data, before migration.
+
+The upgrade preserves entity IDs, stored relationships, evidence, history, and saved query text. It checks for empty names and case-insensitive current-name collisions and rolls back on failure. Old lookup aliases become inactive. Review saved queries because old names stop resolving and may later belong to a different entity.
+
+If migration fails or you need to return to the previous app, close all sessions, keep the original vault and its sidecar files, and open a copy of the reported backup at a fresh path with the previous app. Resolve any reported name collisions there with explicit renames before retrying. Older apps reject schema 17 vaults; use the backup for recovery. MCP and startup opening direct you to the desktop confirmation path rather than upgrading silently.
+
+CFText is a current-state interchange format, not a backup of original IDs or history. See [CFText snapshots](/guide/reference/cftext/) before choosing an export for recovery.

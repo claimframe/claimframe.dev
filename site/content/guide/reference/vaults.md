@@ -38,6 +38,12 @@ The vault file is the authoritative local store. Include it in the project's enc
 
 The database uses SQLite write-ahead logging when accessed by Claimframe integrations. Copying only the main database while a writer is active can omit recent changes still represented by SQLite sidecar files.
 
+## Naming upgrades and snapshots
+
+Schema 17 uses current names only. Upgrading an older supported vault requires explicit desktop confirmation and a recoverable SQLite backup. See [upgrade and recovery steps](/guide/how-to/manage-vault/#upgrade-an-older-vault-to-current-name-naming).
+
+[CFText export/import](/guide/reference/cftext/) transfers current logical content into a fresh vault with new IDs. It omits saved queries and historical workflow data, so use a SQLite backup when you need full history and identity.
+
 ## Local MCP server
 
 The standalone Rust MCP server uses the same vault core and normalized SQLite schema as the desktop application. It does not require Python or a running desktop app, and it can share a vault with the desktop application. Select the vault path in this order:

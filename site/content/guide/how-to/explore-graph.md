@@ -35,6 +35,10 @@ Select an edge or a connected node to select the sourced assertion behind that r
 
 Drag nodes when two relationships overlap or when a different arrangement makes the result easier to explain. Claimframe preserves node positions for later use.
 
+## Entity names and identity
+
+Entity nodes use stored IDs for identity and current names for labels. Renaming an entity preserves its graph identity and connections. Literal values and claim-reference nodes remain distinct even when their text matches an entity name. Query text is separate: [update a saved query after a rename](/guide/how-to/query-and-save/#after-an-entity-rename) when it still uses the old name.
+
 ## Reset the working view
 
 If the graph becomes difficult to read, rerun the original query to discard added neighbors, or narrow the query and filters to build a smaller graph. Graph Recall is a working view of vault facts; changing its layout or neighborhood does not change the stored assertions.

@@ -23,6 +23,12 @@ It helps users capture sourced assertions from meetings, documents, repositories
 - Quick query: `Cmd/Ctrl+Shift+Q` opens fast recall for graph lookup during a live conversation.
 - MCP vault: the local assertion store exposed through Claimframe's MCP server for token-efficient agent and LLM access.
 
+## Entity Naming
+
+Claimframe 0.4.0 uses one stable ID and one case-insensitively unique current name per entity. Old names stop resolving after rename; saved query text stays unchanged and may match a new owner of an old name. See https://claimframe.dev/guide/reference/capture-syntax/ and https://claimframe.dev/llms-full.txt for the full rules.
+
+Release notes: https://claimframe.dev/releases/0.4.0/.
+
 ## Canonical Links
 
 - Site: https://claimframe.dev

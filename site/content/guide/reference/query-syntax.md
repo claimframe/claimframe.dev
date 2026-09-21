@@ -23,9 +23,9 @@ Use three tokens to query the current assertion projection. Put `?` in any posit
 | `? depends-on postgres` | Any subject that depends on Postgres |
 | `? ? ?` | Every current assertion |
 
-Subjects and predicates match known canonical entities. An object matches when any value in the rendered assertion group equals the requested value. Structured queries operate over current datoms, not retracted historical values.
+Subjects and predicates resolve entities by their current names. An object matches when any value in the rendered assertion group equals the requested value. Structured queries operate over current datoms, not retracted historical values.
 
-## Quoted values and aliases
+## Quoted values and current names
 
 Double quotes preserve spaces within one query position.
 
@@ -34,7 +34,9 @@ Double quotes preserve spaces within one query position.
 ? connects-to "Network International"
 ```
 
-Entity display names and aliases resolve to their canonical entities where available.
+Entity names follow the [current-name comparison rules](/guide/reference/capture-syntax/#current-entity-names): case-insensitive matching, with interior spaces, punctuation, and Unicode composition preserved. Historical names and domain `aka` claims are not lookup aliases.
+
+Rename preserves stored relationships but leaves query text unchanged. After `billing` becomes `billing-service`, `billing ? ?` no longer selects that entity. If another entity later takes `billing`, the same query may select the new owner. Edit or recreate saved queries that need the renamed entity. Evidence searches may still find historical wording; that does not restore old-name lookup.
 
 ## Text search
 
@@ -63,4 +65,4 @@ Selecting a subject, predicate, object, source, status, or tag in an assertion r
 
 ## Autocomplete
 
-Query autocomplete uses the same canonical tokens as capture. Suggestions include existing entities, predicates, sources, tags, and adopted vocabulary terms. `Ctrl/Cmd` + `Space` explicitly opens suggestions at the cursor.
+Query autocomplete inserts syntax-safe current names as plain text, just like Capture. It does not bind IDs; names resolve when the query runs. Suggestions include existing entities, predicates, sources, tags, and adopted vocabulary terms. `Ctrl/Cmd` + `Space` explicitly opens suggestions at the cursor.

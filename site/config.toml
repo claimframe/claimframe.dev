@@ -5,7 +5,9 @@ disableKinds = ["taxonomy", "term", "RSS", "section"]
 
 [params]
   description = "Claimframe is a free, open-source, local-first assertion memory workbench for architects, consultants, and technical advisors."
-  releaseVersion = "0.3.2"
+  releaseVersion = "0.4.0"
+  # Clear only during the coordinated native-package/schema-17 release.
+  releasePending = true
 
 [markup.goldmark.renderer]
   unsafe = false

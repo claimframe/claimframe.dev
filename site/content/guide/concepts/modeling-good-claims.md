@@ -18,9 +18,15 @@ When modeling, the goal is to create a "good" graph. Goodness depends on queryab
 
 A good graph is connected. Orphaned and disconnected entities are less useful than rich relationships to entities that appear as both subjects and objects.
 
+## Names identify entities within a vault
+
+Each entity has one current name and one stable ID. Names are unique within a vault under case-insensitive comparison. Two different people named Alex need distinct current names, such as `"Alex (Platform)"` and `"Alex (Finance)"`. Punctuation and spacing variants are separate names, not automatic equivalents. Autocomplete inserts a current name as text; it does not attach an ID to the draft.
+
+A rename preserves stored relationships and frees the old name for another entity. Old names stop resolving. Sourced `aka` or naming claims can describe other names without making them lookup aliases. Keep original evidence intact and [update saved query text when needed](/guide/how-to/query-and-save/#after-an-entity-rename).
+
 ## Prefer stable subjects
 
-Name the thing being discussed. Reuse the vault's canonical entity when autocomplete offers it. Prefer specific identifiers even if they are verbose.
+Name the thing being discussed. Reuse an existing entity's current name when autocomplete offers it. Prefer specific identifiers even if they are verbose.
 
 | Weak                        | Better                                    | Why                                                                 |
 | --------------------------- | ----------------------------------------- | ------------------------------------------------------------------- |
@@ -31,7 +37,7 @@ Do not put time, confidence, or source into an entity name merely to keep claims
 
 ## Reuse entities and meaningful relationships
 
-Most useful connectivity comes from reusing canonical entities. Before creating an entity, check whether the same thing already exists under another name. When the entity is genuinely new, connect it to established entities through meaningful relationships such as classification, composition, dependency, or responsibility.
+Most useful connectivity comes from reusing existing entities. Before creating an entity, check whether the same thing already exists under another name. When the entity is genuinely new, connect it to established entities through meaningful relationships such as classification, composition, dependency, or responsibility.
 
 ```text
 integration-platform comprises message-broker
@@ -124,7 +130,7 @@ Apply RDFS and OWL characteristics only when their inferred consequences are wan
 
 ## Preserve meaning when working from a source
 
-Normalize names and predicates, but do not strengthen a source's wording. “May depend on Postgres” should not silently become a confirmed dependency. Preserve uncertainty through wording, confidence, status, or a follow-up question.
+Deliberately choose existing current names and predicates when they express the source's meaning, but do not strengthen its wording. “May depend on Postgres” should not silently become a confirmed dependency. Preserve uncertainty through wording, confidence, status, or a follow-up question.
 
 Use `?` when an object is known to exist but its value is unknown:
 
@@ -149,7 +155,7 @@ Good modeling is not maximal detail. Capture the smallest claim that will suppor
 - Find compound objects and hidden enumerations.
 - Review compound phrases that may be established concepts.
 - Resolve new names against existing entities and add only meaningful relationships.
-- Reuse existing entities and predicates; normalize inflections and synonyms.
+- Reuse existing entities and predicates; review inflections and synonyms as modeling choices.
 - Audit repeated subject-predicate pairs for cardinality-many.
 - Define predicate metadata before repeated domain use.
 - Use RDF, RDFS, and OWL terms to declare types, classes, properties, and their hierarchies.

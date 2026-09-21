@@ -506,8 +506,8 @@
         text-decoration: none;
       }
 
-      .download-option:hover,
-      .download-option:focus-visible {
+      a.download-option:hover,
+      a.download-option:focus-visible {
         border-color: rgba(34, 216, 204, 0.56);
         background: rgba(34, 216, 204, 0.08);
       }
@@ -812,56 +812,42 @@
 
       <section id="download" class="download-band" aria-labelledby="download-title">
         {{- $releaseVersion := site.Params.releaseVersion -}}
-        {{- $releaseDownloadBase := printf "https://github.com/claimframe/claimframe-downloads/releases/download/v%s" $releaseVersion -}}
         <div class="site-shell download-grid">
           <div>
             <p class="section-kicker">Download the alpha</p>
             <h2 id="download-title">Your vault stays on your machine.</h2>
-            <p class="section-intro">Choose your platform to download the Claimframe v{{ $releaseVersion }} desktop app and standalone MCP server. The MCP executable uses the same local vault without requiring Python or a running desktop app. Claimframe is currently unsigned alpha software, so your operating system may ask you to confirm before opening it.</p>
+            <p class="section-intro">Claimframe v{{ $releaseVersion }} provides a desktop app and standalone MCP server for your platform. The MCP executable uses the same local vault without requiring Python or a running desktop app. Claimframe is currently unsigned alpha software, so your operating system may ask you to confirm before opening it.</p>
+            <p><a href="/releases/0.4.0/">Read the 0.4.0 release notes and upgrade guidance</a>.</p>
           </div>
           <div class="download-options" aria-label="Claimframe v{{ $releaseVersion }} downloads" data-release-version="{{ $releaseVersion }}">
             <article class="download-platform-box" data-platform="mac" data-download-target="macos-arm64" aria-labelledby="download-macos-arm64">
               <h3 id="download-macos-arm64">macOS — Apple silicon</h3>
               <div class="download-platform-links">
-                <a class="download-option desktop-download" href="{{ $releaseDownloadBase }}/Claimframe-{{ $releaseVersion }}-macos-arm64.dmg">
-                  <span><strong>Desktop app</strong><span>v{{ $releaseVersion }} · DMG installer for M1 and newer Macs</span></span><span class="download-arrow" aria-hidden="true">↓</span>
-                </a>
-                <a class="download-option mcp-download" href="{{ $releaseDownloadBase }}/claimframe-mcp-{{ $releaseVersion }}-macos-aarch64">
-                  <span><strong>Standalone MCP server</strong><span>v{{ $releaseVersion }} · Apple silicon executable</span></span><span class="download-arrow" aria-hidden="true">↓</span>
-                </a>
+                {{ partial "download-option.html" (dict "kind" "desktop" "asset" (printf "Claimframe-%s-macos-arm64.dmg" $releaseVersion) "label" "Desktop app" "detail" "DMG installer for M1 and newer Macs") }}
+                {{ partial "download-option.html" (dict "kind" "mcp" "asset" (printf "claimframe-mcp-%s-macos-aarch64" $releaseVersion) "label" "Standalone MCP server" "detail" "Apple silicon executable") }}
               </div>
             </article>
             <article class="download-platform-box" data-platform="mac" data-download-target="macos-x64" aria-labelledby="download-macos-x64">
               <h3 id="download-macos-x64">macOS — Intel</h3>
               <div class="download-platform-links">
-                <a class="download-option desktop-download" href="{{ $releaseDownloadBase }}/Claimframe-{{ $releaseVersion }}-macos-x64.dmg">
-                  <span><strong>Desktop app</strong><span>v{{ $releaseVersion }} · DMG installer for Intel-based Macs</span></span><span class="download-arrow" aria-hidden="true">↓</span>
-                </a>
-                <a class="download-option mcp-download" href="{{ $releaseDownloadBase }}/claimframe-mcp-{{ $releaseVersion }}-macos-x86_64">
-                  <span><strong>Standalone MCP server</strong><span>v{{ $releaseVersion }} · Intel executable</span></span><span class="download-arrow" aria-hidden="true">↓</span>
-                </a>
+                {{ partial "download-option.html" (dict "kind" "desktop" "asset" (printf "Claimframe-%s-macos-x64.dmg" $releaseVersion) "label" "Desktop app" "detail" "DMG installer for Intel-based Macs") }}
+                {{ partial "download-option.html" (dict "kind" "mcp" "asset" (printf "claimframe-mcp-%s-macos-x86_64" $releaseVersion) "label" "Standalone MCP server" "detail" "Intel executable") }}
               </div>
             </article>
             <article class="download-platform-box" data-platform="windows" data-download-target="windows-x64" aria-labelledby="download-windows-x64">
               <h3 id="download-windows-x64">Windows — x86-64</h3>
               <div class="download-platform-links">
-                <a class="download-option desktop-download" href="{{ $releaseDownloadBase }}/Claimframe-{{ $releaseVersion }}-windows-x64.msi">
-                  <span><strong>Desktop app</strong><span>v{{ $releaseVersion }} · MSI installer</span></span><span class="download-arrow" aria-hidden="true">↓</span>
-                </a>
-                <a class="download-option mcp-download" href="{{ $releaseDownloadBase }}/claimframe-mcp-{{ $releaseVersion }}-windows-x86_64.exe">
-                  <span><strong>Standalone MCP server</strong><span>v{{ $releaseVersion }} · Windows executable</span></span><span class="download-arrow" aria-hidden="true">↓</span>
-                </a>
+                {{ partial "download-option.html" (dict "kind" "desktop" "asset" (printf "Claimframe-%s-windows-x64.msi" $releaseVersion) "label" "Desktop app" "detail" "MSI installer") }}
+                {{ partial "download-option.html" (dict "kind" "mcp" "asset" (printf "claimframe-mcp-%s-windows-x86_64.exe" $releaseVersion) "label" "Standalone MCP server" "detail" "Windows executable") }}
               </div>
             </article>
             <article class="download-platform-box" data-platform="linux" data-download-target="linux-x86_64" aria-labelledby="download-linux-x86-64">
               <h3 id="download-linux-x86-64">Linux — x86-64</h3>
+              <p>Choose the package format for your distribution. <a href="/guide/how-to/install-linux/">Linux installation guidance</a>.</p>
               <div class="download-platform-links">
-                <a class="download-option desktop-download" href="{{ $releaseDownloadBase }}/Claimframe-{{ $releaseVersion }}-linux-x86_64.AppImage">
-                  <span><strong>Desktop app</strong><span>v{{ $releaseVersion }} · Portable AppImage</span></span><span class="download-arrow" aria-hidden="true">↓</span>
-                </a>
-                <a class="download-option mcp-download" href="{{ $releaseDownloadBase }}/claimframe-mcp-{{ $releaseVersion }}-linux-x86_64">
-                  <span><strong>Standalone MCP server</strong><span>v{{ $releaseVersion }} · Linux executable</span></span><span class="download-arrow" aria-hidden="true">↓</span>
-                </a>
+                {{ partial "download-option.html" (dict "kind" "desktop" "asset" (printf "Claimframe-%s-linux-amd64.deb" $releaseVersion) "label" "Desktop app — Debian / Ubuntu" "detail" "DEB package · amd64") }}
+                {{ partial "download-option.html" (dict "kind" "desktop" "asset" (printf "Claimframe-%s-linux-x86_64.rpm" $releaseVersion) "label" "Desktop app — Fedora / RHEL family" "detail" "RPM package · x86-64") }}
+                {{ partial "download-option.html" (dict "kind" "mcp" "asset" (printf "claimframe-mcp-%s-linux-x86_64" $releaseVersion) "label" "Standalone MCP server" "detail" "Linux executable") }}
               </div>
             </article>
             <p class="download-fallback">If a download is temporarily unavailable, <a href="https://github.com/claimframe/claimframe-downloads/releases">view all public releases</a>.</p>
@@ -965,6 +951,7 @@ tools:
         <span>Claimframe is free, open source, and local-first.</span>
         <div class="footer-links">
           <a class="text-link" href="/guide/">User guide</a>
+          <a class="text-link" href="/releases/0.4.0/">Release notes</a>
           <a class="text-link" href="/llms.txt">llms.txt</a>
           <a class="text-link" href="/llms-full.txt">llms-full.txt</a>
         </div>
