@@ -2,7 +2,6 @@
 title = "Query syntax"
 description = "Structured subject–predicate–object patterns, wildcard behavior, text search, claim lookup, and result filters."
 layout = "docs"
-pendingRelease = true
 [[related]]
 label = "Capture syntax"
 url = "/guide/reference/capture-syntax/"

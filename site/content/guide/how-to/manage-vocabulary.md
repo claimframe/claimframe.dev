@@ -2,7 +2,6 @@
 title = "Manage a vocabulary"
 description = "Preview, adopt, verify, and—while still unused—remove a vocabulary release from the current vault."
 layout = "docs"
-pendingRelease = true
 doc_type = "How-to guide"
 doc_section = "How-to guides"
 [[related]]

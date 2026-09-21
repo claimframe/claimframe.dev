@@ -2,8 +2,6 @@
 title = "Install on Linux"
 description = "Choose and install the native DEB or RPM desktop package for an x86-64 Linux distribution."
 layout = "docs"
-pendingRelease = true
-pendingNotice = "Native DEB and RPM packages are being prepared to replace the Linux AppImage. They are not yet public downloads. Use these steps after the coordinated release."
 [[related]]
 label = "Downloads"
 url = "/#download"

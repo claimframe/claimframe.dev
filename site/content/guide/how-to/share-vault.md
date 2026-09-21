@@ -4,8 +4,6 @@ description = "Send current vault content to another person so they can work wit
 layout = "docs"
 doc_type = "How-to guide"
 doc_section = "How-to guides"
-pendingRelease = true
-pendingNotice = "Sharing through CFText is new in the upcoming 0.4.0 release. These steps describe that release and are not available in 0.3.2."
 [[related]]
 label = "CFText snapshots"
 url = "/guide/reference/cftext/"

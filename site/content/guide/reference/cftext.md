@@ -2,7 +2,6 @@
 title = "CFText snapshots"
 description = "Transfer current vault content as editable text, with fresh IDs on import and no historical backup guarantee."
 layout = "docs"
-pendingRelease = true
 [[related]]
 label = "Back up and upgrade a vault"
 url = "/guide/how-to/manage-vault/"

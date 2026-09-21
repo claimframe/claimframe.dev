@@ -2,7 +2,6 @@
 title = "Modeling good claims"
 description = "Choose stable subjects, precise predicates, focused objects, and useful context."
 layout = "docs"
-pendingRelease = true
 doc_type = "Concept"
 doc_section = "Concepts"
 [[related]]

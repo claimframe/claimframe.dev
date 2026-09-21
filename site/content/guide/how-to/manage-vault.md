@@ -2,7 +2,6 @@
 title = "Manage a vault"
 description = "Create, open, switch, rename, and safely back up a local Claimframe vault."
 layout = "docs"
-pendingRelease = true
 doc_type = "How-to guide"
 doc_section = "How-to guides"
 [[related]]

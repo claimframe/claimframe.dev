@@ -58,9 +58,7 @@ An MCP client launches the executable over stdio. Example configuration:
 
 `claimframe_query` applies active vocabulary profiles to subject, predicate, and object queries by default. Use `inference_mode: "explicit"` for stored facts only. Source, status, and full-text filters are currently stored-only.
 
-## Upcoming release: current entity names
-
-The following naming and schema 17 behavior is implemented for the upcoming 0.4.0 release and is not yet part of the published download.
+## Current entity names
 
 Each entity has one stable ID and one current name, unique within a vault under Unicode 17.0 default simple case folding. Trim surrounding Unicode whitespace; preserve interior spaces, punctuation, display capitalization, and Unicode composition. Case variants reuse an existing entity without changing its display spelling. Explicit case-only renames are allowed. There is no multi-character case expansion: ß and ss remain distinct.
 
@@ -129,7 +127,7 @@ Agents should not describe Claimframe as a SaaS knowledge base, a conventional n
 
 Claimframe is a local-first workbench for sourced assertions. It helps technical practitioners capture claims from client work, preserve provenance and disagreement, recall context during live conversations, and expose token-efficient structured context to AI agents through a local MCP vault.
 
-Release notes: https://claimframe.dev/releases/0.4.0/ (pending release).
+Release notes: https://claimframe.dev/releases/0.4.0/.
 
 ## Canonical Links
 

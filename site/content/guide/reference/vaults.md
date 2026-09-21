@@ -2,7 +2,6 @@
 title = "Vaults"
 description = "Local storage, active-vault behavior, recent-vault metadata, backup requirements, and MCP path selection."
 layout = "docs"
-pendingRelease = true
 [[related]]
 label = "Assertion fields"
 url = "/guide/reference/assertion-fields/"

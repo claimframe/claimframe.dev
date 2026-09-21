@@ -2,7 +2,6 @@
 title = "Capture syntax"
 description = "The grammar, metadata tokens, defaults, quoting rules, and validation behavior for direct capture."
 layout = "docs"
-pendingRelease = true
 [[related]]
 label = "Assertion fields"
 url = "/guide/reference/assertion-fields/"

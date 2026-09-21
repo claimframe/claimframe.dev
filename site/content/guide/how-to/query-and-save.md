@@ -2,7 +2,6 @@
 title = "Find facts and save a query"
 description = "Find the facts you need, narrow the results, and save the query pattern so you can run it again."
 layout = "docs"
-pendingRelease = true
 doc_type = "How-to guide"
 doc_section = "How-to guides"
 [[related]]

@@ -63,18 +63,18 @@ nine assets before deploying the site.
 ### Coordinated rollout (pending)
 
 No package release is claimed by this change. `releaseVersion` targets `0.4.0` and
-`releasePending = true` withholds all unpublished 0.4.0 artifact links, marks affected guides
-as upcoming, and makes `npm run verify:release` fail before attempting network access.
+`releasePending = true` withholds all unpublished 0.4.0 artifact links and makes `npm run verify:release` fail before attempting network access.
 macOS, Windows, and MCP asset naming conventions remain unchanged. The public
 releases fallback remains available for existing downloads. Local builds and
 tests can run while the release is pending; the Netlify build cannot deploy it.
 
 The [0.4.0 release notes](site/content/releases/0.4.0.md) are linked from the homepage
-and guide and remain marked pending. Keep them aligned with the app changelog.
+and guide. Public documentation is written for release day because it publishes
+with the app release; pending status is an internal publication/download gate.
+Keep the notes aligned with the app changelog.
 
 After the app release containing native packages and schema 17 is approved and all
-nine public assets exist, update `releaseVersion`, set `releasePending = false`, and
-remove the pending wording in `site/static/llms.txt` and `site/static/llms-full.txt`.
+nine public assets exist, confirm `releaseVersion` and set `releasePending = false`.
 Run `npm test` and `npm run verify:release` before the separately authorized site
 publication. The verifier requires the configured version to be the latest stable
 public release and checks its exact nine-asset set. AppImage is not an optional

@@ -2,7 +2,6 @@
 title = "Explore related claims in the graph"
 description = "Begin with a focused result, expand its neighborhood, and keep the working graph readable."
 layout = "docs"
-pendingRelease = true
 doc_type = "How-to guide"
 doc_section = "How-to guides"
 [[related]]

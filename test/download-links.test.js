@@ -56,12 +56,9 @@ test("release-ready downloads contain the exact nine versioned assets in four pl
 
 test("pending preview withholds every unpublished 0.4.0 artifact", () => {
   assert.deepEqual(links(pending), []);
-  assert.equal((pending.match(/Pending release/g) || []).length, 9);
+  assert.ok(!pending.includes("Pending release"));
   assert.ok(!pending.includes("AppImage"));
-  const pendingGuide = fs.readFileSync(path.join(temporary, "pending/guide/how-to/install-linux/index.html"), "utf8");
-  const readyGuide = fs.readFileSync(path.join(temporary, "ready/guide/how-to/install-linux/index.html"), "utf8");
-  assert.ok(pendingGuide.includes("not yet public downloads"));
-  assert.ok(!readyGuide.includes("not yet public downloads"));
+
 });
 
 test("platform detection recommends a family without selecting a Linux package format", () => {
@@ -88,15 +85,15 @@ test("downloads retain installation guidance and the public releases fallback", 
   }
 });
 
-test("release notes are discoverable from downloads and installation, with status matching the build", () => {
+test("release-day guides remain discoverable without internal publication notices", () => {
   for (const [mode, html] of [["pending", pending], ["ready", ready]]) {
     const notesPath = "/releases/0.4.0/";
     assert.ok(html.includes(`href="${notesPath}"`));
     const install = fs.readFileSync(path.join(temporary, mode, "guide/how-to/install-linux/index.html"), "utf8");
     assert.ok(install.includes(`href="${notesPath}"`));
-    const notes = fs.readFileSync(path.join(temporary, mode, "releases/0.4.0/index.html"), "utf8");
-    assert.equal(notes.includes("0.4.0 has not been published"), mode === "pending");
-    const capture = fs.readFileSync(path.join(temporary, mode, "guide/reference/capture-syntax/index.html"), "utf8");
-    assert.equal(capture.includes("not yet part of the published download"), mode === "pending");
+    for (const page of ["releases/0.4.0", "guide/reference/capture-syntax", "guide/how-to/share-vault", "guide/how-to/install-linux"]) {
+      const guide = fs.readFileSync(path.join(temporary, mode, page, "index.html"), "utf8");
+      assert.ok(!/Upcoming release|has not been published|not yet part of the published download|coordinated release candidate/.test(guide), page);
+    }
   }
 });

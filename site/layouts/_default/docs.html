@@ -83,9 +83,6 @@
           <p class="docs-summary">{{ .Params.description }}</p>
         </header>
         <div class="docs-body">
-          {{ if and site.Params.releasePending .Params.pendingRelease }}
-          <p><strong>Upcoming release:</strong> {{ default "The current-name and schema 17 guidance on this page describes the next app release. It is not yet part of the published download." .Params.pendingNotice }}</p>
-          {{ end }}
           {{ .Content }}
         </div>
         {{ if or .Params.related .Params.next }}
