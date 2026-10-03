@@ -15,14 +15,14 @@ label = "Find facts and save a query"
 url = "/guide/how-to/query-and-save/"
 +++
 
-1. Open **Capture**, or press `Cmd/Ctrl` + `Shift` + `C`.
+1. Choose **Capture** in the activity bar, or press `Cmd/Ctrl` + `Shift` + `C`.
 2. Enter the subject, predicate, and object. Reuse autocomplete suggestions where they match the intended entities.
 3. Add `@source` and, when possible, an evidence locator such as a timestamp or section.
 4. Add status, confidence, or tags only when they contribute useful review or retrieval information.
-5. Review the syntax preview and commit the assertion.
+5. Review the **Parsing as** line below the field, then choose **Commit**.
 6. Confirm the new assertion appears with the intended source and object.
 
-{{< guide-shot src="/assets/guide/manual-capture.png" alt="Claimframe Capture workspace with the manual capture field highlighted" x="20%" y="18%" width="56%" height="9%" caption="Enter the complete fact and its source in the highlighted capture field, then commit it." >}}
+{{< guide-shot src="/assets/guide/manual-capture.png" alt="Compact Capture workspace with the source statement and parsing line above recent assertions" x="22.8%" y="12%" width="68%" height="5.4%" caption="Enter the sourced assertion in the main Capture field and check how Claimframe parses it before committing." >}}
 
 For example:
 

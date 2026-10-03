@@ -12,15 +12,15 @@ label = "Inspect provenance"
 url = "/guide/how-to/inspect-provenance/"
 +++
 
-1. Open **Assertions** or **Graph Recall**.
+1. Choose **Query** or **Graph** in the activity bar.
 2. Enter the smallest subject–predicate–object pattern that describes the needed result, then run it.
 3. Narrow the results with source, predicate, object, status, or conflicts-only filters where available. You can also select a value in an assertion row to pivot to a related result.
 4. Beside the query field, choose **Save current query**.
 5. In the **Query name** field, enter a recognizable name such as `Invoice ownership`.
-6. Choose **Save query**. A success message confirms that the query pattern—not the matching facts—was saved in the current vault.
-7. Open the app menu and choose **Manage queries** to run, rename, or delete the saved query.
+6. Choose **Save**. A success message confirms that the query pattern—not the matching facts—was saved in the current vault.
+7. Run the saved query from **Saved Queries** in the Query sidebar. Choose **Tools → Manage Queries** to rename or delete it.
 
-{{< guide-shot src="/assets/guide/save-query.png" alt="Assertion Recall with the save-query name dialog highlighted" x="53%" y="22%" width="23%" height="15%" caption="The save control beside the query opens this naming dialog. Name the query, then choose Save." >}}
+{{< guide-shot src="/assets/guide/save-query.png" alt="Query workspace with Saved Queries in the sidebar and the query naming popover open" x="54%" y="18.7%" width="22.5%" height="17.3%" caption="The save control beside the query opens a naming popover. Saved queries appear in the Query sidebar." >}}
 
 For example:
 
@@ -32,6 +32,6 @@ If a structured query returns nothing, remove one exact value or replace it with
 
 Saving a query does not copy or freeze its current results. Running it later evaluates the saved pattern against the vault's then-current facts.
 
-## Export the result
+## Export vault content
 
-Open **Export** to copy the current vault assertions as Markdown for notes, documentation, or handoff. Check the preview or copied output before using it: export carries the selected assertion material forward but does not replace the original vault or its interactive provenance views.
+Choose **File → Export Vault** to start a CFText export in **Vaults**. The exported file is a current-state copy of the vault for sharing or editing; it does not save only the current query results. Keep the original vault and its backups for provenance and full review history.

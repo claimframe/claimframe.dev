@@ -14,6 +14,11 @@ url = "/guide/reference/query-syntax/"
 | Open a fresh capture | `Cmd` + `Shift` + `C` | `Ctrl` + `Shift` + `C` |
 | Open quick assertion query | `Ctrl` + `Shift` + `Q` | `Ctrl` + `Shift` + `Q` |
 | Open the command palette | `Cmd` + `K` | `Ctrl` + `K` |
+| Show or hide the workspace sidebar | `Cmd` + `B` | `Ctrl` + `B` |
+| Focus universal search | `Cmd` + `P` | `Ctrl` + `P` |
+| Zoom in | `Cmd` + `+` | `Ctrl` + `+` |
+| Zoom out | `Cmd` + `-` | `Ctrl` + `-` |
+| Reset zoom | `Cmd` + `0` | `Ctrl` + `0` |
 
 The quick-query shortcut currently uses `Ctrl` on every platform.
 
@@ -30,4 +35,4 @@ Autocomplete may also appear automatically after at least two characters in the 
 
 ## General interaction
 
-Standard keyboard behavior applies to buttons, links, menus, and form controls. Available graph-specific commands are exposed through focusable graph controls rather than a separate global shortcut set.
+Standard keyboard behavior applies to buttons, links, menus, and form controls. With the sidebar divider focused, use the left or right arrow key to resize it; double-click the divider to restore its default width. Activity-bar buttons and sidebar section headers are keyboard accessible. Graph-specific commands are available through focusable graph controls.

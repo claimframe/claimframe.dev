@@ -9,14 +9,14 @@ than duplicating it.
 ## Implementation status
 
 Completed on 2026-08-17. The product-specific content was checked against the
-local `claimframe-app` source and product documentation. Hugo builds 24 pages,
-and every internal `/guide/` link resolves to generated output. Export remains a
-section of `Find facts and save a query`; the current export workflow is not complex
-enough to warrant a separate page. The former monolithic guide layout was
-removed after its content was migrated. Three current-UI screenshots from a
-disposable synthetic demo vault orient readers to manual capture, query saving,
-and the provenance inspector without turning every procedure into a screenshot
-walkthrough.
+local `claimframe-app` source and product documentation. At that point Hugo built
+24 pages, and every internal `/guide/` link resolved to generated output. The
+former monolithic guide layout was
+removed after its content was migrated. The screenshots were refreshed for the
+CLA-128 compact workbench using synthetic demo content. They orient readers to
+the activity bar, contextual sidebars, capture, query, graph, transcript review,
+vocabulary management, conflicts, and provenance without turning every
+procedure into a screenshot walkthrough.
 
 ## Target quality
 

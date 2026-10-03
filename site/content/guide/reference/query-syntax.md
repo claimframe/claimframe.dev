@@ -57,7 +57,7 @@ claim:ASSERTION_ID
 
 ## Filters
 
-Graph Recall and Assertions can further narrow query results with filters. Available filters include source, predicate, object, status, and conflicts-only display where offered by the workspace. Filters are combined with the query: a result must match both.
+The **Graph** and **Query** workspaces can further narrow query results with filters. Available filters include source, predicate, object, status, and conflicts-only display where offered by the workspace. Filters are combined with the query: a result must match both.
 
 Selecting a subject, predicate, object, source, status, or tag in an assertion row can pivot directly to a corresponding query or filtered result.
 

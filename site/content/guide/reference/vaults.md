@@ -30,7 +30,7 @@ The core stored unit is a datom. The interface renders assertion groups from the
 
 Claimframe can create or open vault files with `.sqlite3`, `.sqlite`, `.db`, or `.cfvault` extensions. A renamed vault display name is application metadata; it does not rename or move the underlying file.
 
-Recent-vault tracking and display names are stored in application settings outside the vault. Opening a vault in a new window lets two vaults remain open at the same time.
+Recent-vault tracking and display names are stored in application settings outside the vault. Once a vault is active in a process, opening another vault starts a new process and window. The **Vaults** workspace shows the current path and recent vaults.
 
 ## Backup
 
@@ -46,4 +46,4 @@ The standalone Rust MCP server uses the same vault core and normalized SQLite sc
 2. If omitted, set `CLAIMFRAME_VAULT`.
 3. Otherwise, the server uses `.claimframe/vault.sqlite3` relative to its working directory.
 
-The active desktop vault path is shown in application settings. The MCP process and desktop application use WAL mode and a busy timeout to coordinate access to the same local file.
+The active desktop vault path is shown under **Vaults → Current vault**. The MCP process and desktop application use WAL mode and a busy timeout to coordinate access to the same local file.

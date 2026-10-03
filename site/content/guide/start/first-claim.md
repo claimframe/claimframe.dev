@@ -7,6 +7,9 @@ doc_section = "Get started"
 [[related]]
 label = "Why assertions are not facts"
 url = "/guide/concepts/assertions-not-facts/"
+[[related]]
+label = "Find your way around the workbench"
+url = "/guide/start/workbench/"
 [next]
 label = "Modeling good claims"
 url = "/guide/concepts/modeling-good-claims/"
@@ -24,7 +27,7 @@ On the start screen, choose **New vault**. Save the file as `claimframe-tutorial
 
 ## 2. Capture Alice's claim
 
-Open **Capture**, enter the following text exactly, and commit it:
+Choose **Capture** in the left activity bar, enter the following text exactly in the main capture field, and choose **Commit**:
 
 ```text
 billing-service owns invoice-generation @alice ^00:32:18 #ownership
@@ -34,7 +37,7 @@ billing-service owns invoice-generation @alice ^00:32:18 #ownership
 
 ## 3. Capture Bob's different account
 
-Enter and commit:
+In the same capture field, enter and commit:
 
 ```text
 accounting-platform owns invoice-generation @bob ^00:41:03 #ownership
@@ -44,7 +47,7 @@ accounting-platform owns invoice-generation @bob ^00:41:03 #ownership
 
 ## 4. Retrieve the ownership claims
 
-Open **Assertions**. In the query field, enter:
+Choose **Query** in the activity bar. In its query field, enter:
 
 ```text
 ? owns invoice-generation
@@ -56,7 +59,7 @@ Run the query.
 
 ## 5. Inspect the evidence
 
-Select Alice's assertion. In the provenance inspector, locate the source, evidence locator, capture time, status, confidence, and raw capture text.
+Select Alice's assertion. The provenance panel opens at the right. Locate the source, evidence locator, capture time, status, confidence, and original source text. If you hid the panel, choose **View → Show Details**.
 
 **Expected result:** the source is `alice`, the locator is `00:32:18`, and the default status is `active`.
 
@@ -68,9 +71,9 @@ With Alice's assertion selected, change its status to `needs_review`.
 
 ## 7. Save the query
 
-Return to the query field and choose **Save current query**. Enter `Invoice ownership` in the **Query name** field, then choose **Save query**.
+Return to the query field and choose **Save current query** beside it. Enter `Invoice ownership` in the **Query name** field, then choose **Save**.
 
-Open the app menu, choose **Manage queries**, and run `Invoice ownership`.
+Run `Invoice ownership` from **Saved Queries** in the Query sidebar. For rename or delete actions, choose **Tools → Manage Queries**.
 
 **Expected result:** the same two ownership claims return without retyping the pattern.
 

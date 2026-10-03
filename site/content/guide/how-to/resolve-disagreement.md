@@ -19,13 +19,13 @@ Use the Conflicts workspace to compare competing source claims and record what a
 
 ## Review the conflict
 
-1. Open **Conflicts** and select a conflict from the queue.
+1. Choose **Conflicts** in the activity bar and select a conflict from the queue in its sidebar.
 2. Confirm that the dossier says **Conflict active** and inspect the detection rule beneath the title. If the conflict is unexpected, review the predicate's [settings](/guide/reference/predicate-settings/) before judging the source claims.
 3. Under **Original assertions**, select each participating claim in turn.
-4. Compare its exact wording, source, evidence locator, capture time, and provenance in the inspector at the right.
+4. Compare its exact wording, source, evidence locator, capture time, and provenance in the details panel. Choose **View → Show Details** if that panel is hidden.
 5. Use **Explore relationships** when nearby facts would help explain the disagreement. Added neighbors provide context; they do not change which assertions participate in the conflict.
 
-{{< guide-shot src="/assets/guide/resolve-disagreement.png" alt="Conflict dossier showing three original assertions, active conflict and review-state badges, and the analyst judgment form" x="75.7%" y="9.7%" width="6.4%" height="7%" caption="The conflict condition and its review state are separate. Recording a judgment changes the review state while the conflict remains active." >}}
+{{< guide-shot src="/assets/guide/resolve-disagreement.png" alt="Compact Conflicts workspace with its queue in the left sidebar and a dossier showing original assertions, review badges, and analyst judgment form" caption="The conflict queue stays in the sidebar while the dossier uses the main area. The condition and review state remain separate." >}}
 
 ## Record an analyst judgment
 

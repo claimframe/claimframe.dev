@@ -16,13 +16,13 @@ Use Graph Recall when you want to understand how a small set of facts connects. 
 
 ## Build a focused graph
 
-1. Open **Graph Recall**.
+1. Choose **Graph** in the activity bar. Graph Recall opens with its sidebar collapsed to leave more room for the canvas; choose the Graph icon again if you need the sidebar.
 2. Enter a query that identifies a useful starting point. For example, `? owns invoice-generation` finds every current ownership claim about `invoice-generation`.
 3. Choose **Run**.
 4. If the result is too broad, narrow it with the **Source**, **Predicate**, **Object**, or **Status** filters. Select **Conflicts** when you only want assertions participating in a detected conflict.
 5. Confirm that the entity and relationship counts describe a manageable working graph.
 
-{{< guide-shot src="/assets/guide/explore-graph.png" alt="Graph Recall showing a focused relationship graph with billing-service selected and the Add neighbors control visible" x="15.2%" y="79.7%" width="24.2%" height="16.7%" caption="Select a node to reveal its neighborhood controls. The matched relationships remain available below the graph." >}}
+{{< guide-shot src="/assets/guide/explore-graph.png" alt="Graph Recall workspace with billing-service selected, Add neighbors in the selection panel, and matched relationships below the graph" x="5.3%" y="77%" width="27.2%" height="19.9%" caption="Select a graph node to reveal Add neighbors. Matched relationships stay below the canvas." >}}
 
 ## Add nearby facts
 

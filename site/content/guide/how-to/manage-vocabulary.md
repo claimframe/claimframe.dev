@@ -27,8 +27,8 @@ You can use a vault without adopting any vocabulary. Adopt one when stable ident
 
 ## Preview a release
 
-1. Open the app menu and choose **Manage vocabularies**.
-2. Select a supplied release from **Library**, or choose **Import file** to preview a local `.cfvocab` package.
+1. Choose **Settings** at the foot of the activity bar, then expand **Vocabularies** in its sidebar. You can also choose **Tools → Manage Vocabularies**.
+2. Select a supplied release in the **Vocabularies** sidebar, or choose **Import vocabulary file** in its section header to preview a local `.cfvocab` package.
 3. Review the publisher, namespace, license, release number, attribution, and content counts.
 4. Scan **Contents** for the terms and predicates you expect. If the preview reports local name collisions, review the replacement tokens before continuing.
 
@@ -42,7 +42,7 @@ Under **Import content**, choose the kinds of content the vault needs:
 - **Predicates** imports properties and their value shapes.
 - **General knowledge** imports the package's assertions connecting those terms. It is available only when both terms and predicates are selected.
 
-{{< guide-shot src="/assets/guide/manage-vocabulary.png" alt="Vocabulary preview showing its contents, import-content choices, attribution, and Adopt vocabulary button" x="35.7%" y="72.8%" width="62.2%" height="16.8%" caption="Choose the content categories the vault needs, review the attribution, and then adopt the release." >}}
+{{< guide-shot src="/assets/guide/manage-vocabulary.png" alt="Vocabularies settings with a selected RDF/RDFS release in the sidebar and its contents, import choices, attribution, and Adopt vocabulary button in the main area" x="22.8%" y="60.5%" width="74.2%" height="20.4%" caption="Select a release in the sidebar, review its details, and choose the content to adopt." >}}
 
 1. Confirm the attribution displayed below the import choices.
 2. Choose **Adopt vocabulary**.
@@ -53,8 +53,8 @@ Claimframe blocks another release with the same vocabulary ID rather than treati
 
 ## Undo an adoption
 
-1. Return to **Manage vocabularies**.
-2. Find the release under **Adopted by this vault**.
+1. Return to **Settings → Vocabularies**.
+2. Select the adopted release in the sidebar.
 3. Choose **Undo unused import**, then confirm with **Remove**.
 
 Undo succeeds only while no assertion, saved query, or other adopted vocabulary depends on the imported content. When the button is disabled, its explanation identifies why the release cannot be removed.
