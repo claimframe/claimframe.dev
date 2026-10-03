@@ -2,7 +2,7 @@
 
 ## What Claimframe Is
 
-Claimframe is a free, open-source, local-first workbench for sourced assertions. It is built for technical practitioners who need to remember who said what about systems, decisions, constraints, ownership, dependencies, risks, and open questions while a discussion is still moving.
+Claimframe is a free, local-first workbench for sourced assertions. It is built for technical practitioners who need to remember who said what about systems, decisions, constraints, ownership, dependencies, risks, and open questions while a discussion is still moving.
 
 The core unit is an assertion: a claim made by a source at a time about a subject. Assertions can be true, false, stale, partial, disputed, inferred, or ambiguous. Claimframe keeps that uncertainty visible.
 
@@ -93,7 +93,7 @@ Yes. Claimframe is designed around local files or an embedded database.
 
 ### Is Claimframe open source?
 
-Yes. Claimframe is an open-source project.
+No. Claimframe is free to use, but it is not open source.
 
 ### Does Claimframe treat assertions as final facts?
 
@@ -119,6 +119,6 @@ Claimframe is a local-first workbench for sourced assertions. It helps technical
 
 - Site: https://claimframe.dev
 - User guide: https://claimframe.dev/guide/
-- MCP guide: https://github.com/claimframe/claimframe/blob/main/docs/mcp.md
+- MCP vault guide: https://claimframe.dev/guide/reference/vaults/
 - Downloads: https://claimframe.dev/#download
 - Agent context: https://claimframe.dev/llms-full.txt

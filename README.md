@@ -2,7 +2,7 @@
 
 Hugo source for [claimframe.dev](https://claimframe.dev), the product page for Claimframe.
 
-Claimframe is a free, open-source, local-first assertion memory workbench for architects, consultants, and technical advisors. It stores sourced assertions, preserves disagreement, and exposes structured context to AI agents through a local MCP server.
+Claimframe is a free, local-first assertion memory workbench for architects, consultants, and technical advisors. It stores sourced assertions, preserves disagreement, and exposes structured context to AI agents through a local MCP server.
 
 ## Build
 
