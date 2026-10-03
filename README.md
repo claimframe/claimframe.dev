@@ -37,15 +37,14 @@ The application source repository is private, so its GitHub Releases and release
 assets require repository read access. Public installers are published as release
 assets in the dedicated public
 [`claimframe/claimframe-downloads`](https://github.com/claimframe/claimframe-downloads)
-repository instead. For the current release version configured in
-`site/config.toml`, the homepage derives links to these assets on its matching release tag:
+repository instead. ADR-009 ended Intel Mac support. For the current release
+version configured in `site/config.toml`, the homepage derives links to these
+assets on its matching release tag:
 
 - `Claimframe-<version>-macos-arm64.dmg`
-- `Claimframe-<version>-macos-x64.dmg`
 - `Claimframe-<version>-windows-x64.msi`
 - `Claimframe-<version>-linux-x86_64.AppImage`
 - `claimframe-mcp-<version>-macos-aarch64`
-- `claimframe-mcp-<version>-macos-x86_64`
 - `claimframe-mcp-<version>-windows-x86_64.exe`
 - `claimframe-mcp-<version>-linux-x86_64`
 
@@ -53,9 +52,9 @@ The private application's release workflow must copy and rename each completed
 installer and MCP executable into a matching release in
 `claimframe/claimframe-downloads`. When the application is released, update
 `params.releaseVersion` once in `site/config.toml`; the homepage uses that value for
-its displayed version and all eight `/releases/download/v<version>/<asset-name>` URLs.
+its displayed version and all six `/releases/download/v<version>/<asset-name>` URLs.
 Netlify verifies that the matching public release exists and contains exactly those
-eight assets before deploying the site.
+six assets before deploying the site.
 
 
 ## AI Disclosure

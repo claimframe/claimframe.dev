@@ -31,7 +31,7 @@ Run pattern:
 claimframe-mcp --vault /path/to/claimframe.sqlite3
 ```
 
-Download the `claimframe-mcp` executable for macOS (Apple silicon or Intel), Windows x86-64, or Linux x86-64 from https://claimframe.dev/#download. The downloaded file includes its version and platform in the filename; it may be renamed to `claimframe-mcp` (`claimframe-mcp.exe` on Windows) after it is placed on the executable path.
+Download the `claimframe-mcp` executable for macOS (Apple silicon), Windows x86-64, or Linux x86-64 from https://claimframe.dev/#download. The downloaded file includes its version and platform in the filename; it may be renamed to `claimframe-mcp` (`claimframe-mcp.exe` on Windows) after it is placed on the executable path.
 
 If `--vault` is omitted, the server checks `CLAIMFRAME_VAULT` and then uses `.claimframe/vault.sqlite3` relative to the current working directory. The active desktop vault path is shown in Claimframe's Settings panel.
 

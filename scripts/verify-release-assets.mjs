@@ -9,11 +9,9 @@ if (!version) {
 
 const expected = [
   `Claimframe-${version}-macos-arm64.dmg`,
-  `Claimframe-${version}-macos-x64.dmg`,
   `Claimframe-${version}-windows-x64.msi`,
   `Claimframe-${version}-linux-x86_64.AppImage`,
   `claimframe-mcp-${version}-macos-aarch64`,
-  `claimframe-mcp-${version}-macos-x86_64`,
   `claimframe-mcp-${version}-windows-x86_64.exe`,
   `claimframe-mcp-${version}-linux-x86_64`,
 ].sort();
@@ -50,7 +48,7 @@ if (JSON.stringify(actual) !== JSON.stringify(expected)) {
   const unexpected = actual.filter((name) => !expected.includes(name));
   throw new Error(
     [
-      `Public release ${expectedTag} does not contain the exact eight download assets.`,
+      `Public release ${expectedTag} does not contain the exact ${expected.length} download assets.`,
       missing.length ? `Missing: ${missing.join(", ")}` : "",
       unexpected.length ? `Unexpected: ${unexpected.join(", ")}` : "",
     ]

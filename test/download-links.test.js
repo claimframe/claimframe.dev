@@ -11,10 +11,14 @@ const downloadBase = `https://github.com/claimframe/claimframe-downloads/release
 
 const targets = [
   ["macos-arm64", "mac", `Claimframe-${releaseVersion}-macos-arm64.dmg`, `claimframe-mcp-${releaseVersion}-macos-aarch64`],
-  ["macos-x64", "mac", `Claimframe-${releaseVersion}-macos-x64.dmg`, `claimframe-mcp-${releaseVersion}-macos-x86_64`],
   ["windows-x64", "windows", `Claimframe-${releaseVersion}-windows-x64.msi`, `claimframe-mcp-${releaseVersion}-windows-x86_64.exe`],
   ["linux-x86_64", "linux", `Claimframe-${releaseVersion}-linux-x86_64.AppImage`, `claimframe-mcp-${releaseVersion}-linux-x86_64`],
 ];
+
+test("the homepage hero uses the CLA-128 screenshot", () => {
+  assert.match(homepage, /<img src="\/assets\/claimframe-workbench-cla128\.png"/);
+  assert.ok(fs.existsSync(path.join(root, "site/public/assets/claimframe-workbench-cla128.png")));
+});
 
 test("the release version is configured once and shown on the download section", () => {
   assert.match(releaseVersion, /^\d+\.\d+\.\d+$/);
@@ -22,8 +26,8 @@ test("the release version is configured once and shown on the download section",
   assert.match(homepage, new RegExp(`Claimframe v${releaseVersion} desktop app and standalone MCP server`));
 });
 
-test("the download section has four platform boxes with two paired links each", () => {
-  assert.equal((homepage.match(/class="download-platform-box"/g) || []).length, 4);
+test("the download section has three platform boxes with two paired links each", () => {
+  assert.equal((homepage.match(/class="download-platform-box"/g) || []).length, 3);
 
   for (const [target, platform, desktopAsset, mcpAsset] of targets) {
     const box = homepage.match(
@@ -38,7 +42,7 @@ test("the download section has four platform boxes with two paired links each", 
     assert.equal((box.match(/class="download-option /g) || []).length, 2);
   }
 
-  assert.equal((homepage.match(new RegExp(`v${releaseVersion} ·`, "g")) || []).length, 8);
+  assert.equal((homepage.match(new RegExp(`v${releaseVersion} ·`, "g")) || []).length, 6);
 });
 
 test("platform recommendation styling applies to boxes", () => {
