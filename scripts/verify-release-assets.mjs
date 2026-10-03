@@ -10,10 +10,10 @@ if (!version) {
 const expected = [
   `Claimframe-${version}-macos-arm64.dmg`,
   `Claimframe-${version}-windows-x64.msi`,
-  `Claimframe-${version}-linux-x86_64.AppImage`,
+  `Claimframe-${version}-linux-amd64.deb`,
   `claimframe-mcp-${version}-macos-aarch64`,
   `claimframe-mcp-${version}-windows-x86_64.exe`,
-  `claimframe-mcp-${version}-linux-x86_64`,
+  `Claimframe-${version}-linux-x86_64.rpm`,
 ].sort();
 
 const headers = {

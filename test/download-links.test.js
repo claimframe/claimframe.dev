@@ -12,7 +12,7 @@ const downloadBase = `https://github.com/claimframe/claimframe-downloads/release
 const targets = [
   ["macos-arm64", "mac", `Claimframe-${releaseVersion}-macos-arm64.dmg`, `claimframe-mcp-${releaseVersion}-macos-aarch64`],
   ["windows-x64", "windows", `Claimframe-${releaseVersion}-windows-x64.msi`, `claimframe-mcp-${releaseVersion}-windows-x86_64.exe`],
-  ["linux-x86_64", "linux", `Claimframe-${releaseVersion}-linux-x86_64.AppImage`, `claimframe-mcp-${releaseVersion}-linux-x86_64`],
+  ["linux-x86_64", "linux", `Claimframe-${releaseVersion}-linux-amd64.deb`, `Claimframe-${releaseVersion}-linux-x86_64.rpm`],
 ];
 
 test("the homepage hero uses the CLA-128 screenshot", () => {
@@ -23,7 +23,7 @@ test("the homepage hero uses the CLA-128 screenshot", () => {
 test("the release version is configured once and shown on the download section", () => {
   assert.match(releaseVersion, /^\d+\.\d+\.\d+$/);
   assert.match(homepage, new RegExp(`data-release-version="${releaseVersion}"`));
-  assert.match(homepage, new RegExp(`Claimframe v${releaseVersion} desktop app and standalone MCP server`));
+  assert.match(homepage, new RegExp(`Claimframe v${releaseVersion} desktop app and MCP server`));
 });
 
 test("the download section has three platform boxes with two paired links each", () => {
@@ -36,9 +36,16 @@ test("the download section has three platform boxes with two paired links each",
 
     assert.ok(box, `missing download box for ${target}`);
     assert.match(box, new RegExp(`class="download-option desktop-download" href="${downloadBase}/${desktopAsset.replace(".", "\\.")}"`));
-    assert.match(box, new RegExp(`class="download-option mcp-download" href="${downloadBase}/${mcpAsset.replace(".", "\\.")}"`));
-    assert.match(box, /<strong>Desktop app<\/strong>/);
-    assert.match(box, /<strong>Standalone MCP server<\/strong>/);
+    const secondClass = platform === "linux" ? "desktop-download" : "mcp-download";
+    assert.match(box, new RegExp(`class="download-option ${secondClass}" href="${downloadBase}/${mcpAsset.replace(".", "\\.")}"`));
+    if (platform === "linux") {
+      assert.match(box, /<strong>DEB package<\/strong>/);
+      assert.match(box, /<strong>RPM package<\/strong>/);
+      assert.match(box, /\/usr\/bin\/claimframe-mcp/);
+    } else {
+      assert.match(box, /<strong>Desktop app<\/strong>/);
+      assert.match(box, /<strong>Standalone MCP server<\/strong>/);
+    }
     assert.equal((box.match(/class="download-option /g) || []).length, 2);
   }
 
@@ -62,4 +69,9 @@ test("generated output contains no old unversioned asset links", () => {
 
 test("downloads remain pinned when a newer release is published", () => {
   assert.ok(!homepage.includes("/releases/latest/download/"));
+});
+
+ test("current downloads retire Intel, AppImage and standalone Linux MCP", () => {
+  assert.doesNotMatch(homepage, /href="[^"]*(?:macos-x64|macos-x86_64|AppImage|claimframe-mcp-[^"]*-linux-x86_64)/);
+  assert.match(homepage, /href="\/releases\/0\.4\.1\/"/);
 });

@@ -42,3 +42,19 @@ In **Vaults → Recent vaults**, choose **Rename**, enter the new display name, 
 4. Confirm the copied file exists and has a plausible modification time and size.
 
 Do not rely on a manual copy taken while writers are active. SQLite may have recent changes in write-ahead-log sidecar files.
+
+## Upgrade an older vault to current-name naming
+
+Before installing 0.4.1, close Claimframe and all MCP sessions, copy the vault to a safe backup
+location, and keep the previous installer. Opening an older vault asks for confirmation before
+migration and creates an automatic backup. Do not interrupt that operation.
+
+The upgraded vault uses current entity names. Renaming replaces the name used for lookup;
+previous names no longer resolve automatically. Capitalization is ignored, but punctuation and
+spaces distinguish names. Update saved queries that refer to renamed entities.
+
+Older application versions cannot open an upgraded vault. If you need to return to the previous
+version, close the new application, retain the upgraded file separately, reinstall the previous
+version, and open the pre-upgrade backup. Changes made after the backup will not be present there.
+Do not overwrite your only copy of either file. CFText exports preserve current content, not the
+full transaction history, and do not replace a vault backup.

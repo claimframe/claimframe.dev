@@ -43,10 +43,12 @@ assets on its matching release tag:
 
 - `Claimframe-<version>-macos-arm64.dmg`
 - `Claimframe-<version>-windows-x64.msi`
-- `Claimframe-<version>-linux-x86_64.AppImage`
+- `Claimframe-<version>-linux-amd64.deb`
 - `claimframe-mcp-<version>-macos-aarch64`
 - `claimframe-mcp-<version>-windows-x86_64.exe`
-- `claimframe-mcp-<version>-linux-x86_64`
+- `Claimframe-<version>-linux-x86_64.rpm`
+
+Both Linux packages include `/usr/bin/claimframe-mcp`; no standalone Linux MCP download is required.
 
 The private application's release workflow must copy and rename each completed
 installer and MCP executable into a matching release in
